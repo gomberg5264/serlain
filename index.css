@@ -1,0 +1,82 @@
+body
+{
+    background-color: black;
+    color: lightgray;
+    text-align: center;
+}
+
+#browser-container .Browser
+{
+    display: inline-block;
+    background-size: 100% 100%;
+    background-color: green;
+}
+
+.Browser.internet-explorer-4_800x600
+{
+    width: 800px;
+    height: 600px;
+    background-image: url("./dist/assets/images/browser/internet-explorer-4_800x600.png");
+}
+
+.Browser.internet-explorer-4_800x600 > .AddressBar
+{
+    position: relative;
+    top: 90px;
+    left: 81px;
+    width: 625px;
+    height: 16px;
+    text-align: left;
+}
+
+.Browser.internet-explorer-4_800x600 > .AddressBar > input
+{
+    font-size: 8px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    color: black;
+}
+
+.Browser.internet-explorer-4_800x600 > .TitleBar
+{
+    position: relative;
+    top: -12px;
+    left: 25px;
+    width: 625px;
+    height: 16px;
+
+    user-select: none;
+    font-family: sans-serif;
+    font-size: 8px;
+    font-weight: bold;
+    text-align: left;
+    background-color: transparent;
+    color: white;
+    margin: none;
+}
+
+.Browser.internet-explorer-4_800x600 > .TitleBar::after
+{
+    content: " - Microsoft Internet Explorer";
+}
+
+.Browser.internet-explorer-4_800x600 > .Viewport
+{
+    position: relative;
+    top: 88px;
+    left: 6px;
+    width: 788px;
+    height: 454px;
+    
+    background-color: transparent;
+}
+
+.Browser.internet-explorer-4_800x600 > .Viewport > iframe
+{
+    border: none;
+    width: 100%;
+    height: 100%;
+}

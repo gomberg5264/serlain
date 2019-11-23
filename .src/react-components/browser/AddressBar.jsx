@@ -13,7 +13,14 @@ export function AddressBar(props = {})
 {
     AddressBar.validate_props(props);
 
-    return <div></div>
+    return <div className="AddressBar">
+
+               <input type="text"
+                      autoFocus
+                      autoComplete="false"
+                      spellCheck="false"></input>
+
+           </div>
 }
 
 AddressBar.validate_props = function(props = {})

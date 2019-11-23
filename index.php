@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            body
-            {
-                background-color: black;
-                color: lightgray;
-            }
-        </style>
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        Hello there.
-        
         <div id="browser-container"></div>
 
         <script src="./dist/react/react.js"></script>
