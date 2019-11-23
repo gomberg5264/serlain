@@ -9,14 +9,14 @@
 
 import {panic_if_not_type} from "../../assert.js";
 
-export function TitleBar(props = {})
+export function BrowserSelect(props = {})
 {
-    TitleBar.validate_props(props);
+    BrowserVendorSelect.validate_props(props);
 
-    return <div className="TitleBar">Untitled</div>
+    return <div></div>
 }
 
-TitleBar.validate_props = function(props = {})
+BrowserSelect.validate_props = function(props = {})
 {
     panic_if_not_type("object", props);
 

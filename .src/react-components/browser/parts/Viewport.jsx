@@ -7,14 +7,15 @@
 
 "use strict";
 
-import {panic_if_not_type} from "../../assert.js";
+import {panic_if_not_type} from "../../../assert.js";
 
 export function Viewport(props = {})
 {
     Viewport.validate_props(props);
 
     return <div className="Viewport">
-               <iframe src={props.url} crossOrigin="anonymous"/>
+               <iframe src={props.url}
+                       onLoad={()=>{}}/>
            </div>
 }
 

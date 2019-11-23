@@ -7,16 +7,16 @@
 
 "use strict";
 
-import {panic_if_not_type} from "../../assert.js";
+import {panic_if_not_type} from "../../../assert.js";
 
-export function MessageBar(props = {})
+export function ButtonRow(props = {})
 {
-    MessageBar.validate_props(props);
+    ButtonRow.validate_props(props);
 
     return <div></div>
 }
 
-MessageBar.validate_props = function(props = {})
+ButtonRow.validate_props = function(props = {})
 {
     panic_if_not_type("object", props);
 

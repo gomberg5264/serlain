@@ -7,7 +7,7 @@
 
 "use strict";
 
-import {panic_if_not_type} from "../../assert.js";
+import {panic_if_not_type} from "../../../assert.js";
 
 export function ButtonRow_Button(props = {})
 {

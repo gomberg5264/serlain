@@ -8,19 +8,15 @@
 "use strict";
 
 import {panic_if_not_type} from "../../assert.js";
-import {AddressBar} from "./AddressBar.js";
-import {TitleBar} from "./TitleBar.js";
-import {Viewport} from "./Viewport.js";
+import {BrowserWindow} from "./parts/BrowserWindow.js";
 
 export function Browser(props = {})
 {
     Browser.validate_props(props);
 
-    return <div className="Browser internet-explorer-4_800x600">
+    return <div className="Browser">
 
-               <AddressBar/>
-               <TitleBar/>
-               <Viewport url="/"/>
+               <BrowserWindow/>
 
            </div>
 }

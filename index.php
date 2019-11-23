@@ -9,12 +9,9 @@
         <script src="./dist/react/react.js"></script>
         <script src="./dist/react/react-dom.js"></script>
         <script type="module">
-            import {Browser} from "./dist/src/react-components/browser/Browser.js";
-
-            const browser = Browser({
-            });
-
-            ReactDOM.render(browser, document.getElementById("browser-container"));
+            import {run_browser} from "./dist/src/run-browser.js";
+            
+            run_browser(document.getElementById("browser-container"));
         </script>
     </body>
 </html>
