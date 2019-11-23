@@ -1,7 +1,7 @@
 /*
  * 2019 Tarpeeksi Hyvae Soft
  *
- * Software: <unnamed browser thing>
+ * Software: Serlain
  * 
  */
 
@@ -13,7 +13,7 @@ export function TitleBar(props = {})
 {
     TitleBar.validate_props(props);
 
-    return <div className="TitleBar">Untitled</div>
+    return <div className="TitleBar">Serlain</div>
 }
 
 TitleBar.validate_props = function(props = {})

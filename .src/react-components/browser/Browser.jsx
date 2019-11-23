@@ -1,7 +1,7 @@
 /*
  * 2019 Tarpeeksi Hyvae Soft
  *
- * Software: <unnamed browser thing>
+ * Software: Serlain
  * 
  */
 

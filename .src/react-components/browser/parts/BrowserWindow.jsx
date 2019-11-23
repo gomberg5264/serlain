@@ -1,7 +1,7 @@
 /*
  * 2019 Tarpeeksi Hyvae Soft
  *
- * Software: <unnamed browser thing>
+ * Software: Serlain
  * 
  */
 
@@ -22,7 +22,8 @@ export function BrowserWindow(props = {})
 
                <AddressBar callbackUrlSubmit={(url)=>setCurrentUrl(url)}/>
                <TitleBar/>
-               <Viewport url={currentUrl}/>
+               <Viewport url={currentUrl}
+                         callbackNewPageLoaded={(url)=>console.log(url)}/>
 
            </div>
 }
