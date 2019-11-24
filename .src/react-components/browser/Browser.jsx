@@ -16,14 +16,14 @@ export function Browser(props = {})
 
     return <div className="Browser">
 
-               <BrowserWindow/>
+               <BrowserWindow naviButtons={props.naviButtons}/>
 
            </div>
 }
 
 Browser.validate_props = function(props = {})
 {
-    panic_if_not_type("object", props);
+    panic_if_not_type("object", props, props.naviButtons);
 
     return;
 }
