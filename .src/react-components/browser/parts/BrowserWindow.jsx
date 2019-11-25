@@ -33,7 +33,9 @@ export function BrowserWindow(props = {})
                <Buttons buttons={props.buttons}
                         callbackButtonReload={()=>{viewportCallbacks.reload_page()}}
                         callbackButtonStop={()=>{viewportCallbacks.stop_page_load()}}
-                        callbackButtonClose={()=>{props.callbackExitBrowser()}}/>
+                        callbackButtonClose={()=>{props.callbackExitBrowser()}}
+                        callbackButtonBack={()=>window.history.back()}
+                        callbackButtonForward={()=>window.history.forward()}/>
 
                <AddressBar callbackUrlSubmit={(url)=>setCurrentUrl(url)}/>
 

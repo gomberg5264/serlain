@@ -24,6 +24,8 @@ export function run_browser(container)
             <Button buttonName="stop" key="1"/>,
             <Button buttonName="home" key="2"/>,
             <Button buttonName="close" key="3"/>,
+            <Button buttonName="back" key="4"/>,
+            <Button buttonName="forward" key="5"/>,
         ],
         container,
     });

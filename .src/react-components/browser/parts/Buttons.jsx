@@ -37,6 +37,16 @@ export function Buttons(props = {})
                 props.callbackButtonClose();
                 break;
             }
+            case "back":
+            {
+                props.callbackButtonBack();
+                break;
+            }
+            case "forward":
+            {
+                props.callbackButtonForward();
+                break;
+            }
             default: break;
         }
 
@@ -48,7 +58,9 @@ Buttons.validate_props = function(props = {})
 {
     panic_if_not_type("object", props, props.buttons);
     panic_if_not_type("function", props.callbackButtonReload,
-                                  props.callbackButtonStop);
+                                  props.callbackButtonStop,
+                                  props.callbackButtonBack,
+                                  props.callbackButtonForward);
 
     return;
 }
