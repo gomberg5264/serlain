@@ -7,7 +7,8 @@
 
 "use strict";
 
-import {panic_if_not_type} from "../../../assert.js";
+import {panic_if_not_type, panic} from "../../../assert.js";
+import {get_wayback_url} from "../../../get-wayback-url.js";
 import {AddressBar} from "./AddressBar.js";
 import {TitleBar} from "./TitleBar.js";
 import {Viewport} from "./Viewport.js";
@@ -37,13 +38,32 @@ export function BrowserWindow(props = {})
                         callbackButtonBack={()=>window.history.back()}
                         callbackButtonForward={()=>window.history.forward()}/>
 
-               <AddressBar callbackUrlSubmit={(url)=>setCurrentUrl(url)}/>
+               <AddressBar callbackUrlSubmit={navigate_to_url}/>
 
                <Viewport url={currentUrl}
                          callbackNewPageLoaded={(url)=>console.log(url)}
                          giveCallbacks={(callbacks)=>{viewportCallbacks = callbacks;}}/>
 
            </div>
+
+    async function navigate_to_url(url)
+    {
+        panic_if_not_type("string", url);
+
+        const waybackUrl = await get_wayback_url(url, 2004);
+
+        if (!waybackUrl)
+        {
+            /* TODO*/
+            console.error(`Unable to find a Wayback entry for ${url}.`);
+        }
+        else
+        {
+            setCurrentUrl(waybackUrl);
+        }
+
+        return;
+    }
 }
 
 BrowserWindow.validate_props = function(props = {})

@@ -2,7 +2,17 @@ body
 {
     background-color: black;
     color: lightgray;
-    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#browser-container
+{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #browser-container .Browser
