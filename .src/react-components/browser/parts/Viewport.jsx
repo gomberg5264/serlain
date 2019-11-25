@@ -40,7 +40,8 @@ export function Viewport(props = {})
 
                <iframe src={props.url}
                        onLoad={()=>declare_new_page_loaded()}
-                       ref={iframeRef}/>
+                       ref={iframeRef}
+                       sandbox="allow-scripts allow-forms allow-modals allow-same-origin"/>
 
            </div>
 
