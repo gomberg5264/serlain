@@ -13,9 +13,12 @@ export function AddressBar(props = {})
 {
     AddressBar.validate_props(props);
 
+    const inputRef = React.useRef();
+
     return <div className="AddressBar">
 
                <input type="text"
+                      ref={inputRef}
                       onKeyDown={(event)=>
                       {
                           if (event.key === "Enter")
@@ -36,6 +39,11 @@ export function AddressBar(props = {})
         if (!url.length)
         {
             return;
+        }
+
+        if (inputRef && inputRef.current)
+        {
+            inputRef.current.blur();
         }
 
         props.callbackUrlSubmit(url);

@@ -20,7 +20,6 @@ export function BrowserWindow(props = {})
     BrowserWindow.validate_props(props);
 
     const [currentUrl, setCurrentUrl] = React.useState("/");
-
     const [currentMessageBarMessage, setCurrentMessageBarMessage] = React.useState("Done");
 
     // Functions the Viewport component gives us to interact with it.
