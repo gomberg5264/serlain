@@ -87,6 +87,7 @@ body
 
 .Browser > .BrowserWindow.internet-explorer-4.resolution-800x600 > .AddressBar
 {
+    background-color: transparent;
     position: absolute;
     top: 94px;
     left: 81px;
@@ -107,6 +108,21 @@ body
     height: calc(100% - 2px);
     color: black;
     display: block;
+}
+
+.Browser > .BrowserWindow.internet-explorer-4.resolution-800x600 > .MessageBar
+{
+    color: black;
+    font-family: sans-serif;
+    font-size: 70%;
+    background-color: transparent;
+    position: absolute;
+    bottom: 5px;
+    left: 26px;
+    width: 397px;
+    height: 16px;
+    text-align: left;
+    line-height: 15px;
 }
 
 .Browser > .BrowserWindow.internet-explorer-4.resolution-800x600 > .TitleBar

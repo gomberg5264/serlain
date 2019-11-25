@@ -12,7 +12,7 @@ import {Button} from "./react-components/browser/parts/Button.js";
 
 export function run_browser(container)
 {
-    const browser = Browser({
+    const browser_InternetExplorer4_800x600 = Browser({
         // Create a list of the interactible buttons in the browser window.
         // Note that the buttonName property must match a known button name - the
         // action performed when the user clicks on the button will be decided based
@@ -27,11 +27,23 @@ export function run_browser(container)
             <Button buttonName="back" key="4"/>,
             <Button buttonName="forward" key="5"/>,
         ],
+
+        // Strings that will be shown in the browser's message bar as a response to
+        // specific events.
+        messageBarStrings:
+        {
+            fetching_page_url: (url)=>`Connecting to site ${url}`,
+            loading_page: (url)=>`Opening page ${url}...`,
+            page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by IE4?
+            page_load_finished: ()=>"Done",
+        },
+
+        // The DOM element in which the browser is displayed.
         container,
     });
 
     ReactDOM.unmountComponentAtNode(container)
-    ReactDOM.render(browser, container);
+    ReactDOM.render(browser_InternetExplorer4_800x600, container);
 
     return;
 }
