@@ -26,6 +26,9 @@ export function Viewport(props = {})
         // the user has navigated the frame using e.g. links inside it, reloading
         // will take him back to the original src.
         reload_page: ()=>{setIframeKey(iframeKey + 1);},
+
+        // If a page is currently being loaded into the iframe, stop doing so.
+        stop_page_load: ()=>{/*TODO*/},
     });
 
     return <div className="Viewport">

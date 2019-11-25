@@ -16,14 +16,15 @@ export function Browser(props = {})
 
     return <div className="Browser">
 
-               <BrowserWindow naviButtons={props.naviButtons}/>
+               <BrowserWindow buttons={props.buttons}
+                              callbackExitBrowser={()=>ReactDOM.unmountComponentAtNode(props.container)}/>
 
            </div>
 }
 
 Browser.validate_props = function(props = {})
 {
-    panic_if_not_type("object", props, props.naviButtons);
+    panic_if_not_type("object", props, props.buttons, props.container);
 
     return;
 }

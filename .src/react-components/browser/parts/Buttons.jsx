@@ -9,11 +9,11 @@
 
 import {panic_if_not_type} from "../../../assert.js";
 
-export function NaviButtons(props = {})
+export function Buttons(props = {})
 {
-    NaviButtons.validate_props(props);
+    Buttons.validate_props(props);
 
-    return <div className="NaviButtons"
+    return <div className="Buttons"
                 onClick={(event)=>handle_button_click(event.target.classList.item(1))}>
                {props.buttons}
            </div>
@@ -27,6 +27,16 @@ export function NaviButtons(props = {})
                 props.callbackButtonReload();
                 break;
             }
+            case "stop":
+            {
+                props.callbackButtonStop();
+                break;
+            }
+            case "close":
+            {
+                props.callbackButtonClose();
+                break;
+            }
             default: break;
         }
 
@@ -34,10 +44,11 @@ export function NaviButtons(props = {})
     }
 }
 
-NaviButtons.validate_props = function(props = {})
+Buttons.validate_props = function(props = {})
 {
     panic_if_not_type("object", props, props.buttons);
-    panic_if_not_type("function", props.callbackButtonReload);
+    panic_if_not_type("function", props.callbackButtonReload,
+                                  props.callbackButtonStop);
 
     return;
 }

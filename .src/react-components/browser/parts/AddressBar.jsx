@@ -29,7 +29,7 @@ export function AddressBar(props = {})
 
            </div>
 
-    function submit_url(url)
+    async function submit_url(url)
     {
         panic_if_not_type("string", url);
 
