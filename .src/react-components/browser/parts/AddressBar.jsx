@@ -19,6 +19,8 @@ export function AddressBar(props = {})
 
                <input type="text"
                       ref={inputRef}
+                      key={props.initialUrl}
+                      defaultValue={props.initialUrl}
                       onKeyDown={(event)=>
                       {
                           if (event.key === "Enter")
@@ -26,12 +28,13 @@ export function AddressBar(props = {})
                               submit_url(event.target.value);
                           }
                       }}
-                      autoFocus
                       autoComplete="false"
                       spellCheck="false"></input>
 
            </div>
 
+    // Called when the user provides a URL via the address bar, e.g. by
+    // typing in text and then pressing Enter.
     async function submit_url(url)
     {
         panic_if_not_type("string", url);
@@ -41,6 +44,8 @@ export function AddressBar(props = {})
             return;
         }
 
+        // For conformance with how browsers normally operate, we'll want to
+        // remove the address field's focus when the user submits an URL.
         if (inputRef && inputRef.current)
         {
             inputRef.current.blur();
@@ -56,6 +61,7 @@ AddressBar.validate_props = function(props = {})
 {
     panic_if_not_type("object", props);
     panic_if_not_type("function", props.callbackUrlSubmit);
+    panic_if_not_type("string", props.initialUrl);
 
     return;
 }

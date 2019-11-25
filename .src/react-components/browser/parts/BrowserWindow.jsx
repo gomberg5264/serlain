@@ -7,8 +7,8 @@
 
 "use strict";
 
-import {panic_if_not_type, panic} from "../../../assert.js";
-import {get_wayback_url} from "../../../get-wayback-url.js";
+import {panic_if_not_type} from "../../../assert.js";
+import {get_wayback_page} from "../../../get-wayback-page.js";
 import {AddressBar} from "./AddressBar.js";
 import {MessageBar} from "./MessageBar.js";
 import {TitleBar} from "./TitleBar.js";
@@ -19,8 +19,16 @@ export function BrowserWindow(props = {})
 {
     BrowserWindow.validate_props(props);
 
-    const [currentUrl, setCurrentUrl] = React.useState("/");
+    const initialUrl = "about:blank";
+ 
+    // We handle URLs in two parts: the website URL is the URL of the target website,
+    // e.g. "microsoft.com": and the Wayback URL is the URL of the Wayback Machine's
+    // capture of the target website, e.g. "web.archive.org/web/x/www.microsoft.com".
+    const [websiteUrl, setWebsiteUrl] = React.useState(initialUrl);
+    const [waybackUrl, setWaybackUrl] = React.useState(initialUrl);
+
     const [currentMessageBarMessage, setCurrentMessageBarMessage] = React.useState("Done");
+    const [addressBarKey, setAddressBarKey] = React.useState(0);
 
     // Functions the Viewport component gives us to interact with it.
     let viewportCallbacks =
@@ -34,15 +42,18 @@ export function BrowserWindow(props = {})
                <TitleBar/>
 
                <Buttons buttons={props.buttons}
-                        callbackButtonReload={()=>{viewportCallbacks.reload_page()}}
+                        callbackButtonReload={()=>{refresh_address_bar(); viewportCallbacks.reload_page()}}
                         callbackButtonStop={()=>{viewportCallbacks.stop_page_load()}}
                         callbackButtonClose={()=>{props.callbackExitBrowser()}}
                         callbackButtonBack={()=>window.history.back()}
-                        callbackButtonForward={()=>window.history.forward()}/>
+                        callbackButtonForward={()=>window.history.forward()}
+                        callbackButtonHome={()=>navigate_to_url(initialUrl)}/>
 
-               <AddressBar callbackUrlSubmit={navigate_to_url}/>
+               <AddressBar key={addressBarKey}
+                           initialUrl={websiteUrl}
+                           callbackUrlSubmit={navigate_to_url}/>
 
-               <Viewport url={currentUrl}
+               <Viewport url={waybackUrl}
                          callbackNewPageLoaded={finish_navigating_to_url}
                          giveCallbacks={(callbacks)=>{viewportCallbacks = callbacks;}}/>
 
@@ -50,22 +61,44 @@ export function BrowserWindow(props = {})
 
            </div>
 
-    async function navigate_to_url(url)
+    function refresh_address_bar()
     {
-        panic_if_not_type("string", url);
+        setAddressBarKey(addressBarKey + 1);
+        return;
+    }
 
-        setCurrentMessageBarMessage(props.messageBarStrings.fetching_page_url(url));
+    // Takes in a website URL (e.g. "microsoft.com"), fetches a capture of the website from
+    // the Wayback Machine, and displays the captured page in the Viewport.
+    async function navigate_to_url(websiteUrl)
+    {
+        panic_if_not_type("string", websiteUrl);
 
-        const waybackUrl = await get_wayback_url(url, 2004);
-
-        if (!waybackUrl)
+        // The initial URL is a non-Wayback Machine page, so we don't need to query the
+        // Wayback API for it.
+        if (websiteUrl === initialUrl)
         {
-            setCurrentMessageBarMessage(props.messageBarStrings.page_load_failed(url));
+            setWebsiteUrl(initialUrl);
+            setWaybackUrl(initialUrl);
+            refresh_address_bar();
+            return;
         }
         else
         {
-            setCurrentMessageBarMessage(props.messageBarStrings.loading_page(url));
-            setCurrentUrl(waybackUrl);
+            setCurrentMessageBarMessage(props.messageBarStrings.fetching_page_url(websiteUrl));
+
+            const waybackPage = await get_wayback_page(websiteUrl, 2004);
+
+            if (!waybackPage)
+            {
+                setCurrentMessageBarMessage(props.messageBarStrings.page_load_failed(websiteUrl));
+            }
+            else
+            {
+                setWebsiteUrl(websiteUrl);
+                setWaybackUrl(waybackPage.url);
+                refresh_address_bar();
+                setCurrentMessageBarMessage(props.messageBarStrings.loading_page(websiteUrl));
+            }
         }
 
         return;

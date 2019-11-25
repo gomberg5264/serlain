@@ -22,31 +22,12 @@ export function Buttons(props = {})
     {
         switch (button)
         {
-            case "reload":
-            {
-                props.callbackButtonReload();
-                break;
-            }
-            case "stop":
-            {
-                props.callbackButtonStop();
-                break;
-            }
-            case "close":
-            {
-                props.callbackButtonClose();
-                break;
-            }
-            case "back":
-            {
-                props.callbackButtonBack();
-                break;
-            }
-            case "forward":
-            {
-                props.callbackButtonForward();
-                break;
-            }
+            case "reload": props.callbackButtonReload(); break;
+            case "stop": props.callbackButtonStop(); break;
+            case "close": props.callbackButtonClose(); break;
+            case "back": props.callbackButtonBack(); break;
+            case "forward": props.callbackButtonForward(); break;
+            case "home": props.callbackButtonHome(); break;
             default: break;
         }
 
@@ -60,7 +41,8 @@ Buttons.validate_props = function(props = {})
     panic_if_not_type("function", props.callbackButtonReload,
                                   props.callbackButtonStop,
                                   props.callbackButtonBack,
-                                  props.callbackButtonForward);
+                                  props.callbackButtonForward,
+                                  props.callbackButtonHome);
 
     return;
 }
