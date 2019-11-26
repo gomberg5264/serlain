@@ -13,5 +13,6 @@
             
             run_browser(document.getElementById("browser-container"));
         </script>
+        <script src="./dist/src/browser-window-drag.js"></script>
     </body>
 </html>

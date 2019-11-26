@@ -8,6 +8,9 @@ body
 
 #browser-container
 {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -17,6 +20,9 @@ body
 
 #browser-container .Browser
 {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: inline-block;
     background-size: 100% 100%;
 }
@@ -127,11 +133,11 @@ body
 .Browser > .BrowserWindow.internet-explorer-4.resolution-800x600 > .TitleBar
 {
     position: absolute;
-    top: 5px;
+    top: 4px;
     left: 25px;
-    width: 625px;
-    height: 16px;
-    line-height: 15px;
+    width: 710px;
+    height: 18px;
+    line-height: 17px;
 
     user-select: none;
     font-family: sans-serif;

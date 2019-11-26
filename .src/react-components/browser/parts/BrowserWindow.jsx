@@ -29,6 +29,7 @@ export function BrowserWindow(props = {})
 
     const [currentMessageBarMessage, setCurrentMessageBarMessage] = React.useState("Done");
     const [addressBarKey, setAddressBarKey] = React.useState(0);
+    const [navigationActive, setNavigationActive] = React.useState(false);
 
     // Functions the Viewport component gives us to interact with it.
     let viewportCallbacks =
@@ -37,7 +38,7 @@ export function BrowserWindow(props = {})
         stop_page_load: ()=>{},
     };
 
-    return <div className="BrowserWindow internet-explorer-4 resolution-800x600">
+    return <div className={`BrowserWindow internet-explorer-4 resolution-800x600 ${navigationActive? "network-active" : "network-idle"}`}>
 
                <TitleBar/>
 
@@ -84,6 +85,7 @@ export function BrowserWindow(props = {})
         }
         else
         {
+            setNavigationActive(true);
             setCurrentMessageBarMessage(props.messageBarStrings.fetching_page_url(websiteUrl));
 
             const waybackPage = await get_wayback_page(websiteUrl, 2004);
@@ -106,6 +108,7 @@ export function BrowserWindow(props = {})
 
     function finish_navigating_to_url()
     {
+        setNavigationActive(false);
         setCurrentMessageBarMessage(props.messageBarStrings.page_load_finished());
 
         return;
