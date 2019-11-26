@@ -15,12 +15,32 @@ export function AddressBar(props = {})
 
     const inputRef = React.useRef();
 
+    let inputFieldHasFocus = false;
+
     return <div className="AddressBar">
 
                <input type="text"
                       ref={inputRef}
                       key={props.initialUrl}
                       defaultValue={props.initialUrl}
+                      onFocus={(event)=>
+                      {
+                          if (!inputFieldHasFocus)
+                          {
+                              event.target.select()
+                          }
+
+                          inputFieldHasFocus = true;
+                      }}
+                      onBlur={(event)=>
+                      {
+                          if (inputFieldHasFocus)
+                          {
+                              /// TODO: Clear the input field's selection.
+                          }
+
+                          inputFieldHasFocus = false;
+                      }}
                       onKeyDown={(event)=>
                       {
                           if (event.key === "Enter")
