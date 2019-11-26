@@ -30,21 +30,29 @@ if (!$responseJson)
 }
 
 // Test for required parameters in the response.
-if (!isset($responseJson["archived_snapshots"]["closest"]["available"]) ||
-    !isset($responseJson["archived_snapshots"]["closest"]["timestamp"]) ||
-    !isset($responseJson["archived_snapshots"]["closest"]["url"]))
 {
-    exit(return_fail());
-}
+    if (!isset($responseJson["archived_snapshots"]["closest"]["available"]) ||
+        !isset($responseJson["archived_snapshots"]["closest"]["available"]) ||
+        !isset($responseJson["archived_snapshots"]["closest"]["timestamp"]) ||
+        !isset($responseJson["archived_snapshots"]["closest"]["url"]))
+    {
+        exit(return_fail());
+    }
 
-if (!preg_match("/^{$year}/", $responseJson["archived_snapshots"]["closest"]["timestamp"]))
-{
-    exit(return_fail());
-}
+    if ($responseJson["archived_snapshots"]["closest"]["status"] != 200)
+    {
+        exit(return_fail());
+    }
 
-if (!$responseJson["archived_snapshots"]["closest"]["available"])
-{
-    exit(return_fail());
+    if (!preg_match("/^{$year}/", $responseJson["archived_snapshots"]["closest"]["timestamp"]))
+    {
+        exit(return_fail());
+    }
+
+    if (!$responseJson["archived_snapshots"]["closest"]["available"])
+    {
+        exit(return_fail());
+    }
 }
 
 exit(return_success($responseJson["archived_snapshots"]["closest"]));
