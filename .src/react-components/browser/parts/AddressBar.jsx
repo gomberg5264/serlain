@@ -37,6 +37,11 @@ export function AddressBar(props = {})
                           if (inputFieldHasFocus)
                           {
                               /// TODO: Clear the input field's selection.
+
+                              if (event.target.value == "")
+                              {
+                                  event.target.value = props.initialUrl;
+                              }
                           }
 
                           inputFieldHasFocus = false;
