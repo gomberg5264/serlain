@@ -14,17 +14,17 @@
     <body>
         <div id="browser-selector" class="dropdown-menu">
             <div class="dropdown-menu-header">Select an era of browsing</div>
-            <div id="select-ns1" class="dropdown-menu-item">1996 &mdash; Navigator 1.0</div>
-            <div id="select-ns3" class="dropdown-menu-item">1997 &mdash; Navigator 3.0</div>
-            <div id="select-ns4" class="dropdown-menu-item">1998 &mdash; Navigator 4.0</div>
-            <div id="select-ie4" class="dropdown-menu-item">1999 &mdash; Internet Explorer 4.0</div>
-            <div id="select-ie5" class="dropdown-menu-item">2000 &mdash; Internet Explorer 5.0</div>
-            <div id="select-ie6" class="dropdown-menu-item">2001 &mdash; Internet Explorer 6.0</div>
-            <div id="select-ff1" class="dropdown-menu-item">2005 &mdash; Firefox 1.0</div>
+            <div id="select-era-1996" class="dropdown-menu-item">1996 &mdash; Navigator 1.0</div>
+            <div id="select-era-1997" class="dropdown-menu-item">1997 &mdash; Navigator 3.0</div>
+            <div id="select-era-1998" class="dropdown-menu-item">1998 &mdash; Navigator 4.0</div>
+            <div id="select-era-1999" class="dropdown-menu-item">1999 &mdash; Internet Explorer 4.0</div>
+            <div id="select-era-2000" class="dropdown-menu-item">2000 &mdash; Internet Explorer 5.0</div>
+            <div id="select-era-2001" class="dropdown-menu-item">2001 &mdash; Internet Explorer 6.0</div>
+            <div id="select-era-2005" class="dropdown-menu-item">2005 &mdash; Firefox 1.0</div>
         </div>
 
         <div id="browser-container"></div>
-
+        
         <script src="./dist/react/react.js"></script>
         <script src="./dist/react/react-dom.js"></script>
         <script type="module">
@@ -39,6 +39,25 @@
 
             const browserContainer = document.getElementById("browser-container");
 
+            if (!browserContainer)
+            {
+                window.alert("Failed to initialize Serlain!");
+                throw new Error("Failed to initialize Serlain!");
+            }
+
+            // The browsing eras available to the user to select from.
+            const defaultBrowsingEra = 1999;
+            const browsingEras =
+            {
+                "1996": netscape_navigator_1(630, 470, 1996),
+                "1997": netscape_navigator_3(800, 600, 1997),
+                "1998": netscape_navigator_4(800, 600, 1998),
+                "1999": internet_explorer_4(800, 600, 1999),
+                "2000": internet_explorer_5(800, 600, 2000),
+                "2001": internet_explorer_6(1024, 768, 2001),
+                "2005": mozilla_firefox_1(1024, 768, 2005),
+            }
+
             // Run the default browser on page load.
             window.onload = function()
             {
@@ -48,7 +67,7 @@
                 }
                 else
                 {
-                    run_browser(netscape_navigator_1(630, 470, 1999), browserContainer);
+                    run_browser(browsingEras[defaultBrowsingEra], browserContainer);
                 }
             }
 
@@ -56,13 +75,13 @@
             // the user select which browser is displayed - clicking on an element launches the
             // corresponding browser.
             {
-                ["select-ns1",
-                 "select-ns3",
-                 "select-ns4",
-                 "select-ie4",
-                 "select-ie5",
-                 "select-ie6",
-                 "select-ff1"].forEach(elementId=>add_click_listener(elementId))
+                ["select-era-1996",
+                 "select-era-1997",
+                 "select-era-1998",
+                 "select-era-1999",
+                 "select-era-2000",
+                 "select-era-2001",
+                 "select-era-2005"].forEach(elementId=>add_click_listener(elementId))
 
                 function add_click_listener(elementId)
                 {
@@ -78,17 +97,10 @@
                             left = Number(browserElement.style.left.replace(/\D+/g, ""));
                         }
 
-                        switch (elementId)
-                        {
-                            case "select-ns1": run_browser(netscape_navigator_1(630, 470, 1996), browserContainer); break;
-                            case "select-ns3": run_browser(netscape_navigator_3(800, 600, 1997), browserContainer); break;
-                            case "select-ns4": run_browser(netscape_navigator_4(800, 600, 1998), browserContainer); break;
-                            case "select-ie4": run_browser(internet_explorer_4(800, 600, 1999), browserContainer); break;
-                            case "select-ie5": run_browser(internet_explorer_5(800, 600, 2000), browserContainer); break;
-                            case "select-ie6": run_browser(internet_explorer_6(1024, 768, 2001), browserContainer); break;
-                            case "select-ff1": run_browser(mozilla_firefox_1(1024, 768, 2005), browserContainer); break;
-                            default: break;
-                        }
+                        // Assumes the element id to be a string of the form "select-era-xxxx";
+                        // where xxxx is the desired year, e.g. "select-era-1996".
+                        const era = (elementId.match(/select-era-([0-9]*)/)[1] || defaultBrowsingEra);
+                        run_browser(browsingEras[era], browserContainer);
 
                         // Move the browser to where the previous one was positioned.
                         browserElement = document.querySelector(".Browser");

@@ -39,7 +39,7 @@ body
     display: none;
     color: black;
     border-radius: 8px;
-    border-top-left-radius: 1px;
+    border-top-left-radius: 0;
     box-shadow: 0 1px 6px -3px rgba(0, 0, 0, 1);
 }
 
@@ -49,8 +49,9 @@ body
     display: flex;
     user-select: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 11px;
     padding-left: 11px;
+    color: gray;
 }
 
 .dropdown-menu-item:hover
@@ -64,6 +65,11 @@ body
 {
     margin-bottom: 11px;
     font-size: 110%;
+}
+
+.Browser
+{
+    user-select: none;
 }
 
 .Browser > .BrowserWindow .AddressBar input
