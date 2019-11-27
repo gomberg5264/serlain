@@ -69,10 +69,13 @@ export function AddressBar(props = {})
             return;
         }
 
+        url = url.toLowerCase();
+
         // For conformance with how browsers normally operate, we'll want to
         // remove the address field's focus when the user submits an URL.
         if (inputRef && inputRef.current)
         {
+            inputRef.current.value = url; // In case the URL had e.g. uppercase that we've now converted to lowercase.
             inputRef.current.blur();
         }
 
