@@ -10,13 +10,14 @@
         <link rel="stylesheet" href="browser_internet-explorer-6_1024x768.css">
     </head>
     <body>
-        <div id="browser-selector">
-            <div id="select-ns1">Netscape Navigator 1.0</div>
-            <div id="select-ns3">Netscape Navigator 3.0</div>
-            <div id="select-ns4">Netscape Navigator 4.0</div>
-            <div id="select-ie4">Internet Explorer 4.0</div>
-            <div id="select-ie5">Internet Explorer 5.0</div>
-            <div id="select-ie6">Internet Explorer 6.0</div>
+        <div id="browser-selector" class="dropdown-menu">
+            <div class="dropdown-menu-header">Select your browser</div>
+            <div id="select-ns1" class="dropdown-menu-item">Navigator 1.0</div>
+            <div id="select-ns3" class="dropdown-menu-item">Navigator 3.0</div>
+            <div id="select-ns4" class="dropdown-menu-item">Navigator 4.0</div>
+            <div id="select-ie4" class="dropdown-menu-item">Internet Explorer 4.0</div>
+            <div id="select-ie5" class="dropdown-menu-item">Internet Explorer 5.0</div>
+            <div id="select-ie6" class="dropdown-menu-item">Internet Explorer 6.0</div>
         </div>
 
         <div id="browser-container"></div>
@@ -31,10 +32,11 @@
                     netscape_navigator_1,
                     netscape_navigator_3} from "./dist/src/browsers.js";
 
+            const browserContainer = document.getElementById("browser-container");
+
+            // Run the default browser on page load.
             window.onload = function()
             {
-                const browserContainer = document.getElementById("browser-container");
-
                 if (!browserContainer)
                 {
                     window.alert("Critical failure: Unable to find a required DOM element.");
@@ -42,6 +44,37 @@
                 else
                 {
                     run_browser(netscape_navigator_1(630, 470, 1999), browserContainer);
+                }
+            }
+
+            // Wire up user interaction with the browser selector right-click menu.
+            {
+                ["select-ns1",
+                 "select-ns3",
+                 "select-ie4",
+                 "select-ie5",
+                 "select-ie6"].forEach(elementId=>add_click_listener(elementId))
+
+                function add_click_listener(elementId)
+                {
+                    const clickFunction = ()=>
+                    {
+                        switch (elementId)
+                        {
+                            case "select-ns1": run_browser(netscape_navigator_1(630, 470, 1996), browserContainer); break;
+                            case "select-ns3": run_browser(netscape_navigator_3(800, 600, 1997), browserContainer); break;
+                            case "select-ie4": run_browser(internet_explorer_4(800, 600, 1999), browserContainer); break;
+                            case "select-ie5": run_browser(internet_explorer_5(800, 600, 2000), browserContainer); break;
+                            case "select-ie6": run_browser(internet_explorer_6(1024, 768, 2001), browserContainer); break;
+                            default: break;
+                        }
+
+                        window.close_dropdown_menus();
+
+                        return;
+                    }
+
+                    document.getElementById(elementId).addEventListener("click", clickFunction);
                 }
             }
         </script>
