@@ -45,7 +45,7 @@ body
 
 .dropdown-menu-item
 {
-    border-radius: 6px;
+    border-radius: 3px;
     display: flex;
     user-select: none;
     cursor: pointer;
@@ -58,12 +58,6 @@ body
     background-color: rgb(24, 140, 248);
     color: white;
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.3);
-}
-
-.dropdown-menu-item:active
-{
-    box-shadow: none;
-    transform: translateY(1px);
 }
 
 .dropdown-menu-header

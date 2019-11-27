@@ -52,7 +52,9 @@
                 }
             }
 
-            // Wire up user interaction with the browser selector right-click menu.
+            // Wire up user interaction with the browser selector right-click menu. The menu lets
+            // the user select which browser is displayed - clicking on an element launches the
+            // corresponding browser.
             {
                 ["select-ns1",
                  "select-ns3",
@@ -66,6 +68,16 @@
                 {
                     const clickFunction = ()=>
                     {
+                        // Store the browser's current screen position, so we can restore it.
+                        let browserElement = browserContainer.querySelector(".Browser");
+                        let top = 0;
+                        let left = 0;
+                        if (browserElement)
+                        {
+                            top = Number(browserElement.style.top.replace(/\D+/g, ""));
+                            left = Number(browserElement.style.left.replace(/\D+/g, ""));
+                        }
+
                         switch (elementId)
                         {
                             case "select-ns1": run_browser(netscape_navigator_1(630, 470, 1996), browserContainer); break;
@@ -76,6 +88,14 @@
                             case "select-ie6": run_browser(internet_explorer_6(1024, 768, 2001), browserContainer); break;
                             case "select-ff1": run_browser(mozilla_firefox_1(1024, 768, 2005), browserContainer); break;
                             default: break;
+                        }
+
+                        // Move the browser to where the previous one was positioned.
+                        browserElement = document.querySelector(".Browser");
+                        if (browserElement)
+                        {
+                            browserElement.style.top = `${top}px`;
+                            browserElement.style.left = `${left}px`;
                         }
 
                         window.close_dropdown_menus();
