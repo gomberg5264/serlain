@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Serlain</title>
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="browser_internet-explorer-4_800x600.css">
-        <link rel="stylesheet" href="browser_internet-explorer-6_1024x768.css">
+        <link rel="stylesheet" href="browser_netscape-navigator-1_630x470.css">
         <link rel="stylesheet" href="browser_netscape-navigator-3_800x600.css">
+        <link rel="stylesheet" href="browser_internet-explorer-4_800x600.css">
+        <link rel="stylesheet" href="browser_internet-explorer-5_800x600.css">
+        <link rel="stylesheet" href="browser_internet-explorer-6_1024x768.css">
     </head>
     <body>
+        <div id="browser-selector">
+            <div id="select-ns1">Netscape Navigator 1.0</div>
+            <div id="select-ns3">Netscape Navigator 3.0</div>
+            <div id="select-ns4">Netscape Navigator 4.0</div>
+            <div id="select-ie4">Internet Explorer 4.0</div>
+            <div id="select-ie5">Internet Explorer 5.0</div>
+            <div id="select-ie6">Internet Explorer 6.0</div>
+        </div>
+
         <div id="browser-container"></div>
 
         <script src="./dist/react/react.js"></script>
@@ -14,7 +26,9 @@
         <script type="module">
             import {run_browser} from "./dist/src/run-browser.js";
             import {internet_explorer_4,
+                    internet_explorer_5,
                     internet_explorer_6,
+                    netscape_navigator_1,
                     netscape_navigator_3} from "./dist/src/browsers.js";
 
             window.onload = function()
@@ -27,7 +41,7 @@
                 }
                 else
                 {
-                    run_browser(internet_explorer_6(1024, 768, 2004), browserContainer);
+                    run_browser(netscape_navigator_1(630, 470, 1999), browserContainer);
                 }
             }
         </script>

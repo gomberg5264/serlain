@@ -46,6 +46,33 @@ export function internet_explorer_4(width, height, browsingYear)
     });
 }
 
+export function internet_explorer_5(width, height, browsingYear)
+{
+    panic_if_not_type("number", width, height, browsingYear);
+
+    return Browser({
+        browserClassName: `internet-explorer-5 resolution-${width}x${height}`,
+
+        browsingYear: browsingYear,
+
+        buttons:
+        [
+            <Button buttonName="reload" key="0"/>,
+            <Button buttonName="home" key="2"/>,
+            <Button buttonName="back" key="4"/>,
+            <Button buttonName="forward" key="5"/>,
+        ],
+
+        messageBarStrings:
+        {
+            fetching_page_url: (url)=>`Connecting to site ${url}`,
+            loading_page: (url)=>`Opening page ${url}...`,
+            page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
+            page_load_finished: ()=>"Done",
+        },
+    });
+}
+
 export function internet_explorer_6(width, height, browsingYear)
 {
     return Browser({
@@ -68,6 +95,33 @@ export function internet_explorer_6(width, height, browsingYear)
             loading_page: (url)=>`Opening page ${url}...`,
             page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
             page_load_finished: ()=>"Done",
+        },
+    });
+}
+
+export function netscape_navigator_1(width, height, browsingYear)
+{
+    return Browser({
+        browserClassName: `netscape-navigator-1 resolution-${width}x${height}`,
+
+        browsingYear: browsingYear,
+
+        buttons:
+        [
+            <Button buttonName="reload" key="0"/>,
+            <Button buttonName="home" key="2"/>,
+            <Button buttonName="back" key="4"/>,
+            <Button buttonName="forward" key="5"/>,
+        ],
+
+        // Strings that will be shown in the browser's message bar as a response to
+        // specific events.
+        messageBarStrings:
+        {
+            fetching_page_url: (url)=>`Connect: Looking up host: ${url}...`,
+            loading_page: (url)=>`Transferring data from ${url}`,
+            page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
+            page_load_finished: ()=>"Document: Done",
         },
     });
 }

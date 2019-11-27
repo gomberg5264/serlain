@@ -1,0 +1,132 @@
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 .Buttons > .Button
+{
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 .Button.reload
+{
+    width: 40px;
+    height: 39px;
+    top: 44px;
+    left: 143px;
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 .Button.home
+{
+    width: 40px;
+    height: 39px;
+    top: 44px;
+    left: 90px;
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 .Button.back
+{
+    width: 40px;
+    height: 39px;
+    top: 44px;
+    left: 12px;
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 .Button.forward
+{
+    width: 40px;
+    height: 39px;
+    top: 44px;
+    left: 51px;
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470
+{
+    position: relative;
+    width: 630px;
+    height: 470px;
+    background-image: url("./dist/assets/images/browser/netscape-navigator-1_630x470.png");
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 > .AddressBar
+{
+    background-color: transparent;
+    position: absolute;
+    top: 92px;
+    left: 85px;
+    width: 450px;
+    height: 20px;
+    text-align: left;
+    line-height: 14px;
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 > .AddressBar > input
+{
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 70%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: calc(100% - 2px);
+    color: black;
+    display: block;
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 > .MessageBar
+{
+    color: black;
+    font-family: sans-serif;
+    font-size: 70%;
+    background-color: transparent;
+    position: absolute;
+    bottom: 6px;
+    left: 67px;
+    width: 455px;
+    height: 15px;
+    text-align: left;
+    line-height: 15px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 > .TitleBar
+{
+    position: absolute;
+    top: 4px;
+    left: 25px;
+    width: 560px;
+    height: 18px;
+    line-height: 17px;
+
+    user-select: none;
+    font-family: sans-serif;
+    font-size: 78%;
+    font-weight: bold;
+    text-align: left;
+    background-color: transparent;
+    color: transparent; /* Temp hack. The Navigator 1 title bar should not display any customized text.*/
+    margin: none;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 > .Viewport
+{
+    position: absolute;
+    top: 154px;
+    left: 4px;
+    width: 622px;
+    height: 288px;
+    
+    background-color: transparent;
+}
+
+.Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 > .Viewport > iframe
+{
+    border: none;
+    width: 100%;
+    height: 100%;
+}
