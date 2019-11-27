@@ -38,14 +38,13 @@ export function BrowserWindow(props = {})
         stop_page_load: ()=>{},
     };
 
-    return <div className={`BrowserWindow ${props.browserClassName} resolution-800x600 ${navigationActive? "network-active" : "network-idle"}`}>
+    return <div className={`BrowserWindow ${props.browserClassName} ${navigationActive? "network-active" : "network-idle"}`}>
 
                <TitleBar/>
 
                <Buttons buttons={props.buttons}
                         callbackButtonReload={()=>{refresh_address_bar(); viewportCallbacks.reload_page()}}
                         callbackButtonStop={()=>{viewportCallbacks.stop_page_load()}}
-                        callbackButtonClose={()=>{props.callbackExitBrowser()}}
                         callbackButtonBack={()=>window.history.back()}
                         callbackButtonForward={()=>window.history.forward()}
                         callbackButtonHome={()=>navigate_to_url(initialUrl)}/>
@@ -88,7 +87,7 @@ export function BrowserWindow(props = {})
             setNavigationActive(true);
             setCurrentMessageBarMessage(props.messageBarStrings.fetching_page_url(websiteUrl));
 
-            const waybackPage = await get_wayback_page(websiteUrl, 2004);
+            const waybackPage = await get_wayback_page(websiteUrl, props.browsingYear);
 
             if (!waybackPage)
             {
@@ -118,8 +117,8 @@ export function BrowserWindow(props = {})
 BrowserWindow.validate_props = function(props = {})
 {
     panic_if_not_type("object", props, props.buttons);
-    panic_if_not_type("function", props.callbackExitBrowser);
     panic_if_not_type("string", props.browserClassName);
+    panic_if_not_type("number", props.browsingYear);
 
     panic_if_not_type("object", props.messageBarStrings);
     panic_if_not_type("function", props.messageBarStrings.fetching_page_url,

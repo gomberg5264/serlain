@@ -1,0 +1,146 @@
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Buttons > .Button
+{
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.reload
+{
+    width: 31px;
+    height: 36px;
+    top: 55px;
+    left: 167px;
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.home
+{
+    width: 31px;
+    height: 36px;
+    top: 55px;
+    left: 199px;
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.back
+{
+    width: 72px;
+    height: 36px;
+    top: 55px;
+    left: 10px;
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.forward
+{
+    width: 50px;
+    height: 36px;
+    top: 55px;
+    left: 85px;
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.close
+{
+    width: 15px;
+    height: 14px;
+    top: 5px;
+    right: 7px;
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768
+{
+    position: relative;
+    width: 1024px;
+    height: 768px;
+    background-image: url("./dist/assets/images/browser/internet-explorer-6_1024x768.png");
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .AddressBar
+{
+    background-color: transparent;
+    position: absolute;
+    top: 96px;
+    left: 76px;
+    width: 625px;
+    height: 18px;
+    text-align: left;
+    line-height: 18px;
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .AddressBar > input
+{
+    font-family: sans-serif;
+    font-size: 75%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: calc(100% - 2px);
+    color: black;
+    display: block;
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .MessageBar
+{
+    color: black;
+    font-family: sans-serif;
+    font-size: 70%;
+    background-color: transparent;
+    position: absolute;
+    bottom: 6px;
+    left: 25px;
+    width: 970px;
+    height: 16px;
+    text-align: left;
+    line-height: 15px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .TitleBar
+{
+    position: absolute;
+    top: 6px;
+    left: 25px;
+    width: 919px;
+    height: 20px;
+    line-height: 20px;
+
+    user-select: none;
+    font-family: sans-serif;
+    font-size: 80%;
+    font-weight: bold;
+    text-align: left;
+    background-color: transparent;
+    color: white;
+    margin: none;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.7));
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .TitleBar::after
+{
+    content: " - Microsoft Internet Explorer";
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .Viewport
+{
+    position: absolute;
+    top: 118px;
+    left: 6px;
+    width: 1012px;
+    height: 621px;
+    
+    background-color: transparent;
+}
+
+.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .Viewport > iframe
+{
+    border: none;
+    width: 100%;
+    height: 100%;
+}

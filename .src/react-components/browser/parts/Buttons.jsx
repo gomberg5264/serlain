@@ -24,7 +24,6 @@ export function Buttons(props = {})
         {
             case "reload": props.callbackButtonReload(); break;
             case "stop": props.callbackButtonStop(); break;
-            case "close": props.callbackButtonClose(); break;
             case "back": props.callbackButtonBack(); break;
             case "forward": props.callbackButtonForward(); break;
             case "home": props.callbackButtonHome(); break;

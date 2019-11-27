@@ -29,7 +29,7 @@ export function panic_if_not_type(typeName, ...properties)
     return;
 }
 
-export function panic_if(conditional, panicMessage)
+export function panic_if(conditional, panicMessage = "")
 {
     panic_if_not_type("boolean", conditional);
     panic_if_not_type("string", panicMessage);
