@@ -93,11 +93,11 @@
 .Browser > .BrowserWindow.netscape-navigator-1.resolution-630x470 > .TitleBar
 {
     position: absolute;
-    top: 4px;
+    top: 3px;
     left: 25px;
     width: 560px;
-    height: 18px;
-    line-height: 17px;
+    height: 20px;
+    line-height: 20px;
 
     user-select: none;
     font-family: sans-serif;
