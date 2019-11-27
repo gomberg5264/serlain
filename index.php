@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="browser_netscape-navigator-1_630x470.css">
         <link rel="stylesheet" href="browser_netscape-navigator-3_800x600.css">
+        <link rel="stylesheet" href="browser_netscape-navigator-4_800x600.css">
         <link rel="stylesheet" href="browser_internet-explorer-4_800x600.css">
         <link rel="stylesheet" href="browser_internet-explorer-5_800x600.css">
         <link rel="stylesheet" href="browser_internet-explorer-6_1024x768.css">
@@ -12,7 +13,7 @@
     </head>
     <body>
         <div id="browser-selector" class="dropdown-menu">
-            <div class="dropdown-menu-header">Select your browsing era</div>
+            <div class="dropdown-menu-header">Select an era of browsing</div>
             <div id="select-ns1" class="dropdown-menu-item">1996 &mdash; Navigator 1.0</div>
             <div id="select-ns3" class="dropdown-menu-item">1997 &mdash; Navigator 3.0</div>
             <div id="select-ns4" class="dropdown-menu-item">1998 &mdash; Navigator 4.0</div>
@@ -33,6 +34,7 @@
                     internet_explorer_6,
                     netscape_navigator_1,
                     netscape_navigator_3,
+                    netscape_navigator_4,
                     mozilla_firefox_1} from "./dist/src/browsers.js";
 
             const browserContainer = document.getElementById("browser-container");
@@ -54,6 +56,7 @@
             {
                 ["select-ns1",
                  "select-ns3",
+                 "select-ns4",
                  "select-ie4",
                  "select-ie5",
                  "select-ie6",
@@ -67,6 +70,7 @@
                         {
                             case "select-ns1": run_browser(netscape_navigator_1(630, 470, 1996), browserContainer); break;
                             case "select-ns3": run_browser(netscape_navigator_3(800, 600, 1997), browserContainer); break;
+                            case "select-ns4": run_browser(netscape_navigator_4(800, 600, 1998), browserContainer); break;
                             case "select-ie4": run_browser(internet_explorer_4(800, 600, 1999), browserContainer); break;
                             case "select-ie5": run_browser(internet_explorer_5(800, 600, 2000), browserContainer); break;
                             case "select-ie6": run_browser(internet_explorer_6(1024, 768, 2001), browserContainer); break;

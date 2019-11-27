@@ -178,3 +178,30 @@ export function netscape_navigator_3(width, height, browsingYear)
         },
     });
 }
+
+export function netscape_navigator_4(width, height, browsingYear)
+{
+    return Browser({
+        browserClassName: `netscape-navigator-4 resolution-${width}x${height}`,
+
+        browsingYear: browsingYear,
+
+        buttons:
+        [
+            <Button buttonName="reload" key="0"/>,
+            <Button buttonName="home" key="2"/>,
+            <Button buttonName="back" key="4"/>,
+            <Button buttonName="forward" key="5"/>,
+        ],
+
+        // Strings that will be shown in the browser's message bar as a response to
+        // specific events.
+        messageBarStrings:
+        {
+            fetching_page_url: (url)=>`Connect: Looking up host: ${url}...`,
+            loading_page: (url)=>`Transferring data from ${url}`,
+            page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
+            page_load_finished: ()=>"Document: Done",
+        },
+    });
+}

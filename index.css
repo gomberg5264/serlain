@@ -51,18 +51,24 @@ body
     cursor: pointer;
     padding: 10px;
     padding-left: 11px;
-    transition: background-color 0.04s ease-in-out, color 0.04s ease-in-out;
 }
 
 .dropdown-menu-item:hover
 {
-    background-color: rgb(19, 152, 240);
+    background-color: rgb(24, 140, 248);
     color: white;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-menu-item:active
+{
+    box-shadow: none;
+    transform: translateY(1px);
 }
 
 .dropdown-menu-header
 {
-    margin-bottom: 10px;
+    margin-bottom: 11px;
     font-size: 110%;
 }
 
