@@ -20,8 +20,8 @@
             return;
         }
 
-        prevMousePos.x = event.clientX;
-        prevMousePos.y = event.clientY;
+        prevMousePos.x = Math.max(0, event.clientX);
+        prevMousePos.y = Math.max(0, event.clientY);
         mouseLeftIsDown = true;
 
         return;
@@ -60,11 +60,11 @@
             const prevLeft = Number(browserElement.style.left.replace(/\D+/g, ""));
 
             browserElement.style.top = `${Math.max(0, (prevTop + mousePosDelta.y))}px`;
-            browserElement.style.left = `${prevLeft + mousePosDelta.x}px`;
+            browserElement.style.left = `${Math.max(0, prevLeft + mousePosDelta.x)}px`;
         }
 
-        prevMousePos.x = event.clientX;
-        prevMousePos.y = event.clientY;
+        prevMousePos.x = Math.max(0, event.clientX);
+        prevMousePos.y = Math.max(0, event.clientY);
 
         return;
     }

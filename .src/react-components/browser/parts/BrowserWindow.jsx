@@ -38,7 +38,7 @@ export function BrowserWindow(props = {})
         stop_page_load: ()=>{},
     };
 
-    return <div className={`BrowserWindow internet-explorer-4 resolution-800x600 ${navigationActive? "network-active" : "network-idle"}`}>
+    return <div className={`BrowserWindow ${props.browserClassName} resolution-800x600 ${navigationActive? "network-active" : "network-idle"}`}>
 
                <TitleBar/>
 
@@ -119,6 +119,7 @@ BrowserWindow.validate_props = function(props = {})
 {
     panic_if_not_type("object", props, props.buttons);
     panic_if_not_type("function", props.callbackExitBrowser);
+    panic_if_not_type("string", props.browserClassName);
 
     panic_if_not_type("object", props.messageBarStrings);
     panic_if_not_type("function", props.messageBarStrings.fetching_page_url,

@@ -2,6 +2,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="browser_internet-explorer-4_800x600.css">
+        <link rel="stylesheet" href="browser_netscape-navigator-3_800x600.css">
     </head>
     <body>
         <div id="browser-container"></div>
