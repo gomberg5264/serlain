@@ -8,16 +8,18 @@
         <link rel="stylesheet" href="browser_internet-explorer-4_800x600.css">
         <link rel="stylesheet" href="browser_internet-explorer-5_800x600.css">
         <link rel="stylesheet" href="browser_internet-explorer-6_1024x768.css">
+        <link rel="stylesheet" href="browser_mozilla-firefox-1_1024x768.css">
     </head>
     <body>
         <div id="browser-selector" class="dropdown-menu">
-            <div class="dropdown-menu-header">Select your browser</div>
-            <div id="select-ns1" class="dropdown-menu-item">Navigator 1.0</div>
-            <div id="select-ns3" class="dropdown-menu-item">Navigator 3.0</div>
-            <div id="select-ns4" class="dropdown-menu-item">Navigator 4.0</div>
-            <div id="select-ie4" class="dropdown-menu-item">Internet Explorer 4.0</div>
-            <div id="select-ie5" class="dropdown-menu-item">Internet Explorer 5.0</div>
-            <div id="select-ie6" class="dropdown-menu-item">Internet Explorer 6.0</div>
+            <div class="dropdown-menu-header">Select your browsing era</div>
+            <div id="select-ns1" class="dropdown-menu-item">1996 &mdash; Navigator 1.0</div>
+            <div id="select-ns3" class="dropdown-menu-item">1997 &mdash; Navigator 3.0</div>
+            <div id="select-ns4" class="dropdown-menu-item">1998 &mdash; Navigator 4.0</div>
+            <div id="select-ie4" class="dropdown-menu-item">1999 &mdash; Internet Explorer 4.0</div>
+            <div id="select-ie5" class="dropdown-menu-item">2000 &mdash; Internet Explorer 5.0</div>
+            <div id="select-ie6" class="dropdown-menu-item">2001 &mdash; Internet Explorer 6.0</div>
+            <div id="select-ff1" class="dropdown-menu-item">2005 &mdash; Firefox 1.0</div>
         </div>
 
         <div id="browser-container"></div>
@@ -30,7 +32,8 @@
                     internet_explorer_5,
                     internet_explorer_6,
                     netscape_navigator_1,
-                    netscape_navigator_3} from "./dist/src/browsers.js";
+                    netscape_navigator_3,
+                    mozilla_firefox_1} from "./dist/src/browsers.js";
 
             const browserContainer = document.getElementById("browser-container");
 
@@ -53,7 +56,8 @@
                  "select-ns3",
                  "select-ie4",
                  "select-ie5",
-                 "select-ie6"].forEach(elementId=>add_click_listener(elementId))
+                 "select-ie6",
+                 "select-ff1"].forEach(elementId=>add_click_listener(elementId))
 
                 function add_click_listener(elementId)
                 {
@@ -66,6 +70,7 @@
                             case "select-ie4": run_browser(internet_explorer_4(800, 600, 1999), browserContainer); break;
                             case "select-ie5": run_browser(internet_explorer_5(800, 600, 2000), browserContainer); break;
                             case "select-ie6": run_browser(internet_explorer_6(1024, 768, 2001), browserContainer); break;
+                            case "select-ff1": run_browser(mozilla_firefox_1(1024, 768, 2005), browserContainer); break;
                             default: break;
                         }
 

@@ -1,0 +1,133 @@
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Buttons > .Button
+{
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.reload
+{
+    width: 31px;
+    height: 30px;
+    top: 55px;
+    left: 95px;
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.home
+{
+    width: 31px;
+    height: 30px;
+    top: 55px;
+    left: 163px;
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.back
+{
+    width: 42px;
+    height: 30px;
+    top: 55px;
+    left: 7px;
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.forward
+{
+    width: 42px;
+    height: 30px;
+    top: 55px;
+    left: 52px;
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768
+{
+    position: relative;
+    width: 1024px;
+    height: 768px;
+    background-image: url("./dist/assets/images/browser/mozilla-firefox-1_1024x768.png");
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .AddressBar
+{
+    background-color: transparent;
+    position: absolute;
+    top: 61px;
+    left: 225px;
+    width: 590px;
+    height: 18px;
+    text-align: left;
+    line-height: 18px;
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .AddressBar > input
+{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: calc(100% - 2px);
+    color: black;
+    display: block;
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .MessageBar
+{
+    color: black;
+    background-color: transparent;
+    position: absolute;
+    bottom: 6px;
+    left: 10px;
+    width: 970px;
+    height: 16px;
+    text-align: left;
+    line-height: 15px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .TitleBar
+{
+    position: absolute;
+    top: 6px;
+    left: 25px;
+    width: 919px;
+    height: 20px;
+    line-height: 20px;
+
+    user-select: none;
+    font-size: 80%;
+    font-weight: bold;
+    text-align: left;
+    background-color: transparent;
+    color: white;
+    margin: none;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.7));
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .TitleBar::after
+{
+    content: " - Mozilla Firefox";
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .Viewport
+{
+    position: absolute;
+    top: 114px;
+    left: 4px;
+    width: 1016px;
+    height: 628px;
+    
+    background-color: transparent;
+}
+
+.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .Viewport > iframe
+{
+    border: none;
+    width: 100%;
+    height: 100%;
+}

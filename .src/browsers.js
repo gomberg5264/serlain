@@ -99,6 +99,32 @@ export function internet_explorer_6(width, height, browsingYear)
     });
 }
 
+export function mozilla_firefox_1(width, height, browsingYear)
+{
+    return Browser({
+        browserClassName: `mozilla-firefox-1 resolution-${width}x${height}`,
+
+        browsingYear: browsingYear,
+
+        buttons:
+        [
+            <Button buttonName="reload" key="0"/>,
+            //<Button buttonName="stop" key="1"/>, Disabled while a proper implementation of its functionality is missing.
+            <Button buttonName="home" key="2"/>,
+            <Button buttonName="back" key="4"/>,
+            <Button buttonName="forward" key="5"/>,
+        ],
+
+        messageBarStrings:
+        {
+            fetching_page_url: (url)=>`Looking up ${url}...`,
+            loading_page: (url)=>`Transferring data from ${url}...`,
+            page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
+            page_load_finished: ()=>"Done",
+        },
+    });
+}
+
 export function netscape_navigator_1(width, height, browsingYear)
 {
     return Browser({

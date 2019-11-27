@@ -13,14 +13,6 @@
     left: 173px;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-3.resolution-800x600 .Button.stop
-{
-    width: 49px;
-    height: 41px;
-    top: 47px;
-    left: 156px;
-}
-
 .Browser > .BrowserWindow.netscape-navigator-3.resolution-800x600 .Button.home
 {
     width: 49px;
@@ -45,14 +37,6 @@
     left: 59px;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-3.resolution-800x600 .Button.close
-{
-    width: 15px;
-    height: 14px;
-    top: 5px;
-    right: 7px;
-}
-
 .Browser > .BrowserWindow.netscape-navigator-3.resolution-800x600
 {
     position: relative;
@@ -75,8 +59,6 @@
 
 .Browser > .BrowserWindow.netscape-navigator-3.resolution-800x600 > .AddressBar > input
 {
-    font-family: sans-serif;
-    font-size: 70%;
     background-color: transparent;
     border: none;
     outline: none;
@@ -89,8 +71,6 @@
 .Browser > .BrowserWindow.netscape-navigator-3.resolution-800x600 > .MessageBar
 {
     color: black;
-    font-family: sans-serif;
-    font-size: 70%;
     background-color: transparent;
     position: absolute;
     bottom: 4px;
@@ -115,8 +95,6 @@
     line-height: 17px;
 
     user-select: none;
-    font-family: sans-serif;
-    font-size: 78%;
     font-weight: bold;
     text-align: left;
     background-color: transparent;
