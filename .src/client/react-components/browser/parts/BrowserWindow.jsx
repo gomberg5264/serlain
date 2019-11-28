@@ -27,30 +27,35 @@ export function BrowserWindow(props = {})
     const [websiteUrl, setWebsiteUrl] = React.useState(initialUrl);
     const [waybackUrl, setWaybackUrl] = React.useState(initialUrl);
 
+    // Set to true while we're waiting for a response from the Serlain backend.
+    const [waitingForServerResponse, setWaitingForServerResponse] = React.useState(false);
+
+    // The current text displayed in the message/status bar.
     const [currentMessageBarMessage, setCurrentMessageBarMessage] = React.useState("Done");
+
     const [addressBarKey, setAddressBarKey] = React.useState(0);
-    const [navigationActive, setNavigationActive] = React.useState(false);
 
     // Functions the Viewport component gives us to interact with it.
     let viewportCallbacks =
     {
         reload_page: ()=>{},
-        stop_page_load: ()=>{},
+        erase_page: ()=>{},
     };
 
-    return <div className={`BrowserWindow ${props.browserClassName} ${navigationActive? "network-active" : "network-idle"}`}>
+    return <div className={`BrowserWindow ${props.browserClassName} ${waitingForServerResponse? "waiting-for-network-reply" : ""}`.trim()}>
 
                <TitleBar/>
 
                <Buttons buttons={props.buttons}
-                        callbackButtonReload={()=>{refresh_address_bar(); viewportCallbacks.reload_page()}}
-                        callbackButtonStop={()=>{viewportCallbacks.stop_page_load()}}
-                        callbackButtonBack={()=>window.history.back()}
-                        callbackButtonForward={()=>window.history.forward()}
-                        callbackButtonHome={()=>navigate_to_url(initialUrl)}/>
+                        callbackButtonReload={()=>{if (!waitingForServerResponse) {refresh_address_bar(); viewportCallbacks.reload_page();}}}
+                        callbackButtonStop={()=>{if (!waitingForServerResponse) viewportCallbacks.erase_page()}}
+                        callbackButtonBack={()=>{if (!waitingForServerResponse) window.history.back()}}
+                        callbackButtonForward={()=>{if (!waitingForServerResponse) window.history.forward()}}
+                        callbackButtonHome={()=>{if (!waitingForServerResponse) navigate_to_url(initialUrl)}}/>
 
                <AddressBar key={addressBarKey}
                            initialUrl={websiteUrl}
+                           readOnly={waitingForServerResponse}
                            callbackUrlSubmit={navigate_to_url}/>
 
                <Viewport url={waybackUrl}
@@ -73,6 +78,12 @@ export function BrowserWindow(props = {})
     {
         panic_if_not_type("string", websiteUrl);
 
+        // Don't allow queuing browsing requests.
+        if (waitingForServerResponse)
+        {
+            return;
+        }
+
         // The initial URL is a non-Wayback Machine page, so we don't need to query the
         // Wayback API for it.
         if (websiteUrl === initialUrl)
@@ -84,9 +95,9 @@ export function BrowserWindow(props = {})
         }
         else
         {
-            setNavigationActive(true);
             setCurrentMessageBarMessage(props.messageBarStrings.fetching_page_url(websiteUrl));
 
+            setWaitingForServerResponse(true);
             const waybackPage = await get_wayback_page(websiteUrl, props.browsingYear);
 
             if (!waybackPage)
@@ -97,9 +108,10 @@ export function BrowserWindow(props = {})
             {
                 setWebsiteUrl(websiteUrl);
                 setWaybackUrl(waybackPage.url);
-                refresh_address_bar();
                 setCurrentMessageBarMessage(props.messageBarStrings.loading_page(websiteUrl));
             }
+
+            setWaitingForServerResponse(false);
         }
 
         return;
@@ -107,7 +119,6 @@ export function BrowserWindow(props = {})
 
     function finish_navigating_to_url()
     {
-        setNavigationActive(false);
         setCurrentMessageBarMessage(props.messageBarStrings.page_load_finished());
 
         return;

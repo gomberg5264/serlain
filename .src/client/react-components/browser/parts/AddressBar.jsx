@@ -20,11 +20,14 @@ export function AddressBar(props = {})
     return <div className="AddressBar">
 
                <input type="text"
+                      readOnly={props.readOnly? true : false}
                       ref={inputRef}
                       key={props.initialUrl}
                       defaultValue={props.initialUrl}
                       onFocus={(event)=>
                       {
+                          if (props.readOnly) return;
+
                           if (!inputFieldHasFocus)
                           {
                               event.target.select()
@@ -48,6 +51,8 @@ export function AddressBar(props = {})
                       }}
                       onKeyDown={(event)=>
                       {
+                          if (props.readOnly) return;
+
                           if (event.key === "Enter")
                           {
                               submit_url(event.target.value);
@@ -89,6 +94,7 @@ AddressBar.validate_props = function(props = {})
 {
     panic_if_not_type("object", props);
     panic_if_not_type("function", props.callbackUrlSubmit);
+    panic_if_not_type("boolean", props.readOnly);
     panic_if_not_type("string", props.initialUrl);
 
     return;

@@ -30,10 +30,6 @@ export async function get_wayback_page(websiteUrl, year)
 
     // Get the Wayback Machine URL for the given website.
     {
-        // The API returns the closest matching capture for the given timestamp, which thus
-        // isn't necessarily in the requested year. To maximize our chances of getting a
-        // capture in the desired year, let's ask for it in the middle of that year (i.e.
-        // in June).
         const response = await fetch(`./dist/server/get-wayback-url.php?website=${websiteUrl}&year=${year}`);
 
         if (!response.ok)

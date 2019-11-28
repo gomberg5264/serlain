@@ -17,16 +17,46 @@ $year = $_GET["year"];
         exit(return_fail());
     }
 
-    if (strlen($websiteUrl) > 400)
+    if (strlen($websiteUrl) > 300)
     {
         exit(return_fail());
     }
-}
 
-$responseJson = json_decode(file_get_contents("http://archive.org/wayback/available?url={$websiteUrl}&timestamp={$year}0615"), true);
-if (!$responseJson)
+    // Only allow a-z, A-Z, 0-9, ., _, and - in URLs.
+    if (preg_match("/[^\w-.]+/", $websiteUrl))
+    {
+        exit(return_fail());
+    }
+} 
+
+// Poll the Wayback Machine API for the most recent matching capture of the
+// given website.
 {
-    exit(return_fail());
+    // Rudimentary global API request rate limiter. But not a great implementation:
+    // a bad actor sending constant requests could choke the script and prevent
+    // other users from accessing the content - but for now, as long as this keeps
+    // the script from flooding the API at least, it does the job.
+    {
+        $lockFile = fopen("wayback.lock", "w");
+
+        if (!flock($lockFile, LOCK_EX))
+        {
+            exit(return_fail());
+        }
+
+        usleep(500000);
+    }
+
+    // The API returns the closest matching capture for the given timestamp, which thus
+    // isn't necessarily in the requested year. To maximize our chances of getting a
+    // capture in the desired year, let's ask for it in the middle of that year (i.e.
+    // around June).
+    $responseJson = json_decode(file_get_contents("http://archive.org/wayback/available?url={$websiteUrl}&timestamp={$year}0615"), true);
+
+    if (!$responseJson)
+    {
+        exit(return_fail());
+    }
 }
 
 // Test for required parameters in the response.

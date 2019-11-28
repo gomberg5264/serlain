@@ -13,14 +13,14 @@
     </head>
     <body>
         <div id="browser-selector" class="dropdown-menu">
-            <div class="dropdown-menu-header">Select an era of browsing</div>
-            <div id="select-era-1996" class="dropdown-menu-item">1996 &mdash; Navigator 1.0</div>
-            <div id="select-era-1997" class="dropdown-menu-item">1997 &mdash; Navigator 3.0</div>
-            <div id="select-era-1998" class="dropdown-menu-item">1998 &mdash; Navigator 4.0</div>
-            <div id="select-era-1999" class="dropdown-menu-item">1999 &mdash; Internet Explorer 4.0</div>
-            <div id="select-era-2000" class="dropdown-menu-item">2000 &mdash; Internet Explorer 5.0</div>
-            <div id="select-era-2001" class="dropdown-menu-item">2001 &mdash; Internet Explorer 6.0</div>
-            <div id="select-era-2005" class="dropdown-menu-item">2005 &mdash; Firefox 1.0</div>
+            <div class="dropdown-menu-header">Select era of browsing</div>
+            <div id="select-era-1996" class="dropdown-menu-item">1996 &ndash; Navigator 1.0</div>
+            <div id="select-era-1997" class="dropdown-menu-item">1997 &ndash; Navigator 3.0</div>
+            <div id="select-era-1998" class="dropdown-menu-item">1998 &ndash; Navigator 4.0</div>
+            <div id="select-era-1999" class="dropdown-menu-item">1999 &ndash; Internet Explorer 4.0</div>
+            <div id="select-era-2000" class="dropdown-menu-item">2000 &ndash; Internet Explorer 5.0</div>
+            <div id="select-era-2001" class="dropdown-menu-item">2001 &ndash; Internet Explorer 6.0</div>
+            <div id="select-era-2005" class="dropdown-menu-item">2005 &ndash; Firefox 1.0</div>
         </div>
 
         <div id="browser-container"></div>

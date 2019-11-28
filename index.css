@@ -51,7 +51,7 @@ body
     cursor: pointer;
     padding: 11px;
     padding-left: 11px;
-    color: gray;
+    color: dimgray;
 }
 
 .dropdown-menu-item:hover
@@ -72,10 +72,27 @@ body
     user-select: none;
 }
 
+.Browser > .BrowserWindow .Buttons > .Button
+{
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+}
+
+.Browser > .BrowserWindow.waiting-for-network-reply .Buttons > .Button
+{
+    cursor: wait;
+}
+
 .Browser > .BrowserWindow .AddressBar input
 {
     font-size: 75%;
     font-family: sans-serif;
+}
+
+.Browser > .BrowserWindow.waiting-for-network-reply .AddressBar input
+{
+    cursor: progress;
 }
 
 .Browser > .BrowserWindow .MessageBar

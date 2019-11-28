@@ -18,7 +18,7 @@ export function Viewport(props = {})
     props.giveCallbacks(
     {
         reload_page,
-        stop_page_load,
+        erase_page,
     });
 
     return <div className="Viewport">
@@ -50,8 +50,7 @@ export function Viewport(props = {})
         return;
     }
 
-    // If a page is currently being loaded into the iframe, stop doing so.
-    function stop_page_load()
+    function erase_page()
     {
         if (iframeRef && iframeRef.current)
         {
