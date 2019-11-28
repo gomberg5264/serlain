@@ -18,14 +18,12 @@ import {Buttons} from "./Buttons.js";
 export function BrowserWindow(props = {})
 {
     BrowserWindow.validate_props(props);
-
-    const initialUrl = "about:blank";
  
     // We handle URLs in two parts: the website URL is the URL of the target website,
     // e.g. "microsoft.com": and the Wayback URL is the URL of the Wayback Machine's
     // capture of the target website, e.g. "web.archive.org/web/x/www.microsoft.com".
-    const [websiteUrl, setWebsiteUrl] = React.useState(initialUrl);
-    const [waybackUrl, setWaybackUrl] = React.useState(initialUrl);
+    const [websiteUrl, setWebsiteUrl] = React.useState("about:serlain");
+    const [waybackUrl, setWaybackUrl] = React.useState("./dist/assets/about-serlain.html");
 
     // Set to true while we're waiting for a response from the Serlain backend.
     const [waitingForServerResponse, setWaitingForServerResponse] = React.useState(false);
@@ -51,7 +49,7 @@ export function BrowserWindow(props = {})
                         callbackButtonStop={()=>{if (!waitingForServerResponse) viewportCallbacks.erase_page()}}
                         callbackButtonBack={()=>{if (!waitingForServerResponse) window.history.back()}}
                         callbackButtonForward={()=>{if (!waitingForServerResponse) window.history.forward()}}
-                        callbackButtonHome={()=>{if (!waitingForServerResponse) navigate_to_url(initialUrl)}}/>
+                        callbackButtonHome={()=>{if (!waitingForServerResponse) navigate_to_url("about:serlain")}}/>
 
                <AddressBar key={addressBarKey}
                            initialUrl={websiteUrl}
@@ -84,34 +82,41 @@ export function BrowserWindow(props = {})
             return;
         }
 
-        // The initial URL is a non-Wayback Machine page, so we don't need to query the
-        // Wayback API for it.
-        if (websiteUrl === initialUrl)
+        switch (websiteUrl)
         {
-            setWebsiteUrl(initialUrl);
-            setWaybackUrl(initialUrl);
-            refresh_address_bar();
-            return;
-        }
-        else
-        {
-            setCurrentMessageBarMessage(props.messageBarStrings.fetching_page_url(websiteUrl));
-
-            setWaitingForServerResponse(true);
-            const waybackPage = await get_wayback_page(websiteUrl, props.browsingYear);
-
-            if (!waybackPage)
+            // Certain special pages don't need to be queried from the Wayback API but
+            // are instead to be loaded from local resources.
+            case "about:serlain":
             {
-                setCurrentMessageBarMessage(props.messageBarStrings.page_load_failed(websiteUrl));
-            }
-            else
-            {
-                setWebsiteUrl(websiteUrl);
-                setWaybackUrl(waybackPage.url);
-                setCurrentMessageBarMessage(props.messageBarStrings.loading_page(websiteUrl));
-            }
+                setWebsiteUrl("about:serlain");
+                setWaybackUrl("./dist/assets/about-serlain.html");
+                refresh_address_bar();
 
-            setWaitingForServerResponse(false);
+                break;
+            }
+            // Poll the Wayback API for a capture of the given website.
+            default:
+            {
+                setCurrentMessageBarMessage(props.messageBarStrings.fetching_page_url(websiteUrl));
+
+                setWaitingForServerResponse(true);
+                const waybackPage = await get_wayback_page(websiteUrl, props.browsingYear);
+
+                if (!waybackPage)
+                {
+                    setCurrentMessageBarMessage(props.messageBarStrings.page_load_failed(websiteUrl));
+                }
+                else
+                {
+                    setWebsiteUrl(websiteUrl);
+                    setWaybackUrl(waybackPage.url);
+                    setCurrentMessageBarMessage(props.messageBarStrings.loading_page(websiteUrl));
+                }
+
+                setWaitingForServerResponse(false);
+
+                break;
+            }
         }
 
         return;
