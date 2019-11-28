@@ -9,6 +9,13 @@
 
 import {panic_if_not_type} from "../../../assert.js";
 
+// Manages the user-clickable buttons in a Browser window.
+//
+// The buttons should be provided as an array of Button components via props.buttons.
+//
+// Callback functions for when the user clicks on the buttons should likewise be provided
+// as props.
+//
 export function Buttons(props = {})
 {
     Buttons.validate_props(props);

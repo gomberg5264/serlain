@@ -10,6 +10,12 @@
 import {panic_if_not_type} from "../../assert.js";
 import {BrowserWindow} from "./parts/BrowserWindow.js";
 
+// A mock browser. Displays a window that looks like a browser and contains a set of
+// UI controls for navigating the browsing, and an <iframe> viewport for displaying
+// external web sites as if in a real browser.
+//
+// See the child component(s) for descriptions of the input props.
+//
 export function Browser(props = {})
 {
     Browser.validate_props(props);

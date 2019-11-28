@@ -9,6 +9,7 @@
 
 import {panic_if_not_type} from "../../../assert.js";
 
+// The title bar of a Browser.
 export function TitleBar(props = {})
 {
     TitleBar.validate_props(props);

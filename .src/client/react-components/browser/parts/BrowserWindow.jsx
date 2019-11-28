@@ -15,6 +15,34 @@ import {TitleBar} from "./TitleBar.js";
 import {Viewport} from "./Viewport.js";
 import {Buttons} from "./Buttons.js";
 
+// A window containing a Browser's UI and the viewport in which web sites are displayed.
+//
+// The browser window can contain an optional number of buttons, which can be given as an
+// array of Button elements via props.buttons.
+//
+// The CSS class name for the browser window should be given as a string in props.browserClassName.
+// The string could be, for instance, "internet-explorer-4 resolution-800x600" - it gets
+// appended as-is into the component's class name, and can thus be used in styling the
+// component via CSS.
+//
+// The value in props.browsingYear should define the year for which the Wayback API will be
+// asked for captures of pages visited using the browser. For instance, if the year is set
+// to 2004 and we visit the URL "microsoft.com" using the browser, we will be served a
+// version of microsoft.com as captured in 2004 by the Wayback Machine.
+//
+// An object given via props.messageBarString provides functions that return the status bar
+// messages that appear in the browser window as responses to particular events. The following
+// functions should be provided:
+//
+//   FUNCTION                   DESCRIPTION
+//   fetching_page_url(url)     A message for when the browser is connecting to an URL (e.g. `Connecting to site ${url}`).
+//   loading_page(url)          A message for when the browser is loading in a page.
+//   page_load_failed(url)      A message for when the browser failed to load a page (e.g. `Unable to connect to ${url}`).
+//   page_load_finished         A message for when the browser finished loading a page (e.g. "Done").
+//
+// All but the last function take in the URL of the page, which can be then baked in as part
+// of the message that the function returns.
+//
 export function BrowserWindow(props = {})
 {
     BrowserWindow.validate_props(props);

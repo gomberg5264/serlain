@@ -18,6 +18,8 @@ export function internet_explorer_4(width, height, browsingYear)
     return Browser({
         browserClassName: `internet-explorer-4 resolution-${width}x${height}`,
 
+        // The year from which to ask the Wayback Machine to give captures for websites
+        // viewed using this browser.
         browsingYear: browsingYear,
 
         // Create a list of the interactible buttons in the browser window.

@@ -9,6 +9,17 @@
 
 import {panic_if_not_type} from "../../../assert.js";
 
+// Displays a text edit field representing a Browser's address bar. Submitting the field's
+// current value with Enter causes the browser to (attempt to) navigate to that address.
+//
+// The initial URL to be displayed in the address bar should be provided as a string via
+// props.initialUrl.
+//
+// A callback function that receives the URL submitted from the address bar should be given
+// via props.callbackUrlSubmit.
+//
+// The address bar can be set into read-only mode with the props.readOnly boolean.
+//
 export function AddressBar(props = {})
 {
     AddressBar.validate_props(props);

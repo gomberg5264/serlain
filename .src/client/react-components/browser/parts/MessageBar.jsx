@@ -9,7 +9,7 @@
 
 import {panic_if_not_type} from "../../../assert.js";
 
-// Displays a message to the user in the browser's message bar.
+// The message/status bar of a Browser. Displays a given message to the user.
 //
 // The message to be displayed should be provided as a string via props.message.
 //

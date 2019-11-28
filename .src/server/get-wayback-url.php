@@ -1,5 +1,41 @@
 <?php
 
+/*
+ * 2019 Tarpeeksi Hyvae Soft
+ *
+ * Software: Serlain
+ * 
+ * Provides a way for the Serlain frontend client to communicate with the Wayback
+ * Availability JSON API (http://archive.org/wayback/available). This API is used
+ * to request specific URLs to the Wayback Machine's captures of given websites.
+ * 
+ * Expects to receive two parameters: "website", and "year". The "website" parameter
+ * gives the URL of the site to query from the Wayback API, and "year" sets the year
+ * from which the API is asked for captures of the given website.
+ * 
+ * For instance, /get-wayback-url.php?website=www.microsoft.com&year=2004 will return
+ * the URL of a Wayback Machine capture of www.microsoft.com from the year 2004.
+ * 
+ * The return data is provided as a JSON object of the following form:
+ * 
+ *   {
+ *       successful: true|false,
+ *       timestamp: "xxx",
+ *       url: "xxx",
+ *   }
+ * 
+ * If the request cannot be carried out successfully, only the "successful" property
+ * will be included in the response object, and it will be set to false. Otherwise,
+ * this property will be true, and the "url" property will give the address of a
+ * Wayback Machine capture of the given website. The "timestamp" property gives the
+ * capture's timestamp, i.e. the time at which the Wayback Machine captured this
+ * version of the website.
+ * 
+ * The request is considered successful if a capture of the given website in the
+ * given year was found. Otherwise, the request is considered to have failed.
+ * 
+ */
+
 // Test that we've been given the required input parameters.
 if (!isset($_GET["website"]) ||
     !isset($_GET["year"]))
