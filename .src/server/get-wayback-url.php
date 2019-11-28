@@ -58,8 +58,8 @@ $year = $_GET["year"];
         exit(return_fail());
     }
 
-    // Only allow a-z, A-Z, 0-9, ., _, and - in URLs.
-    if (preg_match("/[^\w-.]+/", $websiteUrl))
+    // Only allow a-z, A-Z, 0-9, and a couple of other symbols in URLs.
+    if (preg_match("/[^\w-.:\/]+/", $websiteUrl))
     {
         exit(return_fail());
     }
