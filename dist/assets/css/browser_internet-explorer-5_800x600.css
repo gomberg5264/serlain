@@ -42,7 +42,7 @@
     position: relative;
     width: 800px;
     height: 600px;
-    background-image: url("./dist/assets/images/browser/internet-explorer-5_800x600.png");
+    background-image: url("/dist/assets/images/browser/internet-explorer-5_800x600.png");
 }
 
 .Browser > .BrowserWindow.internet-explorer-5.resolution-800x600 > .AddressBar

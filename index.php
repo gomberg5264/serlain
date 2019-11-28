@@ -3,13 +3,13 @@
     <head>
         <title>Serlain</title>
         <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="browser_netscape-navigator-1_630x470.css">
-        <link rel="stylesheet" href="browser_netscape-navigator-3_800x600.css">
-        <link rel="stylesheet" href="browser_netscape-navigator-4_800x600.css">
-        <link rel="stylesheet" href="browser_internet-explorer-4_800x600.css">
-        <link rel="stylesheet" href="browser_internet-explorer-5_800x600.css">
-        <link rel="stylesheet" href="browser_internet-explorer-6_1024x768.css">
-        <link rel="stylesheet" href="browser_mozilla-firefox-1_1024x768.css">
+        <link rel="stylesheet" href="./dist/assets/css/browser_netscape-navigator-1_630x470.css">
+        <link rel="stylesheet" href="./dist/assets/css/browser_netscape-navigator-3_800x600.css">
+        <link rel="stylesheet" href="./dist/assets/css/browser_netscape-navigator-4_800x600.css">
+        <link rel="stylesheet" href="./dist/assets/css/browser_internet-explorer-4_800x600.css">
+        <link rel="stylesheet" href="./dist/assets/css/browser_internet-explorer-5_800x600.css">
+        <link rel="stylesheet" href="./dist/assets/css/browser_internet-explorer-6_1024x768.css">
+        <link rel="stylesheet" href="./dist/assets/css/browser_mozilla-firefox-1_1024x768.css">
     </head>
     <body>
         <div id="browser-selector" class="dropdown-menu">
