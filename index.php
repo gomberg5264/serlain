@@ -25,17 +25,17 @@
 
         <div id="browser-container"></div>
         
-        <script src="./dist/react/react.js"></script>
-        <script src="./dist/react/react-dom.js"></script>
+        <script src="./dist/client/react/react.js"></script>
+        <script src="./dist/client/react/react-dom.js"></script>
         <script type="module">
-            import {run_browser} from "./dist/src/run-browser.js";
+            import {run_browser} from "./dist/client/run-browser.js";
             import {internet_explorer_4,
                     internet_explorer_5,
                     internet_explorer_6,
                     netscape_navigator_1,
                     netscape_navigator_3,
                     netscape_navigator_4,
-                    mozilla_firefox_1} from "./dist/src/browsers.js";
+                    mozilla_firefox_1} from "./dist/client/browsers.js";
 
             const browserContainer = document.getElementById("browser-container");
 
@@ -119,6 +119,6 @@
                 }
             }
         </script>
-        <script src="./dist/src/browser-window-drag.js"></script>
+        <script src="./dist/client/browser-window-drag.js"></script>
     </body>
 </html>

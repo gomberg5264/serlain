@@ -1,5 +1,6 @@
-cp .babelrc-dev ../.src/.babelrc
+cp .babelrc-dev ../.src/client/.babelrc
 cd ..
-./node_modules/.bin/babel ./.src/ --out-dir ./dist/src/
-rm ./.src/.babelrc
+./node_modules/.bin/babel ./.src/client/ --out-dir ./dist/client/
+rm ./.src/client/.babelrc
+cp ./.src/server/* ./dist/server/
 cd -

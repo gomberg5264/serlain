@@ -42,7 +42,7 @@
     position: relative;
     width: 800px;
     height: 600px;
-    background-image: url("/dist/assets/images/browser/netscape-navigator-3_800x600.png");
+    background-image: url("../images/browser/netscape-navigator-3_800x600.png");
 }
 
 .Browser > .BrowserWindow.netscape-navigator-3.resolution-800x600 > .AddressBar

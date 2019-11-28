@@ -42,7 +42,7 @@
     position: relative;
     width: 1024px;
     height: 768px;
-    background-image: url("/dist/assets/images/browser/mozilla-firefox-1_1024x768.png");
+    background-image: url("../images/browser/mozilla-firefox-1_1024x768.png");
 }
 
 .Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .AddressBar

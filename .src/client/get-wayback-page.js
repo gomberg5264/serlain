@@ -34,7 +34,7 @@ export async function get_wayback_page(websiteUrl, year)
         // isn't necessarily in the requested year. To maximize our chances of getting a
         // capture in the desired year, let's ask for it in the middle of that year (i.e.
         // in June).
-        const response = await fetch(`./.src/get-wayback-url.php?website=${websiteUrl}&year=${year}`);
+        const response = await fetch(`./dist/server/get-wayback-url.php?website=${websiteUrl}&year=${year}`);
 
         if (!response.ok)
         {
@@ -60,7 +60,7 @@ export async function get_wayback_page(websiteUrl, year)
     /* Disabled for now, while proper client-side support is implemented (if ever).
     // Download the Wayback Machine page's HTML.
     {
-        const response = await fetch(`./.src/get-wayback-html.php?waybackUrl=${waybackPage.url}`);
+        const response = await fetch(`./dist/server/get-wayback-html.php?waybackUrl=${waybackPage.url}`);
 
         if (!response.ok)
         {
