@@ -121,6 +121,15 @@ $year = $_GET["year"];
     }
 }
 
+if (isset($_SERVER["HTTPS"]))
+{
+    $responseJson["archived_snapshots"]["closest"]["url"] = preg_replace("/^http:\/\//", "https://", $responseJson["archived_snapshots"]["closest"]["url"]);
+}
+else
+{
+    $responseJson["archived_snapshots"]["closest"]["url"] = preg_replace("/^https:\/\//", "http://", $responseJson["archived_snapshots"]["closest"]["url"]);
+}
+
 exit(return_success($responseJson["archived_snapshots"]["closest"]));
 
 function return_fail()
