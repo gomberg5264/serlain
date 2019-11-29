@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="./dist/assets/css/browser_mozilla-firefox-1_1024x768.css">
     </head>
     <body>
+        <?php if (is_file("./stats.php")) include "./stats.php"; ?>
+        
         <div id="browser-selector" class="dropdown-menu">
             <div class="dropdown-menu-header">Select an era of browsing</div>
             <div id="select-era-1996" class="dropdown-menu-item">1996 &ndash; Navigator 1.0</div>
