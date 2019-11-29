@@ -9,7 +9,7 @@
 
 import {panic_if_not_type} from "../../../assert.js";
 
-// A clickable button in a Browser window (e.g. "reload", "forward", etc.).
+// A clickable button in a WaybackBrowser window (e.g. "reload", "forward", etc.).
 //
 // The button's type name should be given as a string via props.buttonName. It will
 // be appended as-is into the component's class list, and can thus be used to style

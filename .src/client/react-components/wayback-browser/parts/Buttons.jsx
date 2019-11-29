@@ -9,7 +9,7 @@
 
 import {panic_if_not_type} from "../../../assert.js";
 
-// Manages the user-clickable buttons in a Browser window.
+// Manages the user-clickable buttons in a WaybackBrowser window.
 //
 // The buttons should be provided as an array of Button components via props.buttons.
 //

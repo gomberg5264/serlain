@@ -10,12 +10,12 @@
 import {panic_if_not_type} from "../../../assert.js";
 
 // Provides an <iframe> to display the contents of the current page being viewed with
-// a Browser.
+// a WaybackBrowser.
 //
 // The URL for the iframe should be provided via props.url.
 //
 // A function that receives callbacks should be given via props.giveCallbacks. These
-// callbacks are used by the parent Browser to direct the Viewport's operation.
+// callbacks are used by the parent WaybackBrowser to direct the Viewport's operation.
 //
 // A function that will be called by the Viewport when the current URL has finished
 // loading should be given via props.callbackNewPageLoaded. It will be passed no parameters.

@@ -18,7 +18,7 @@ body
     align-items: center;
 }
 
-#browser-container .Browser
+#browser-container .WaybackBrowser
 {
     z-index: 1;
     position: absolute;
@@ -64,48 +64,47 @@ body
 .dropdown-menu-header
 {
     margin-bottom: 11px;
-    font-size: 110%;
+
 }
 
-.Browser
+.WaybackBrowser
 {
     user-select: none;
 }
 
-.Browser > .BrowserWindow .Buttons > .Button
+.WaybackBrowser > .BrowserWindow .Buttons > .Button
 {
     background-color: transparent;
     cursor: pointer;
     position: absolute;
 }
 
-.Browser > .BrowserWindow.waiting-for-network-reply .Buttons > .Button
+.WaybackBrowser > .BrowserWindow.waiting-for-network-reply .Buttons > .Button
 {
     cursor: wait;
 }
 
-.Browser > .BrowserWindow .AddressBar input
+.WaybackBrowser > .BrowserWindow .AddressBar input
 {
     font-size: 75%;
     font-family: sans-serif;
 }
 
-.Browser > .BrowserWindow.waiting-for-network-reply .AddressBar input
+.WaybackBrowser > .BrowserWindow.waiting-for-network-reply .AddressBar input
 {
     cursor: progress;
 }
 
-.Browser > .BrowserWindow .MessageBar
+.WaybackBrowser > .BrowserWindow .MessageBar
 {
     font-size: 75%;
     font-family: sans-serif;
 }
 
-.Browser > .BrowserWindow .TitleBar
+.WaybackBrowser > .BrowserWindow .TitleBar
 {
     font-size: 75%;
     font-family: sans-serif;
     font-weight: bold;
     user-select: none;
-
 }

@@ -88,7 +88,7 @@
                     const clickFunction = ()=>
                     {
                         // Store the browser's current screen position, so we can restore it.
-                        let browserElement = browserContainer.querySelector(".Browser");
+                        let browserElement = browserContainer.querySelector(".WaybackBrowser");
                         let top = 0;
                         let left = 0;
                         if (browserElement)
@@ -103,7 +103,7 @@
                         run_browser(browsingEras[era], browserContainer);
 
                         // Move the browser to where the previous one was positioned.
-                        browserElement = document.querySelector(".Browser");
+                        browserElement = document.querySelector(".WaybackBrowser");
                         if (browserElement)
                         {
                             browserElement.style.top = `${top}px`;

@@ -9,7 +9,7 @@
 
 import {panic_if_not_type} from "../../../assert.js";
 
-// The title bar of a Browser.
+// The title bar of a WaybackBrowser.
 export function TitleBar(props = {})
 {
     TitleBar.validate_props(props);

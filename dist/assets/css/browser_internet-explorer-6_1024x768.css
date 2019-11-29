@@ -1,4 +1,4 @@
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.reload
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.reload
 {
     width: 31px;
     height: 36px;
@@ -6,7 +6,7 @@
     left: 167px;
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.home
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.home
 {
     width: 31px;
     height: 36px;
@@ -14,7 +14,7 @@
     left: 199px;
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.back
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.back
 {
     width: 72px;
     height: 36px;
@@ -22,7 +22,7 @@
     left: 10px;
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.forward
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 .Button.forward
 {
     width: 50px;
     height: 36px;
@@ -30,15 +30,15 @@
     left: 85px;
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768
 {
     position: relative;
     width: 1024px;
     height: 768px;
-    background-image: url("../images/browser/internet-explorer-6_1024x768.png");
+    background-image: url("../images/wayback-browser/internet-explorer-6_1024x768.png");
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .AddressBar
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .AddressBar
 {
     background-color: transparent;
     position: absolute;
@@ -50,7 +50,7 @@
     line-height: 18px;
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .AddressBar > input
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .AddressBar > input
 {
     background-color: transparent;
     border: none;
@@ -61,7 +61,7 @@
     display: block;
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .MessageBar
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .MessageBar
 {
     color: black;
     background-color: transparent;
@@ -78,7 +78,7 @@
     text-overflow: ellipsis;
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .TitleBar
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .TitleBar
 {
     position: absolute;
     top: 6px;
@@ -101,12 +101,12 @@
     filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.7));
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .TitleBar::after
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .TitleBar::after
 {
     content: " - Microsoft Internet Explorer";
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .Viewport
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .Viewport
 {
     position: absolute;
     top: 118px;
@@ -117,7 +117,7 @@
     background-color: transparent;
 }
 
-.Browser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .Viewport > iframe
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .Viewport > iframe
 {
     border: none;
     width: 100%;

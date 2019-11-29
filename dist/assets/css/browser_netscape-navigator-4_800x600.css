@@ -1,4 +1,4 @@
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 .Button.reload
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 .Button.reload
 {
     width: 45px;
     height: 37px;
@@ -6,7 +6,7 @@
     left: 120px;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 .Button.home
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 .Button.home
 {
     width: 45px;
     height: 37px;
@@ -14,7 +14,7 @@
     left: 168px;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 .Button.back
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 .Button.back
 {
     width: 45px;
     height: 37px;
@@ -22,7 +22,7 @@
     left: 23px;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 .Button.forward
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 .Button.forward
 {
     width: 45px;
     height: 37px;
@@ -30,15 +30,15 @@
     left: 72px;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600
 {
     position: relative;
     width: 800px;
     height: 600px;
-    background-image: url("../images/browser/netscape-navigator-4_800x600.png");
+    background-image: url("../images/wayback-browser/netscape-navigator-4_800x600.png");
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .AddressBar
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .AddressBar
 {
     background-color: transparent;
     position: absolute;
@@ -50,7 +50,7 @@
     line-height: 14px;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .AddressBar > input
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .AddressBar > input
 {
     background-color: transparent;
     border: none;
@@ -61,7 +61,7 @@
     display: block;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .MessageBar
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .MessageBar
 {
     color: black;
     background-color: transparent;
@@ -78,7 +78,7 @@
     text-overflow: ellipsis;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .TitleBar
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .TitleBar
 {
     position: absolute;
     top: 4px;
@@ -98,12 +98,12 @@
     text-overflow: ellipsis;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .TitleBar::after
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .TitleBar::after
 {
     content: " - Netscape";
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .Viewport
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .Viewport
 {
     position: absolute;
     top: 134px;
@@ -113,7 +113,7 @@
     background-color: transparent;
 }
 
-.Browser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .Viewport > iframe
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .Viewport > iframe
 {
     border: none;
     width: 100%;

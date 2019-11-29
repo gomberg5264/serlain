@@ -82,7 +82,7 @@
     {
         if (mouseLeftIsDown)
         {
-            const browserElement = document.querySelector(".Browser");
+            const browserElement = document.querySelector(".WaybackBrowser");
 
             if (!browserElement)
             {

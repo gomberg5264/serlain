@@ -7,15 +7,15 @@
 
 "use strict";
 
-import {Browser} from "./react-components/browser/Browser.js";
-import {Button} from "./react-components/browser/parts/Button.js";
 import {panic_if_not_type} from "./assert.js";
+import {WaybackBrowser} from "./react-components/wayback-browser/WaybackBrowser.js";
+import {Button} from "./react-components/wayback-browser/parts/Button.js";
 
 export function internet_explorer_4(width, height, browsingYear)
 {
     panic_if_not_type("number", width, height, browsingYear);
 
-    return Browser({
+    return WaybackBrowser({
         browserClassName: `internet-explorer-4 resolution-${width}x${height}`,
 
         // The year from which to ask the Wayback Machine to give captures for websites
@@ -52,7 +52,7 @@ export function internet_explorer_5(width, height, browsingYear)
 {
     panic_if_not_type("number", width, height, browsingYear);
 
-    return Browser({
+    return WaybackBrowser({
         browserClassName: `internet-explorer-5 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
@@ -77,7 +77,7 @@ export function internet_explorer_5(width, height, browsingYear)
 
 export function internet_explorer_6(width, height, browsingYear)
 {
-    return Browser({
+    return WaybackBrowser({
         browserClassName: `internet-explorer-6 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
@@ -103,7 +103,7 @@ export function internet_explorer_6(width, height, browsingYear)
 
 export function mozilla_firefox_1(width, height, browsingYear)
 {
-    return Browser({
+    return WaybackBrowser({
         browserClassName: `mozilla-firefox-1 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
@@ -129,7 +129,7 @@ export function mozilla_firefox_1(width, height, browsingYear)
 
 export function netscape_navigator_1(width, height, browsingYear)
 {
-    return Browser({
+    return WaybackBrowser({
         browserClassName: `netscape-navigator-1 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
@@ -156,7 +156,7 @@ export function netscape_navigator_1(width, height, browsingYear)
 
 export function netscape_navigator_3(width, height, browsingYear)
 {
-    return Browser({
+    return WaybackBrowser({
         browserClassName: `netscape-navigator-3 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
@@ -183,7 +183,7 @@ export function netscape_navigator_3(width, height, browsingYear)
 
 export function netscape_navigator_4(width, height, browsingYear)
 {
-    return Browser({
+    return WaybackBrowser({
         browserClassName: `netscape-navigator-4 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,

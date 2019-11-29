@@ -10,17 +10,17 @@
 import {panic_if_not_type} from "../../assert.js";
 import {BrowserWindow} from "./parts/BrowserWindow.js";
 
-// A mock browser. Displays a window that looks like a browser and contains a set of
-// UI controls for navigating the browsing, and an <iframe> viewport for displaying
-// external web sites as if in a real browser.
+// A mock browser to display content from the Wayback Machine. Provides a window that
+// looks like a browser and contains a set of UI controls for navigating the browsing,
+// and an <iframe> viewport for displaying external web sites as if in a real browser.
 //
 // See the child component(s) for descriptions of the input props.
 //
-export function Browser(props = {})
+export function WaybackBrowser(props = {})
 {
-    Browser.validate_props(props);
+    WaybackBrowser.validate_props(props);
  
-    return <div className="Browser">
+    return <div className="WaybackBrowser">
 
                <BrowserWindow buttons={props.buttons}
                               browsingYear={props.browsingYear}
@@ -30,7 +30,7 @@ export function Browser(props = {})
            </div>
 }
 
-Browser.validate_props = function(props = {})
+WaybackBrowser.validate_props = function(props = {})
 {
     panic_if_not_type("object", props, props.buttons);
     panic_if_not_type("string", props.browserClassName);

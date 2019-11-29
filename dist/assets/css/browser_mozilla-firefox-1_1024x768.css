@@ -1,4 +1,4 @@
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.reload
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.reload
 {
     width: 31px;
     height: 30px;
@@ -6,7 +6,7 @@
     left: 95px;
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.home
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.home
 {
     width: 31px;
     height: 30px;
@@ -14,7 +14,7 @@
     left: 163px;
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.back
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.back
 {
     width: 42px;
     height: 30px;
@@ -22,7 +22,7 @@
     left: 7px;
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.forward
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.forward
 {
     width: 42px;
     height: 30px;
@@ -30,15 +30,15 @@
     left: 52px;
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768
 {
     position: relative;
     width: 1024px;
     height: 768px;
-    background-image: url("../images/browser/mozilla-firefox-1_1024x768.png");
+    background-image: url("../images/wayback-browser/mozilla-firefox-1_1024x768.png");
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .AddressBar
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .AddressBar
 {
     background-color: transparent;
     position: absolute;
@@ -50,7 +50,7 @@
     line-height: 18px;
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .AddressBar > input
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .AddressBar > input
 {
     background-color: transparent;
     border: none;
@@ -61,7 +61,7 @@
     display: block;
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .MessageBar
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .MessageBar
 {
     color: black;
     background-color: transparent;
@@ -78,7 +78,7 @@
     text-overflow: ellipsis;
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .TitleBar
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .TitleBar
 {
     position: absolute;
     top: 6px;
@@ -101,12 +101,12 @@
     filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.7));
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .TitleBar::after
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .TitleBar::after
 {
     content: " - Mozilla Firefox";
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .Viewport
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .Viewport
 {
     position: absolute;
     top: 114px;
@@ -117,7 +117,7 @@
     background-color: transparent;
 }
 
-.Browser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .Viewport > iframe
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .Viewport > iframe
 {
     border: none;
     width: 100%;

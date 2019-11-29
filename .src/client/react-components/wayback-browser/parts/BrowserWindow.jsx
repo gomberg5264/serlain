@@ -15,7 +15,7 @@ import {TitleBar} from "./TitleBar.js";
 import {Viewport} from "./Viewport.js";
 import {Buttons} from "./Buttons.js";
 
-// A window containing a Browser's UI and the viewport in which web sites are displayed.
+// A window containing a WaybackBrowser's UI and the viewport in which web sites are displayed.
 //
 // The browser window can contain an optional number of buttons, which can be given as an
 // array of Button elements via props.buttons.
