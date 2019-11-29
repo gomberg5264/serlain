@@ -13,7 +13,7 @@
     </head>
     <body>
         <div id="browser-selector" class="dropdown-menu">
-            <div class="dropdown-menu-header">Select era of browsing</div>
+            <div class="dropdown-menu-header">Select an era of browsing</div>
             <div id="select-era-1996" class="dropdown-menu-item">1996 &ndash; Navigator 1.0</div>
             <div id="select-era-1997" class="dropdown-menu-item">1997 &ndash; Navigator 3.0</div>
             <div id="select-era-1998" class="dropdown-menu-item">1998 &ndash; Navigator 4.0</div>
