@@ -45,66 +45,69 @@
         return;
     }
 
-    window.onmousedown = function(event)
+    // For mouse (non-touch screen).
     {
-        // Hide any dropdown click menus.
-        if (!event.target.classList.contains("dropdown-menu-item"))
+        window.onmousedown = function(event)
         {
-            window.close_dropdown_menus();
-        }
+            // Hide any dropdown click menus.
+            if (!event.target.classList.contains("dropdown-menu-item"))
+            {
+                window.close_dropdown_menus();
+            }
 
-        if ((event.which !== 1) ||
-            !event.target.classList.contains("TitleBar"))
-        {
-            return;
-        }
-
-        prevMousePos.x = Math.max(0, event.clientX);
-        prevMousePos.y = Math.max(0, event.clientY);
-        mouseLeftIsDown = true;
-
-        return;
-    }
-
-    window.onmouseup = function(event)
-    {
-        if (event.which !== 1)
-        {
-            return;
-        }
-
-        mouseLeftIsDown = false;
-
-        return;
-    }
-
-    window.onmousemove = function(event)
-    {
-        if (mouseLeftIsDown)
-        {
-            const browserElement = document.querySelector(".WaybackBrowser");
-
-            if (!browserElement)
+            if ((event.which !== 1) ||
+                !event.target.classList.contains("TitleBar"))
             {
                 return;
             }
 
-            const mousePosDelta =
-            {
-                x: (event.clientX - prevMousePos.x),
-                y: (event.clientY - prevMousePos.y),
-            }
+            prevMousePos.x = Math.max(0, event.clientX);
+            prevMousePos.y = Math.max(0, event.clientY);
+            mouseLeftIsDown = true;
 
-            const prevTop = Number(browserElement.style.top.replace(/\D+/g, ""));
-            const prevLeft = Number(browserElement.style.left.replace(/\D+/g, ""));
-
-            browserElement.style.top = `${Math.max(0, (prevTop + mousePosDelta.y))}px`;
-            browserElement.style.left = `${Math.max(0, prevLeft + mousePosDelta.x)}px`;
+            return;
         }
 
-        prevMousePos.x = Math.max(0, event.clientX);
-        prevMousePos.y = Math.max(0, event.clientY);
+        window.onmouseup = function(event)
+        {
+            if (event.which !== 1)
+            {
+                return;
+            }
 
-        return;
+            mouseLeftIsDown = false;
+
+            return;
+        }
+
+        window.onmousemove = function(event)
+        {
+            if (mouseLeftIsDown)
+            {
+                const browserElement = document.querySelector(".WaybackBrowser");
+
+                if (!browserElement)
+                {
+                    return;
+                }
+
+                const mousePosDelta =
+                {
+                    x: (event.clientX - prevMousePos.x),
+                    y: (event.clientY - prevMousePos.y),
+                }
+
+                const prevTop = Number(browserElement.style.top.replace(/\D+/g, ""));
+                const prevLeft = Number(browserElement.style.left.replace(/\D+/g, ""));
+
+                browserElement.style.top = `${Math.max(0, (prevTop + mousePosDelta.y))}px`;
+                browserElement.style.left = `${Math.max(0, prevLeft + mousePosDelta.x)}px`;
+            }
+
+            prevMousePos.x = Math.max(0, event.clientX);
+            prevMousePos.y = Math.max(0, event.clientY);
+
+            return;
+        }
     }
 }

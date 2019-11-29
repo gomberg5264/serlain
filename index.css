@@ -1,3 +1,19 @@
+@font-face
+{
+    font-family: "Ubuntu (server-side)";
+    src: url("./dist/assets/fonts/ubuntu/Ubuntu-R.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: "Ubuntu (server-side)";
+    src: url("./dist/assets/fonts/ubuntu/Ubuntu-B.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
 body
 {
     background-color: black;
@@ -87,7 +103,7 @@ body
 .WaybackBrowser > .BrowserWindow .AddressBar input
 {
     font-size: 75%;
-    font-family: sans-serif;
+    font-family: "Ubuntu", "Ubuntu (server-side)", sans-serif;
 }
 
 .WaybackBrowser > .BrowserWindow.waiting-for-network-reply .AddressBar input
@@ -98,13 +114,13 @@ body
 .WaybackBrowser > .BrowserWindow .MessageBar
 {
     font-size: 75%;
-    font-family: sans-serif;
+    font-family: "Ubuntu", "Ubuntu (server-side)", sans-serif;
 }
 
 .WaybackBrowser > .BrowserWindow .TitleBar
 {
     font-size: 75%;
-    font-family: sans-serif;
+    font-family: "Ubuntu", "Ubuntu (server-side)", sans-serif;
     font-weight: bold;
     user-select: none;
 }
