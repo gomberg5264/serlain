@@ -13,6 +13,8 @@
     </head>
     <body>
         <?php if (is_file("./stats.php")) include "./stats.php"; ?>
+
+        <noscript style="display: block;">This page requires JavaScript.</noscript>
         
         <div id="browser-selector" class="dropdown-menu">
             <div class="dropdown-menu-header">Select an era of browsing</div>
