@@ -35,7 +35,7 @@
     position: relative;
     width: 1024px;
     height: 768px;
-    background-image: url("../images/wayback-browser/internet-explorer-6_1024x768.png");
+    background-image: url("../images/browsers/internet-explorer-6_1024x768.png");
 }
 
 .WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .AddressBar
