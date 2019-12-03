@@ -6,10 +6,10 @@ For instance, a web site archived in 1999 will be displayed in a mock browser th
 The rendering of the archived site's HTML will still be handled by your real browser inside an \<iframe\> element.
 
 # Screenshots
-![](images/screenshots/serlain-chrome-ie4-3dfx.com.png)
+![](images/screenshots/serlain-chrome-ie4-3dfx.com.png)\
 **Serlain in Chrome 78** displaying a 1999 capture of `www.3dfx.com` inside a mock of Internet Explorer 4.
 
-![](images/screenshots/serlain-chrome-nn4-yahoo.com.png)
+![](images/screenshots/serlain-chrome-nn4-yahoo.com.png)\
 **Serlain in Chrome 78** displaying a 1998 capture of `www.yahoo.com` inside a mock of Netscape Navigator 4.
 
 # Usage
