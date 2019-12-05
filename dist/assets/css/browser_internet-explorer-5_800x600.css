@@ -1,33 +1,33 @@
 .WaybackBrowser > .BrowserWindow.internet-explorer-5.resolution-800x600 .Button.reload
 {
-    width: 27px;
-    height: 24px;
+    width: 22px;
+    height: 20px;
     top: 50px;
-    left: 151px;
+    left: 140px;
 }
 
 .WaybackBrowser > .BrowserWindow.internet-explorer-5.resolution-800x600 .Button.home
 {
-    width: 27px;
-    height: 24px;
+    width: 22px;
+    height: 20px;
     top: 50px;
-    left: 179px;
+    left: 164px;
 }
 
 .WaybackBrowser > .BrowserWindow.internet-explorer-5.resolution-800x600 .Button.back
 {
-    width: 64px;
-    height: 24px;
+    width: 61px;
+    height: 20px;
     top: 50px;
-    left: 19px;
+    left: 18px;
 }
 
 .WaybackBrowser > .BrowserWindow.internet-explorer-5.resolution-800x600 .Button.forward
 {
-    width: 40px;
-    height: 24px;
+    width: 35px;
+    height: 20px;
     top: 50px;
-    left: 84px;
+    left: 80px;
 }
 
 .WaybackBrowser > .BrowserWindow.internet-explorer-5.resolution-800x600
@@ -42,8 +42,8 @@
 {
     background-color: transparent;
     position: absolute;
-    top: 80px;
-    left: 84px;
+    top: 76px;
+    left: 82px;
     width: 639px;
     height: 16px;
     text-align: left;
@@ -66,9 +66,9 @@
     color: black;
     background-color: transparent;
     position: absolute;
-    bottom: 5px;
-    left: 26px;
-    width: 550px;
+    bottom: 6px;
+    left: 27px;
+    width: 564px;
     height: 15px;
     text-align: left;
     line-height: 15px;
@@ -106,10 +106,10 @@
 .WaybackBrowser > .BrowserWindow.internet-explorer-5.resolution-800x600 > .Viewport
 {
     position: absolute;
-    top: 120px;
+    top: 102px;
     left: 6px;
     width: 788px;
-    height: 454px;
+    height: 472px;
     
     background-color: transparent;
 }
