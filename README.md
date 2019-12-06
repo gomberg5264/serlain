@@ -22,18 +22,18 @@ The rendering of the archived site's HTML will still be handled by your real bro
 *(Coming)*
 
 ### Building
-Serlain depends on [Babel](https://babeljs.io/) for JSX and minification. You can install the required dependencies by executing the following in the repo's root:
+Serlain depends on [Babel](https://babeljs.io/) for transpilation of JSX. You can install the required dependencies by executing the following in the repo's root:
 ```
 $ npm install @babel/core @babel/cli @babel/preset-react babel-preset-minify
 ```
 
-Once you have Babel installed as per above, you can build Serlain with
+Once you have Babel installed as per above, you can build Serlain with:
 ```
 $ cd .build
 $ ./build-dev.sh
 ```
 
-substituting `build-dev.sh` with `build-release.sh` for release builds. The build script will place the built distributable files inside the repo's [dist/](dist/) directory
+This will place the built distributable files inside the repo's [dist/](dist/) directory
 
 ### Hosting
 *(Coming)*
