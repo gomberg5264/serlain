@@ -88,6 +88,9 @@ export async function get_wayback_page(websiteUrl, year)
         }
 
         waybackPage.url = jsonData["archived_snapshots"]["closest"]["url"];
+
+        // Attempt to prevent mixed content loading.
+        waybackPage.url = waybackPage.url.replace(/^https?:\/\//, "//");
     }
 
     return waybackPage;
