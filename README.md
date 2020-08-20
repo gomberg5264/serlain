@@ -3,13 +3,13 @@ Serlain is a third-party web-based front-end for [Internet Archive](https://arch
 
 For instance, a web site archived in 1999 will be displayed in a mock browser that looks like Microsoft's Internet Explorer 4, and a page from 1996 in a mock of Netscape Navigator 1. (The rendering of the archived site's HTML will still be handled by your real browser inside an \<iframe\> element.)
 
-You can view a live version of Serlain [here](https://tarpeeksihyvaesoft.com/serlain/).
+You can view a live version of Serlain [here](https://www.tarpeeksihyvaesoft.com/serlain/).
 
 # Screenshots
-![](images/screenshots/serlain-chrome-ie4-3dfx.com.png)\
+![](./images/screenshots/serlain-chrome-ie4-3dfx.com.png)\
 **Serlain in Chrome 78** displaying a 1999 capture of `www.3dfx.com` inside a mock of Internet Explorer 4.
 
-![](images/screenshots/serlain-chrome-nn4-yahoo.com.png)\
+![](./images/screenshots/serlain-chrome-nn4-yahoo.com.png)\
 **Serlain in Chrome 78** displaying a 1998 capture of `www.yahoo.com` inside a mock of Netscape Navigator 4.
 
 # Usage
@@ -29,11 +29,10 @@ $ npm install @babel/core @babel/cli @babel/preset-react babel-preset-minify
 
 Once you have Babel installed as per above, you can build Serlain with:
 ```
-$ cd .build
 $ ./build-dev.sh
 ```
 
-This will place the built distributable files inside the repo's [dist/](dist/) directory
+This will place the built distributable files inside the [distributable/](./distributable/) directory
 
 ### Hosting
 *(Coming)*

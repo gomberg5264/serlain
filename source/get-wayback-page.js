@@ -60,7 +60,7 @@ export async function get_wayback_page(websiteUrl, year)
         // so we'll use a CORS proxy to allow querying the API via client-side code.
         const corsProxyUrl = "//cors-anywhere.herokuapp.com";
 
-        const response = await fetch(`${corsProxyUrl}/https://archive.org/wayback/available?url=${websiteUrl}&timestamp=${year}0615`);
+        const response = await fetch(`${corsProxyUrl}///archive.org/wayback/available?url=${websiteUrl}&timestamp=${year}0615`);
 
         if (!response.ok)
         {

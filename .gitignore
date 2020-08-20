@@ -1,6 +1,3 @@
 .vscode/
 node_modules/
-dist/*
-!dist/assets/
-.misc/
-stats.php
+misc/

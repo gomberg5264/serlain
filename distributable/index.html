@@ -2,18 +2,16 @@
 <html>
     <head>
         <title>Serlain</title>
-        <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="./dist/assets/css/browser_netscape-navigator-1_630x470.css">
-        <link rel="stylesheet" href="./dist/assets/css/browser_netscape-navigator-3_800x600.css">
-        <link rel="stylesheet" href="./dist/assets/css/browser_netscape-navigator-4_800x600.css">
-        <link rel="stylesheet" href="./dist/assets/css/browser_internet-explorer-4_800x600.css">
-        <link rel="stylesheet" href="./dist/assets/css/browser_internet-explorer-5_800x600.css">
-        <link rel="stylesheet" href="./dist/assets/css/browser_internet-explorer-6_1024x768.css">
-        <link rel="stylesheet" href="./dist/assets/css/browser_mozilla-firefox-1_1024x768.css">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="./css/browser_netscape-navigator-1_630x470.css">
+        <link rel="stylesheet" href="./css/browser_netscape-navigator-3_800x600.css">
+        <link rel="stylesheet" href="./css/browser_netscape-navigator-4_800x600.css">
+        <link rel="stylesheet" href="./css/browser_internet-explorer-4_800x600.css">
+        <link rel="stylesheet" href="./css/browser_internet-explorer-5_800x600.css">
+        <link rel="stylesheet" href="./css/browser_internet-explorer-6_1024x768.css">
+        <link rel="stylesheet" href="./css/browser_mozilla-firefox-1_1024x768.css">
     </head>
     <body>
-        <?php if (is_file("./stats.php")) include "./stats.php"; ?>
-
         <noscript style="display: block;">This page requires JavaScript.</noscript>
         
         <div id="browser-selector" class="dropdown-menu">
@@ -29,17 +27,17 @@
 
         <div id="browser-container"></div>
         
-        <script src="./dist/client/react/react.js"></script>
-        <script src="./dist/client/react/react-dom.js"></script>
+        <script src="./js/react/react.js"></script>
+        <script src="./js/react/react-dom.js"></script>
         <script type="module">
-            import {run_browser} from "./dist/client/run-browser.js";
+            import {run_browser} from "./js/run-browser.js";
             import {internet_explorer_4,
                     internet_explorer_5,
                     internet_explorer_6,
                     netscape_navigator_1,
                     netscape_navigator_3,
                     netscape_navigator_4,
-                    mozilla_firefox_1} from "./dist/client/browsers.js";
+                    mozilla_firefox_1} from "./js/browsers.js";
 
             const browserContainer = document.getElementById("browser-container");
 
@@ -123,6 +121,6 @@
                 }
             }
         </script>
-        <script src="./dist/client/browser-window-drag.js"></script>
+        <script src="./js/browser-window-drag.js"></script>
     </body>
 </html>

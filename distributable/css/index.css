@@ -1,7 +1,7 @@
 @font-face
 {
     font-family: "Ubuntu (server-side)";
-    src: url("./dist/assets/fonts/ubuntu/Ubuntu-R.ttf") format("truetype");
+    src: url("./font/ubuntu/Ubuntu-R.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
@@ -9,7 +9,7 @@
 @font-face
 {
     font-family: "Ubuntu (server-side)";
-    src: url("./dist/assets/fonts/ubuntu/Ubuntu-B.ttf") format("truetype");
+    src: url("./font/ubuntu/Ubuntu-B.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }

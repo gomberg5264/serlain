@@ -51,7 +51,7 @@ export function BrowserWindow(props = {})
     // e.g. "microsoft.com": and the Wayback URL is the URL of the Wayback Machine's
     // capture of the target website, e.g. "web.archive.org/web/x/www.microsoft.com".
     const [websiteUrl, setWebsiteUrl] = React.useState("about:serlain");
-    const [waybackUrl, setWaybackUrl] = React.useState("./dist/assets/about-serlain.html");
+    const [waybackUrl, setWaybackUrl] = React.useState("./about-serlain.html");
 
     // Set to true while we're waiting for a response from the Serlain backend.
     const [waitingForServerResponse, setWaitingForServerResponse] = React.useState(false);
@@ -117,7 +117,7 @@ export function BrowserWindow(props = {})
             case "about:serlain":
             {
                 setWebsiteUrl("about:serlain");
-                setWaybackUrl("./dist/assets/about-serlain.html");
+                setWaybackUrl("./about-serlain.html");
                 refresh_address_bar();
 
                 break;

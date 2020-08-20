@@ -35,7 +35,7 @@
     position: relative;
     width: 800px;
     height: 600px;
-    background-image: url("../images/browsers/netscape-navigator-4_800x600.png");
+    background-image: url("../img/browsers/netscape-navigator-4_800x600.png");
 }
 
 .WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .AddressBar

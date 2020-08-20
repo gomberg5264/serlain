@@ -35,7 +35,7 @@
     position: relative;
     width: 1024px;
     height: 768px;
-    background-image: url("../images/browsers/mozilla-firefox-1_1024x768.png");
+    background-image: url("../img/browsers/mozilla-firefox-1_1024x768.png");
 }
 
 .WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .AddressBar
