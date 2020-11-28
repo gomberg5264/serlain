@@ -10,6 +10,10 @@
         <link rel="stylesheet" href="./css/browser_internet-explorer-5_800x600.css">
         <link rel="stylesheet" href="./css/browser_internet-explorer-6_1024x768.css">
         <link rel="stylesheet" href="./css/browser_mozilla-firefox-1_1024x768.css">
+        <link rel="stylesheet"
+              href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+              integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+              crossorigin="anonymous">
     </head>
     <body>
         <noscript style="display: block;">This page requires JavaScript.</noscript>
@@ -26,9 +30,62 @@
         </div>
 
         <div id="browser-container"></div>
+
+        <div id="taskbar">
+
+            <div id="clock-container">
+                <div class="icon-row">
+                    <i class="fas fa-fw fa-network-wired"
+                       style="color: #0853c3;"
+                       title="Network"></i>
+                    <i class="fas fa-fw fa-window-maximize"
+                       style="color: #0853c3;"
+                       title="Window"></i>
+                    <i class="fas fa-fw fa-chart-bar"
+                       style="color: #0853c3;"
+                       title="Spreadsheet"></i>
+                </div>
+                <div class="time-display">
+                </div>
+            </div>
+
+            <div id="start-button">
+                <i class="fas fa-window-restore"
+                   style="color: #0853c3;"></i>
+                Start
+            </div>
+
+        </div>
         
         <script src="./js/react/react.js"></script>
         <script src="./js/react/react-dom.js"></script>
+        
+        <!-- Update the clock's time.-->
+        <script>
+            const msUntilFirstFullMinute = ((60000 - (Date.now() % 60000)) + 50);
+
+            setTimeout(()=>
+            {
+                update_clock();
+                setInterval(update_clock, 60000);
+            }, msUntilFirstFullMinute);
+
+            update_clock();
+
+            function update_clock()
+            {
+                const currentTime = new Date();
+                const clockElement = document.querySelector("#taskbar #clock-container .time-display");
+
+                clockElement.innerHTML = currentTime.toLocaleString("en-US", {
+                    hour:"numeric",
+                    minute:"numeric",
+                    hour12:true,
+                });
+            }
+        </script>
+        
+        <!-- Run the browser.-->
         <script type="module">
             import {run_browser} from "./js/run-browser.js";
             import {internet_explorer_4,
