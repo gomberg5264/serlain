@@ -70,7 +70,7 @@ body
     margin: 3px;
     box-sizing: border-box;
     line-height: 22px;
-    padding-right: 11px;
+    padding-right: 12px;
     padding-left: 5px;
     color: black;
     display: flex;
@@ -83,7 +83,7 @@ body
 
 #taskbar #clock-container .icon-row
 {
-    margin-right: 11px;
+    margin-right: 12px;
 }
 
 #browser-container
@@ -187,4 +187,9 @@ body
     font-family: "Ubuntu", "Ubuntu (server-side)", sans-serif;
     font-weight: bold;
     user-select: none;
+}
+
+.WaybackBrowser > .BrowserWindow .TitleBar:active
+{
+    cursor: grabbing;
 }
