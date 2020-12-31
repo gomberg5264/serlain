@@ -105,7 +105,7 @@
                 window.alert("Failed to initialize Serlain!");
                 throw new Error("Failed to initialize Serlain!");
             }
-
+            
             // The browsing eras available to the user to select from.
             const defaultBrowsingEra = 1999;
             const browsingEras =
@@ -144,6 +144,44 @@
                  "select-era-2001",
                  "select-era-2005"].forEach(elementId=>add_click_listener(elementId))
 
+                window.addEventListener("contextmenu", function(event)
+                {
+                    if (event.target.classList.contains("TitleBar"))
+                    {
+                        event.preventDefault();
+
+                        const selectorDropdown = document.getElementById("browser-selector");
+
+                        if (selectorDropdown)
+                        {
+                            selectorDropdown.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
+                            selectorDropdown.style.display = "block";
+                        }
+                    }
+
+                    return;
+                });
+
+                window.addEventListener("mousedown", function(event)
+                {
+                    if (!event.target.classList.contains("dropdown-menu-item"))
+                    {
+                        close_dropdown_menus();
+                    }
+                });
+
+                function close_dropdown_menus()
+                {
+                    const selectorDropdown = document.getElementById("browser-selector");
+
+                    if (selectorDropdown)
+                    {
+                        selectorDropdown.style.display = "none";
+                    }
+
+                    return;
+                }
+
                 function add_click_listener(elementId)
                 {
                     const clickFunction = ()=>
@@ -171,7 +209,7 @@
                             browserElement.style.left = `${left}px`;
                         }
 
-                        window.close_dropdown_menus();
+                        close_dropdown_menus();
 
                         return;
                     }
@@ -180,6 +218,5 @@
                 }
             }
         </script>
-        <script src="./js/browser-window-drag.js"></script>
     </body>
 </html>

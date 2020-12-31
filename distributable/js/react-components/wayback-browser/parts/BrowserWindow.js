@@ -2,6 +2,7 @@
 
 import { panic_if_not_type } from "../../../assert.js";
 import { get_wayback_page } from "../../../get-wayback-page.js";
+import { make_element_draggable } from "../../../make-draggable.js";
 import { AddressBar } from "./AddressBar.js";
 import { MessageBar } from "./MessageBar.js";
 import { TitleBar } from "./TitleBar.js";
@@ -14,12 +15,17 @@ export function BrowserWindow(props = {}) {
   const [waitingForServerResponse, setWaitingForServerResponse] = React.useState(false);
   const [currentMessageBarMessage, setCurrentMessageBarMessage] = React.useState("Done");
   const [addressBarKey, setAddressBarKey] = React.useState(0);
+  const domElement = React.createRef();
   let viewportCallbacks = {
     reload_page: () => {},
     erase_page: () => {}
   };
+  React.useEffect(() => {
+    make_element_draggable(domElement.current);
+  }, [domElement]);
   return React.createElement("div", {
-    className: `BrowserWindow ${props.browserClassName} ${waitingForServerResponse ? "waiting-for-network-reply" : ""}`.trim()
+    className: `BrowserWindow ${props.browserClassName} ${waitingForServerResponse ? "waiting-for-network-reply" : ""}`.trim(),
+    ref: domElement
   }, React.createElement(TitleBar, null), React.createElement(Buttons, {
     buttons: props.buttons,
     callbackButtonReload: () => {

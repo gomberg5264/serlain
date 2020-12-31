@@ -14,7 +14,7 @@ export function TitleBar(props = {})
 {
     TitleBar.validate_props(props);
 
-    return <div className="TitleBar">Serlain</div>
+    return <div className="TitleBar dragger">Serlain</div>
 }
 
 TitleBar.validate_props = function(props = {})
