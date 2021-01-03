@@ -23,8 +23,15 @@ body
     overflow: hidden;
 }
 
-#taskbar
+.Desktop
 {
+    width: 100%;
+    height: 100%;
+}
+
+.Taskbar
+{
+    user-select: none;
     z-index: 10;
     position: fixed;
     bottom: 0;
@@ -38,26 +45,7 @@ body
     font-size: 95%;
 }
 
-#taskbar #start-button
-{
-    position: absolute;
-    left: 0;
-    height: 24px;
-    color: black;
-    font-weight: bold;
-    border-bottom: 1px solid #7d7d7d;
-    border-right: 1px solid #7d7d7d;
-    border-left: 1px solid white;
-    border-top: 1px solid white;
-    box-shadow: 1px 1px 0 black;
-    box-sizing: border-box;
-    margin: 3px;
-    padding-right: 4px;
-    padding-left: 4px;
-    line-height: 22px;
-}
-
-#taskbar #clock-container
+.Taskbar .right-side-container
 {
     width: auto;
     height: 25px;
@@ -76,14 +64,24 @@ body
     display: flex;
 }
 
-#taskbar #clock-container .time-display
+.Taskbar .right-side-container .time-display
 {
     text-align: right;
 }
 
-#taskbar #clock-container .icon-row
+.Taskbar .right-side-container .icon-row
 {
     margin-right: 12px;
+    color: #0853c3;
+}
+
+#desktop-container
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
 #browser-container
