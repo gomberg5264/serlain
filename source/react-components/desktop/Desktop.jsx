@@ -8,7 +8,7 @@
 "use strict";
 
 import {panic_if_not_type} from "../../assert.js";
-import {Taskbar} from "./taskbar/Taskbar.js";
+import {Taskbar} from "./widgets/Taskbar.js";
 
 export function Desktop(props = {})
 {
