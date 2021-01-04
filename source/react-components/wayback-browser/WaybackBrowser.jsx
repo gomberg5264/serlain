@@ -9,6 +9,7 @@
 
 import {panic_if_not_type} from "../../assert.js";
 import {BrowserWindow} from "./parts/BrowserWindow.js";
+import {make_element_draggable} from "../../make-draggable.js";
 
 // A mock browser to display content from the Wayback Machine. Provides a window that
 // looks like a browser and contains a set of UI controls for navigating the browsing,
@@ -20,7 +21,15 @@ export function WaybackBrowser(props = {})
 {
     WaybackBrowser.validate_props(props);
 
-    return <div className="WaybackBrowser">
+    const domElement = React.useRef();
+
+    React.useEffect(()=>
+    {
+        make_element_draggable(domElement.current);
+    }, [domElement]);
+
+    return <div className="WaybackBrowser"
+                ref={domElement}>
 
                <BrowserWindow buttons={props.buttons}
                               browsingYear={props.browsingYear}

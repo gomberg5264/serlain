@@ -8,14 +8,13 @@
 "use strict";
 
 import {panic_if_not_type} from "./assert.js";
-import {WaybackBrowser} from "./react-components/wayback-browser/WaybackBrowser.js";
 import {Button} from "./react-components/wayback-browser/parts/Button.js";
 
-export function internet_explorer_4(width, height, browsingYear)
+export function internet_explorer_4(browsingYear, width, height)
 {
     panic_if_not_type("number", width, height, browsingYear);
 
-    return WaybackBrowser({
+    return {
         browserClassName: `internet-explorer-4 resolution-${width}x${height}`,
 
         // The year from which to ask the Wayback Machine to give captures for websites
@@ -27,8 +26,7 @@ export function internet_explorer_4(width, height, browsingYear)
         // action performed when the user clicks on the button will be decided based
         // on the button name (such that e.g. a button named "reload" will reload
         // the page).
-        buttons:
-        [
+        buttons: [
             <Button buttonName="reload" key="0"/>,
             //<Button buttonName="stop" key="1"/>, Disabled while a proper implementation of its functionality is missing.
             <Button buttonName="home" key="2"/>,
@@ -36,54 +34,60 @@ export function internet_explorer_4(width, height, browsingYear)
             <Button buttonName="forward" key="5"/>,
         ],
 
+        desktopIcon: {
+            title: "Internet Explorer 4",
+            imageUrl: "./img/icons/internet-explorer-199x-1.png",
+        },
+
         // Strings that will be shown in the browser's message bar as a response to
         // specific events.
-        messageBarStrings:
-        {
+        messageBarStrings: {
             fetching_page_url: (url)=>`Connecting to site ${url}`,
             loading_page: (url)=>`Opening page ${url}...`,
             page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
             page_load_finished: ()=>"Done",
         },
-    });
+    };
 }
 
-export function internet_explorer_5(width, height, browsingYear)
+export function internet_explorer_5(browsingYear, width, height)
 {
     panic_if_not_type("number", width, height, browsingYear);
 
-    return WaybackBrowser({
+    return {
         browserClassName: `internet-explorer-5 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
 
-        buttons:
-        [
+        buttons: [
             <Button buttonName="reload" key="0"/>,
             <Button buttonName="home" key="2"/>,
             <Button buttonName="back" key="4"/>,
             <Button buttonName="forward" key="5"/>,
         ],
 
-        messageBarStrings:
-        {
+        desktopIcon: {
+            title: "Internet Explorer 5",
+            imageUrl: "./img/icons/internet-explorer-199x-2.png",
+        },
+
+        messageBarStrings: {
             fetching_page_url: (url)=>`Connecting to site ${url}`,
             loading_page: (url)=>`Opening page ${url}...`,
             page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
             page_load_finished: ()=>"Done",
         },
-    });
+    };
 }
 
-export function internet_explorer_6(width, height, browsingYear)
+export function internet_explorer_6(browsingYear, width, height)
 {
-    return WaybackBrowser({
+    return {
         browserClassName: `internet-explorer-6 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
 
-        buttons:
-        [
+        buttons: [
             <Button buttonName="reload" key="0"/>,
             //<Button buttonName="stop" key="1"/>, Disabled while a proper implementation of its functionality is missing.
             <Button buttonName="home" key="2"/>,
@@ -91,25 +95,28 @@ export function internet_explorer_6(width, height, browsingYear)
             <Button buttonName="forward" key="5"/>,
         ],
 
-        messageBarStrings:
-        {
+        desktopIcon: {
+            title: "Internet Explorer 6",
+            imageUrl: "./img/icons/internet-explorer-6.png",
+        },
+
+        messageBarStrings: {
             fetching_page_url: (url)=>`Connecting to site ${url}`,
             loading_page: (url)=>`Opening page ${url}...`,
             page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
             page_load_finished: ()=>"Done",
         },
-    });
+    };
 }
 
-export function mozilla_firefox_1(width, height, browsingYear)
+export function mozilla_firefox_1(browsingYear, width, height)
 {
-    return WaybackBrowser({
+    return {
         browserClassName: `mozilla-firefox-1 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
 
-        buttons:
-        [
+        buttons: [
             <Button buttonName="reload" key="0"/>,
             //<Button buttonName="stop" key="1"/>, Disabled while a proper implementation of its functionality is missing.
             <Button buttonName="home" key="2"/>,
@@ -117,93 +124,106 @@ export function mozilla_firefox_1(width, height, browsingYear)
             <Button buttonName="forward" key="5"/>,
         ],
 
-        messageBarStrings:
-        {
+        desktopIcon: {
+            title: "Mozilla Firefox 1",
+            imageUrl: "/img/icons/firefox-1.png",
+        },
+
+        messageBarStrings: {
             fetching_page_url: (url)=>`Looking up ${url}...`,
             loading_page: (url)=>`Transferring data from ${url}...`,
             page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
             page_load_finished: ()=>"Done",
         },
-    });
+    };
 }
 
-export function netscape_navigator_1(width, height, browsingYear)
+export function netscape_navigator_1(browsingYear, width, height)
 {
-    return WaybackBrowser({
+    return {
         browserClassName: `netscape-navigator-1 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
 
-        buttons:
-        [
+        buttons: [
             <Button buttonName="reload" key="0"/>,
             <Button buttonName="home" key="2"/>,
             <Button buttonName="back" key="4"/>,
             <Button buttonName="forward" key="5"/>,
         ],
 
+        desktopIcon: {
+            title: "Netscape Navigator 1",
+            imageUrl: "./img/icons/netscape-navigator-1.png",
+        },
+
         // Strings that will be shown in the browser's message bar as a response to
         // specific events.
-        messageBarStrings:
-        {
+        messageBarStrings: {
             fetching_page_url: (url)=>`Connect: Looking up host: ${url}...`,
             loading_page: (url)=>`Transferring data from ${url}`,
             page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
             page_load_finished: ()=>"Document: Done",
         },
-    });
+    };
 }
 
-export function netscape_navigator_3(width, height, browsingYear)
+export function netscape_navigator_3(browsingYear, width, height)
 {
-    return WaybackBrowser({
+    return {
         browserClassName: `netscape-navigator-3 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
 
-        buttons:
-        [
+        buttons: [
             <Button buttonName="reload" key="0"/>,
             <Button buttonName="home" key="2"/>,
             <Button buttonName="back" key="4"/>,
             <Button buttonName="forward" key="5"/>,
         ],
 
+        desktopIcon: {
+            title: "Netscape Navigator 3",
+            imageUrl: "./img/icons/netscape-navigator-3.png",
+        },
+
         // Strings that will be shown in the browser's message bar as a response to
         // specific events.
-        messageBarStrings:
-        {
+        messageBarStrings: {
             fetching_page_url: (url)=>`Connect: Looking up host: ${url}...`,
             loading_page: (url)=>`Transferring data from ${url}`,
             page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
             page_load_finished: ()=>"Document: Done",
         },
-    });
+    };
 }
 
-export function netscape_navigator_4(width, height, browsingYear)
+export function netscape_navigator_4(browsingYear, width, height)
 {
-    return WaybackBrowser({
+    return {
         browserClassName: `netscape-navigator-4 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
 
-        buttons:
-        [
+        buttons: [
             <Button buttonName="reload" key="0"/>,
             <Button buttonName="home" key="2"/>,
             <Button buttonName="back" key="4"/>,
             <Button buttonName="forward" key="5"/>,
         ],
 
+        desktopIcon: {
+            title: "Netscape Navigator 4",
+            imageUrl: "./img/icons/netscape-navigator-3.png",
+        },
+
         // Strings that will be shown in the browser's message bar as a response to
         // specific events.
-        messageBarStrings:
-        {
+        messageBarStrings: {
             fetching_page_url: (url)=>`Connect: Looking up host: ${url}...`,
             loading_page: (url)=>`Transferring data from ${url}`,
             page_load_failed: (url)=>`Unable to connect to site ${url}`, /// TODO: Is this the wording used by the real browser?
             page_load_finished: ()=>"Document: Done",
         },
-    });
+    };
 }

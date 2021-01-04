@@ -14,7 +14,8 @@ export function Icon(props = {})
     Icon.validate_props(props);
 
     return <div className="Icon"
-                tabIndex={props.tabIndex}>
+                tabIndex={props.tabIndex}
+                onDoubleClick={props.onDoubleClick}>
 
                <div className="graphic">
                    
@@ -30,6 +31,7 @@ export function Icon(props = {})
 Icon.validate_props = function(props = {})
 {
     panic_if_not_type("object", props);
+    panic_if_not_type("function", props.onDoubleClick);
     panic_if_not_type("string", props.title,
                                 props.imageUrl);
 

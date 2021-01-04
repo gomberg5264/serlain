@@ -34,13 +34,21 @@ body
 .Desktop
 {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    width: 0; /* Align flex-wrap to left.*/
-    height: calc(100% - var(--taskbar-height));
+    width: 100%;
+    height: 100%;
 }
 
-.Desktop .Icon
+.BrowserView
+{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: calc(100% - var(--taskbar-height));
+    width: 0; /* Align flex-wrap to left.*/
+}
+
+.BrowserView .Icon
 {
     user-select: none;
     position: relative;
@@ -54,26 +62,26 @@ body
     height: 90px;
 }
 
-.Desktop .Icon:focus
+.BrowserView .Icon:focus
 {
     background-color: #00007f;
     outline: 1px dotted black;
     box-shadow: 0 0 0px 1px whitesmoke;
 }
 
-.Desktop .Icon .graphic
+.BrowserView .Icon .graphic
 {
     width: 40px;
     height: 40px;
 }
 
-.Desktop .Icon .graphic img
+.BrowserView .Icon .graphic img
 {
     width: 100%;
     height: 100%;
 }
 
-.Desktop .Icon .title
+.BrowserView .Icon .title
 {
     color: white;
     text-align: center;
@@ -136,64 +144,13 @@ body
     height: 100vh;
 }
 
-#browser-container
+.WaybackBrowser
 {
+    position: absolute;
     z-index: var(--z-index--browser);
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#browser-container .WaybackBrowser
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    display: inline-block;
+    top: 50px;
+    left: 200px;
     background-size: 100% 100%;
-}
-
-.dropdown-menu
-{
-    z-index: 999;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 15px;
-    background-color: white;
-    display: none;
-    color: black;
-    border-radius: 8px;
-    border-top-left-radius: 0;
-    box-shadow: 0 1px 6px -3px rgba(0, 0, 0, 1);
-}
-
-.dropdown-menu-item
-{
-    border-radius: 3px;
-    display: flex;
-    user-select: none;
-    cursor: pointer;
-    padding: 11px;
-    padding-left: 11px;
-    color: dimgray;
-}
-
-.dropdown-menu-item:hover
-{
-    background-color: rgb(24, 140, 248);
-    color: white;
-    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.3);
-}
-
-.dropdown-menu-header
-{
-    margin-bottom: 11px;
 }
 
 .WaybackBrowser

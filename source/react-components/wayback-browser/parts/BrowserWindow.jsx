@@ -9,7 +9,6 @@
 
 import {panic_if_not_type} from "../../../assert.js";
 import {get_wayback_page} from "../../../get-wayback-page.js";
-import {make_element_draggable} from "../../../make-draggable.js";
 import {AddressBar} from "./AddressBar.js";
 import {MessageBar} from "./MessageBar.js";
 import {TitleBar} from "./TitleBar.js";
@@ -62,8 +61,6 @@ export function BrowserWindow(props = {})
 
     const [addressBarKey, setAddressBarKey] = React.useState(0);
 
-    const domElement = React.createRef();
-
     // Functions the Viewport component gives us to interact with it.
     let viewportCallbacks =
     {
@@ -71,13 +68,7 @@ export function BrowserWindow(props = {})
         erase_page: ()=>{},
     };
 
-    React.useEffect(()=>
-    {
-        make_element_draggable(domElement.current);
-    }, [domElement]);
-
-    return <div className={`BrowserWindow ${props.browserClassName} ${waitingForServerResponse? "waiting-for-network-reply" : ""}`.trim()}
-                ref={domElement}>
+    return <div className={`BrowserWindow ${props.browserClassName} ${waitingForServerResponse? "waiting-for-network-reply" : ""}`.trim()}>
 
                <TitleBar/>
 

@@ -2,10 +2,16 @@
 
 import { panic_if_not_type } from "../../assert.js";
 import { BrowserWindow } from "./parts/BrowserWindow.js";
+import { make_element_draggable } from "../../make-draggable.js";
 export function WaybackBrowser(props = {}) {
   WaybackBrowser.validate_props(props);
+  const domElement = React.useRef();
+  React.useEffect(() => {
+    make_element_draggable(domElement.current);
+  }, [domElement]);
   return React.createElement("div", {
-    className: "WaybackBrowser"
+    className: "WaybackBrowser",
+    ref: domElement
   }, React.createElement(BrowserWindow, {
     buttons: props.buttons,
     browsingYear: props.browsingYear,
