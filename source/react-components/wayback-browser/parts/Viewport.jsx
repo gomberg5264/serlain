@@ -37,7 +37,7 @@ export function Viewport(props = {})
                <iframe src={props.url}
                        ref={iframeRef}
                        onLoad={()=>declare_new_page_loaded()}
-                       sandbox="allow-scripts allow-forms allow-modals allow-same-origin allow-downloads-without-user-activation"/>
+                       sandbox="allow-scripts allow-forms allow-modals allow-same-origin allow-downloads"/>
 
            </div>
 
