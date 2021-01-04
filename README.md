@@ -5,23 +5,12 @@ For instance, a web site archived in 1999 will be displayed in a mock browser th
 
 You can view a live version of Serlain [here](https://www.tarpeeksihyvaesoft.com/experimental/serlain/).
 
-# Screenshots
-![](./images/screenshots/serlain-chrome-ie4-3dfx.com.png)\
-**Serlain in Chrome 78** displaying a 1999 capture of `www.3dfx.com` inside a mock of Internet Explorer 4.
-
-![](./images/screenshots/serlain-chrome-nn4-yahoo.com.png)\
-**Serlain in Chrome 78** displaying a 1998 capture of `www.yahoo.com` inside a mock of Netscape Navigator 4.
+![](./images/screenshots/serlain-new-1.png)
 
 # Usage
 *(Coming)*
 
-## End-user
-*(Coming)*
-
-## Developer
-*(Coming)*
-
-### Building
+## Building
 Serlain depends on [Babel](https://babeljs.io/) for transpilation of JSX. You can install the required dependencies by executing the following in the repo's root:
 ```
 $ npm install @babel/core @babel/cli @babel/preset-react babel-preset-minify
@@ -33,9 +22,3 @@ $ ./build-dev.sh
 ```
 
 This will place the built distributable files inside the [distributable/](./distributable/) directory
-
-### Hosting
-*(Coming)*
-
-# Project status
-*(Coming)*
