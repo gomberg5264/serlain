@@ -19,7 +19,7 @@ import {BrowserWindow} from "./parts/BrowserWindow.js";
 export function WaybackBrowser(props = {})
 {
     WaybackBrowser.validate_props(props);
- 
+
     return <div className="WaybackBrowser">
 
                <BrowserWindow buttons={props.buttons}
