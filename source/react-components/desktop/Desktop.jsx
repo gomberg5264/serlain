@@ -20,7 +20,7 @@ export function Desktop(props = {})
     return <div className="Desktop">
 
                <BrowserView availableBrowsers={props.availableBrowsers}
-                            setActiveBrowser={(browser)=>setActiveBrowser(browser)}/>
+                            callbackBrowserChanged={(browser)=>setActiveBrowser(browser)}/>
 
                <Taskbar browsingYear={activeBrowser? activeBrowser.browsingYear : (new Date().getFullYear())}/>
 

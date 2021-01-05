@@ -10,7 +10,7 @@ export function Desktop(props = {}) {
     className: "Desktop"
   }, React.createElement(BrowserView, {
     availableBrowsers: props.availableBrowsers,
-    setActiveBrowser: browser => setActiveBrowser(browser)
+    callbackBrowserChanged: browser => setActiveBrowser(browser)
   }), React.createElement(Taskbar, {
     browsingYear: activeBrowser ? activeBrowser.browsingYear : new Date().getFullYear()
   }));

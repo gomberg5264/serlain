@@ -29,16 +29,13 @@ export function WaybackBrowser(props = {})
     }, [domElement]);
 
     return <div className="WaybackBrowser"
-                ref={domElement}
-                style={{zIndex: props.zIndex}}
-                onMouseDown={props.makeTopmost}>
+                ref={domElement}>
 
                <BrowserWindow buttons={props.buttons}
                               browsingYear={props.browsingYear}
                               browserClassName={props.browserClassName}
                               messageBarStrings={props.messageBarStrings}
-                              callbackCloseWindow={props.close}
-                              makeTopmost={props.makeTopmost}/>
+                              callbackCloseWindow={props.closeBrowser}/>
 
            </div>
 }
@@ -47,10 +44,8 @@ WaybackBrowser.validate_props = function(props = {})
 {
     panic_if_not_type("object", props, props.buttons);
     panic_if_not_type("string", props.browserClassName);
-    panic_if_not_type("function", props.makeTopmost,
-                                  props.close);
-    panic_if_not_type("number", props.browsingYear,
-                                props.zIndex);
+    panic_if_not_type("function", props.closeBrowser);
+    panic_if_not_type("number", props.browsingYear);
 
     panic_if_not_type("object", props.messageBarStrings);
     panic_if_not_type("function", props.messageBarStrings.fetching_page_url,
