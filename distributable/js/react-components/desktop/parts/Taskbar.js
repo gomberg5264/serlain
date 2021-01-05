@@ -34,7 +34,7 @@ export function Taskbar(props = {}) {
     className: "fas fa-fw fa-chart-pie"
   })), React.createElement("div", {
     className: "time-display"
-  }, clockString)));
+  }, clockString, ", ", props.browsingYear)));
 
   function current_time_string() {
     return new Date().toLocaleString("en-US", {

@@ -20,11 +20,11 @@
     <body>
         <noscript style="display: block;">This page requires JavaScript.</noscript>
         
-        <div id="desktop-container"></div>
+        <div id="app-container"></div>
 
         <!-- Run the desktop.-->
         <script type="module">
-            import {Desktop} from "./js/react-components/desktop/Desktop.js";
+            import {Serlain} from "./js/react-components/Serlain.js";
             import {internet_explorer_4,
                     internet_explorer_5,
                     internet_explorer_6,
@@ -43,7 +43,7 @@
                 mozilla_firefox_1(2005, 1024, 768),
             ];
 
-            ReactDOM.render(Desktop({availableBrowsers}), document.getElementById("desktop-container"));
+            ReactDOM.render(Serlain({availableBrowsers}), document.getElementById("app-container"));
         </script>
     </body>
 </html>

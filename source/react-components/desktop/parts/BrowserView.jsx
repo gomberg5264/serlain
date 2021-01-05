@@ -25,7 +25,7 @@ export function BrowserView(props = {})
                      title={browser.desktopIcon.title}
                      imageUrl={browser.desktopIcon.imageUrl}
                      browsingYear={browser.browsingYear}
-                     onDoubleClick={()=>open_browser({...browser})}/>;
+                     onDoubleClick={()=>open_browser_window({...browser})}/>;
     });
 
     const browserElements = browserWindowsOpen.map((browser, idx)=>{
@@ -46,20 +46,22 @@ export function BrowserView(props = {})
 
            </div>
 
-    function open_browser(browser)
+    function open_browser_window(browser)
     {
         browser.key = `${browser.browserClassName}-${Date.now()}`;
         browser.zIndex = topBrowserZIndex;
 
         setTopBrowserZIndex(topBrowserZIndex + 1);
         setBrowserWindowsOpen([...browserWindowsOpen, browser]);
+        props.setActiveBrowser(browser);
 
         return;
     }
 
     function make_browser_topmost(browserWindowIdx = 0)
     {
-        let maxZIndex = browserWindowsOpen[browserWindowIdx].zIndex;
+        const targetBrowser = browserWindowsOpen[browserWindowIdx];
+        let maxZIndex = targetBrowser.zIndex;
 
         for (const browser of browserWindowsOpen)
         {
@@ -68,15 +70,16 @@ export function BrowserView(props = {})
                 maxZIndex = browser.zIndex;
             }
 
-            if (browser.zIndex > browserWindowsOpen[browserWindowIdx].zIndex)
+            if (browser.zIndex > targetBrowser.zIndex)
             {
                 browser.zIndex--;
             }
         }
 
-        browserWindowsOpen[browserWindowIdx].zIndex = maxZIndex;
+        targetBrowser.zIndex = maxZIndex;
 
         setBrowserWindowsOpen([...browserWindowsOpen]);
+        props.setActiveBrowser(targetBrowser);
 
         return;
     }
@@ -86,6 +89,7 @@ BrowserView.validate_props = function(props = {})
 {
     panic_if_not_type("object", props);
     panic_if_not_type("array", props.availableBrowsers);
+    panic_if_not_type("function", props.setActiveBrowser);
 
     return;
 }

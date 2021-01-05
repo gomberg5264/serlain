@@ -51,7 +51,11 @@ export function Taskbar(props = {})
 
                    </div>
 
-                   <div className="time-display">{clockString}</div>
+                   <div className="time-display">
+                       
+                       {clockString}, {props.browsingYear}
+                       
+                   </div>
 
                </div>
 

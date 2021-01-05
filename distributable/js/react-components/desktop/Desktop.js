@@ -5,11 +5,15 @@ import { BrowserView } from "./parts/BrowserView.js";
 import { Taskbar } from "./parts/Taskbar.js";
 export function Desktop(props = {}) {
   Desktop.validate_props(props);
+  const [activeBrowser, setActiveBrowser] = React.useState(undefined);
   return React.createElement("div", {
     className: "Desktop"
   }, React.createElement(BrowserView, {
-    availableBrowsers: props.availableBrowsers
-  }), React.createElement(Taskbar, null));
+    availableBrowsers: props.availableBrowsers,
+    setActiveBrowser: browser => setActiveBrowser(browser)
+  }), React.createElement(Taskbar, {
+    browsingYear: activeBrowser ? activeBrowser.browsingYear : new Date().getFullYear()
+  }));
 }
 
 Desktop.validate_props = function (props = {}) {

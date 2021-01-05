@@ -15,11 +15,14 @@ export function Desktop(props = {})
 {
     Desktop.validate_props(props);
 
+    const [activeBrowser, setActiveBrowser] = React.useState(undefined);
+
     return <div className="Desktop">
 
-               <BrowserView availableBrowsers={props.availableBrowsers}/>
+               <BrowserView availableBrowsers={props.availableBrowsers}
+                            setActiveBrowser={(browser)=>setActiveBrowser(browser)}/>
 
-               <Taskbar/>
+               <Taskbar browsingYear={activeBrowser? activeBrowser.browsingYear : (new Date().getFullYear())}/>
 
            </div>
 }
