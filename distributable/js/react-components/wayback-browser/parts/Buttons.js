@@ -1,12 +1,16 @@
 "use strict";
 
 import { panic_if_not_type } from "../../../assert.js";
+import { Button } from "./Button.js";
 export function Buttons(props = {}) {
   Buttons.validate_props(props);
   return React.createElement("div", {
     className: "Buttons",
     onClick: event => handle_button_click(event.target.classList.item(1))
-  }, props.buttons);
+  }, props.buttons.map((name, idx) => React.createElement(Button, {
+    buttonName: name,
+    key: idx
+  })));
 
   function handle_button_click(button) {
     switch (button) {

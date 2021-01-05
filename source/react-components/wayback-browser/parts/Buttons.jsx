@@ -8,6 +8,7 @@
 "use strict";
 
 import {panic_if_not_type} from "../../../assert.js";
+import {Button} from "./Button.js";
 
 // Manages the user-clickable buttons in a WaybackBrowser window.
 //
@@ -22,7 +23,9 @@ export function Buttons(props = {})
 
     return <div className="Buttons"
                 onClick={(event)=>handle_button_click(event.target.classList.item(1))}>
-               {props.buttons}
+               
+               {props.buttons.map((name, idx)=><Button buttonName={name} key={idx}/>)}
+
            </div>
 
     function handle_button_click(button)

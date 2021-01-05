@@ -8,7 +8,6 @@
 "use strict";
 
 import {panic_if_not_type} from "./assert.js";
-import {Button} from "./react-components/wayback-browser/parts/Button.js";
 
 export function internet_explorer_4(browsingYear, width, height)
 {
@@ -26,13 +25,7 @@ export function internet_explorer_4(browsingYear, width, height)
         // action performed when the user clicks on the button will be decided based
         // on the button name (such that e.g. a button named "reload" will reload
         // the page).
-        buttons: [
-            <Button buttonName="reload" key="0"/>,
-            //<Button buttonName="stop" key="1"/>, Disabled while a proper implementation of its functionality is missing.
-            <Button buttonName="home" key="2"/>,
-            <Button buttonName="back" key="4"/>,
-            <Button buttonName="forward" key="5"/>,
-        ],
+        buttons: ["reload", "home", "back", "forward"],
 
         desktopIcon: {
             title: "Internet Explorer 4",
@@ -59,12 +52,7 @@ export function internet_explorer_5(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: [
-            <Button buttonName="reload" key="0"/>,
-            <Button buttonName="home" key="2"/>,
-            <Button buttonName="back" key="4"/>,
-            <Button buttonName="forward" key="5"/>,
-        ],
+        buttons: ["reload", "home", "back", "forward"],
 
         desktopIcon: {
             title: "Internet Explorer 5",
@@ -87,13 +75,7 @@ export function internet_explorer_6(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: [
-            <Button buttonName="reload" key="0"/>,
-            //<Button buttonName="stop" key="1"/>, Disabled while a proper implementation of its functionality is missing.
-            <Button buttonName="home" key="2"/>,
-            <Button buttonName="back" key="4"/>,
-            <Button buttonName="forward" key="5"/>,
-        ],
+        buttons: ["reload", "home", "back", "forward"],
 
         desktopIcon: {
             title: "Internet Explorer 6",
@@ -116,13 +98,7 @@ export function mozilla_firefox_1(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: [
-            <Button buttonName="reload" key="0"/>,
-            //<Button buttonName="stop" key="1"/>, Disabled while a proper implementation of its functionality is missing.
-            <Button buttonName="home" key="2"/>,
-            <Button buttonName="back" key="4"/>,
-            <Button buttonName="forward" key="5"/>,
-        ],
+        buttons: ["reload", "home", "back", "forward"],
 
         desktopIcon: {
             title: "Mozilla Firefox 1",
@@ -145,12 +121,7 @@ export function netscape_navigator_1(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: [
-            <Button buttonName="reload" key="0"/>,
-            <Button buttonName="home" key="2"/>,
-            <Button buttonName="back" key="4"/>,
-            <Button buttonName="forward" key="5"/>,
-        ],
+        buttons: ["reload", "home", "back", "forward"],
 
         desktopIcon: {
             title: "Netscape Navigator 1",
@@ -175,12 +146,7 @@ export function netscape_navigator_3(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: [
-            <Button buttonName="reload" key="0"/>,
-            <Button buttonName="home" key="2"/>,
-            <Button buttonName="back" key="4"/>,
-            <Button buttonName="forward" key="5"/>,
-        ],
+        buttons: ["reload", "home", "back", "forward"],
 
         desktopIcon: {
             title: "Netscape Navigator 3",
@@ -205,12 +171,7 @@ export function netscape_navigator_4(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: [
-            <Button buttonName="reload" key="0"/>,
-            <Button buttonName="home" key="2"/>,
-            <Button buttonName="back" key="4"/>,
-            <Button buttonName="forward" key="5"/>,
-        ],
+        buttons: ["reload", "home", "back", "forward"],
 
         desktopIcon: {
             title: "Netscape Navigator 4",
