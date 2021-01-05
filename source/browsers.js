@@ -25,7 +25,7 @@ export function internet_explorer_4(browsingYear, width, height)
         // action performed when the user clicks on the button will be decided based
         // on the button name (such that e.g. a button named "reload" will reload
         // the page).
-        buttons: ["reload", "home", "back", "forward"],
+        buttons: ["reload", "home", "back", "forward", "close"],
 
         desktopIcon: {
             title: "Internet Explorer 4",
@@ -52,7 +52,7 @@ export function internet_explorer_5(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: ["reload", "home", "back", "forward"],
+        buttons: ["reload", "home", "back", "forward", "close"],
 
         desktopIcon: {
             title: "Internet Explorer 5",
@@ -75,7 +75,7 @@ export function internet_explorer_6(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: ["reload", "home", "back", "forward"],
+        buttons: ["reload", "home", "back", "forward", "close"],
 
         desktopIcon: {
             title: "Internet Explorer 6",
@@ -98,7 +98,7 @@ export function mozilla_firefox_1(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: ["reload", "home", "back", "forward"],
+        buttons: ["reload", "home", "back", "forward", "close"],
 
         desktopIcon: {
             title: "Mozilla Firefox 1",
@@ -121,7 +121,7 @@ export function netscape_navigator_1(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: ["reload", "home", "back", "forward"],
+        buttons: ["reload", "home", "back", "forward", "close"],
 
         desktopIcon: {
             title: "Netscape Navigator 1",
@@ -146,7 +146,7 @@ export function netscape_navigator_3(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: ["reload", "home", "back", "forward"],
+        buttons: ["reload", "home", "back", "forward", "close"],
 
         desktopIcon: {
             title: "Netscape Navigator 3",
@@ -171,7 +171,7 @@ export function netscape_navigator_4(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
-        buttons: ["reload", "home", "back", "forward"],
+        buttons: ["reload", "home", "back", "forward", "close"],
 
         desktopIcon: {
             title: "Netscape Navigator 4",

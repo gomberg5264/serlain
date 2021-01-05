@@ -6,7 +6,7 @@ import { Icon } from "./Icon.js";
 export function BrowserView(props = {}) {
   BrowserView.validate_props(props);
   const [browserWindowsOpen, setBrowserWindowsOpen] = React.useState([]);
-  const [topBrowserZIndex, setTopBrowserZIndex] = React.useState(0);
+  const [topBrowserIdx, setTopBrowserIdx] = React.useState(undefined);
   const iconElements = props.availableBrowsers.map((browser, idx) => {
     return React.createElement(Icon, {
       key: idx,
@@ -26,40 +26,70 @@ export function BrowserView(props = {}) {
       messageBarStrings: browser.messageBarStrings,
       key: browser.key,
       zIndex: browser.zIndex,
-      makeTopmost: () => make_browser_topmost(idx)
+      makeTopmost: () => make_browser_window_topmost(idx),
+      close: () => close_browser_window(idx)
     });
   });
+  React.useEffect(() => {
+    props.setActiveBrowser(topBrowserIdx >= 0 ? browserWindowsOpen[topBrowserIdx] : undefined);
+  }, [topBrowserIdx]);
   return React.createElement("div", {
     className: "BrowserView"
   }, iconElements, browserElements);
 
   function open_browser_window(browser) {
+    const newWindowList = [...browserWindowsOpen, browser];
     browser.key = `${browser.browserClassName}-${Date.now()}`;
-    browser.zIndex = topBrowserZIndex;
-    setTopBrowserZIndex(topBrowserZIndex + 1);
-    setBrowserWindowsOpen([...browserWindowsOpen, browser]);
-    props.setActiveBrowser(browser);
+    browser.zIndex = browserWindowsOpen.length ? top_window_z_idx() + 1 : 0;
+    setTopBrowserIdx(top_window_idx(newWindowList));
+    setBrowserWindowsOpen(newWindowList);
     return;
   }
 
-  function make_browser_topmost(browserWindowIdx = 0) {
+  function close_browser_window(browserWindowIdx = 0) {
     const targetBrowser = browserWindowsOpen[browserWindowIdx];
-    let maxZIndex = targetBrowser.zIndex;
 
     for (const browser of browserWindowsOpen) {
-      if (browser.zIndex > maxZIndex) {
-        maxZIndex = browser.zIndex;
-      }
-
       if (browser.zIndex > targetBrowser.zIndex) {
         browser.zIndex--;
       }
     }
 
-    targetBrowser.zIndex = maxZIndex;
-    setBrowserWindowsOpen([...browserWindowsOpen]);
-    props.setActiveBrowser(targetBrowser);
+    const updatedList = [...browserWindowsOpen];
+    updatedList.splice(browserWindowIdx, 1);
+    setTopBrowserIdx(updatedList.length ? top_window_idx(updatedList) : undefined);
+    setBrowserWindowsOpen(updatedList);
     return;
+  }
+
+  function make_browser_window_topmost(browserWindowIdx = 0) {
+    if (browserWindowIdx == topBrowserIdx) {
+      return;
+    }
+
+    const targetBrowser = browserWindowsOpen[browserWindowIdx];
+    const topZ = top_window_z_idx();
+
+    for (const browser of browserWindowsOpen) {
+      if (browser.zIndex > targetBrowser.zIndex) {
+        browser.zIndex--;
+      }
+    }
+
+    targetBrowser.zIndex = topZ;
+    setTopBrowserIdx(browserWindowIdx);
+    return;
+  }
+
+  function top_window_z_idx(windowList = undefined) {
+    windowList = windowList || browserWindowsOpen;
+    return windowList.length ? windowList.reduce((maxZ, browser) => Math.max(maxZ, browser.zIndex || 0), 0) : undefined;
+  }
+
+  function top_window_idx(windowList = undefined) {
+    windowList = windowList || browserWindowsOpen;
+    const topZ = top_window_z_idx(windowList);
+    return Math.max(0, windowList.findIndex(e => e.zIndex == topZ));
   }
 }
 

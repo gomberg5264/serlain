@@ -30,6 +30,14 @@
     left: 87px;
 }
 
+.WaybackBrowser > .BrowserWindow.internet-explorer-4.resolution-800x600 .Button.close
+{
+    width: 15px;
+    height: 13px;
+    top: 6px;
+    left: 778px;
+}
+
 .WaybackBrowser > .BrowserWindow.internet-explorer-4.resolution-800x600
 {
     position: relative;

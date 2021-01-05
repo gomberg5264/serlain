@@ -30,6 +30,14 @@
     left: 51px;
 }
 
+.WaybackBrowser > .BrowserWindow.netscape-navigator-1.resolution-630x470 .Button.close
+{
+    width: 18px;
+    height: 18px;
+    top: 4px;
+    left: 4px;
+}
+
 .WaybackBrowser > .BrowserWindow.netscape-navigator-1.resolution-630x470
 {
     position: relative;

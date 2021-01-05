@@ -30,6 +30,14 @@
     left: 52px;
 }
 
+.WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 .Button.close
+{
+    width: 19px;
+    height: 19px;
+    top: 7px;
+    left: 998px;
+}
+
 .WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768
 {
     position: relative;

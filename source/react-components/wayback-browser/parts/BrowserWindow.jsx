@@ -68,17 +68,45 @@ export function BrowserWindow(props = {})
         erase_page: ()=>{},
     };
 
-    return <div className={`BrowserWindow ${props.browserClassName} ${waitingForServerResponse? "waiting-for-network-reply" : ""}`.trim()}
-    >
+    return <div className={`BrowserWindow ${props.browserClassName} ${waitingForServerResponse? "waiting-for-network-reply" : ""}`.trim()}>
 
                <TitleBar/>
 
                <Buttons buttons={props.buttons}
-                        callbackButtonReload={()=>{if (!waitingForServerResponse) {refresh_address_bar(); viewportCallbacks.reload_page();}}}
-                        callbackButtonStop={()=>{if (!waitingForServerResponse) viewportCallbacks.erase_page()}}
-                        callbackButtonBack={()=>{if (!waitingForServerResponse) window.history.back()}}
-                        callbackButtonForward={()=>{if (!waitingForServerResponse) window.history.forward()}}
-                        callbackButtonHome={()=>{if (!waitingForServerResponse) navigate_to_url("about:serlain")}}/>
+                        callbackButtonReload={()=>{
+                            if (!waitingForServerResponse)
+                            {
+                                refresh_address_bar();
+                                viewportCallbacks.reload_page();
+                            }
+                        }}
+                        callbackButtonStop={()=>{
+                            if (!waitingForServerResponse)
+                            {
+                                viewportCallbacks.erase_page();
+                            }
+                        }}
+                        callbackButtonBack={()=>{
+                            if (!waitingForServerResponse)
+                            {
+                                window.history.back();
+                            }
+                        }}
+                        callbackButtonForward={()=>{
+                            if (!waitingForServerResponse)
+                            {
+                                window.history.forward();
+                            }
+                        }}
+                        callbackButtonHome={()=>{
+                            if (!waitingForServerResponse)
+                            {
+                                navigate_to_url("about:serlain");
+                            }
+                        }}
+                        callbackButtonClose={()=>{
+                            props.callbackCloseWindow();
+                        }}/>
 
                <AddressBar key={addressBarKey}
                            initialUrl={websiteUrl}
@@ -164,6 +192,7 @@ BrowserWindow.validate_props = function(props = {})
     panic_if_not_type("object", props, props.buttons);
     panic_if_not_type("string", props.browserClassName);
     panic_if_not_type("number", props.browsingYear);
+    panic_if_not_type("function", props.callbackCloseWindow);
 
     panic_if_not_type("object", props.messageBarStrings);
     panic_if_not_type("function", props.messageBarStrings.fetching_page_url,

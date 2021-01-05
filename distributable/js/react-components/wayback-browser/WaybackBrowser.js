@@ -20,14 +20,16 @@ export function WaybackBrowser(props = {}) {
     buttons: props.buttons,
     browsingYear: props.browsingYear,
     browserClassName: props.browserClassName,
-    messageBarStrings: props.messageBarStrings
+    messageBarStrings: props.messageBarStrings,
+    callbackCloseWindow: props.close,
+    makeTopmost: props.makeTopmost
   }));
 }
 
 WaybackBrowser.validate_props = function (props = {}) {
   panic_if_not_type("object", props, props.buttons);
   panic_if_not_type("string", props.browserClassName);
-  panic_if_not_type("function", props.makeTopmost);
+  panic_if_not_type("function", props.makeTopmost, props.close);
   panic_if_not_type("number", props.browsingYear, props.zIndex);
   panic_if_not_type("object", props.messageBarStrings);
   panic_if_not_type("function", props.messageBarStrings.fetching_page_url, props.messageBarStrings.loading_page, props.messageBarStrings.page_load_finished, props.messageBarStrings.page_load_failed);

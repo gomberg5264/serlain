@@ -29,16 +29,27 @@ export function BrowserWindow(props = {}) {
       }
     },
     callbackButtonStop: () => {
-      if (!waitingForServerResponse) viewportCallbacks.erase_page();
+      if (!waitingForServerResponse) {
+        viewportCallbacks.erase_page();
+      }
     },
     callbackButtonBack: () => {
-      if (!waitingForServerResponse) window.history.back();
+      if (!waitingForServerResponse) {
+        window.history.back();
+      }
     },
     callbackButtonForward: () => {
-      if (!waitingForServerResponse) window.history.forward();
+      if (!waitingForServerResponse) {
+        window.history.forward();
+      }
     },
     callbackButtonHome: () => {
-      if (!waitingForServerResponse) navigate_to_url("about:serlain");
+      if (!waitingForServerResponse) {
+        navigate_to_url("about:serlain");
+      }
+    },
+    callbackButtonClose: () => {
+      props.callbackCloseWindow();
     }
   }), React.createElement(AddressBar, {
     key: addressBarKey,
@@ -108,6 +119,7 @@ BrowserWindow.validate_props = function (props = {}) {
   panic_if_not_type("object", props, props.buttons);
   panic_if_not_type("string", props.browserClassName);
   panic_if_not_type("number", props.browsingYear);
+  panic_if_not_type("function", props.callbackCloseWindow);
   panic_if_not_type("object", props.messageBarStrings);
   panic_if_not_type("function", props.messageBarStrings.fetching_page_url, props.messageBarStrings.loading_page, props.messageBarStrings.page_load_finished, props.messageBarStrings.page_load_failed);
   return;

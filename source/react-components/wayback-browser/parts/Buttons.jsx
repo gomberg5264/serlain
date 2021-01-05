@@ -37,6 +37,7 @@ export function Buttons(props = {})
             case "back": props.callbackButtonBack(); break;
             case "forward": props.callbackButtonForward(); break;
             case "home": props.callbackButtonHome(); break;
+            case "close": props.callbackButtonClose(); break;
             default: break;
         }
 
@@ -51,7 +52,8 @@ Buttons.validate_props = function(props = {})
                                   props.callbackButtonStop,
                                   props.callbackButtonBack,
                                   props.callbackButtonForward,
-                                  props.callbackButtonHome);
+                                  props.callbackButtonHome,
+                                  props.callbackButtonClose);
 
     return;
 }

@@ -17,7 +17,8 @@ export function BrowserView(props = {})
 
     const [browserWindowsOpen, setBrowserWindowsOpen] = React.useState([]);
 
-    const [topBrowserZIndex, setTopBrowserZIndex] = React.useState(0);
+    // Index to 'browserWindowsOpen' identifying the topmost browser window.
+    const [topBrowserIdx, setTopBrowserIdx] = React.useState(undefined);
 
     const iconElements = props.availableBrowsers.map((browser, idx)=>{
         return <Icon key={idx}
@@ -35,8 +36,14 @@ export function BrowserView(props = {})
                                messageBarStrings={browser.messageBarStrings}
                                key={browser.key}
                                zIndex={browser.zIndex}
-                               makeTopmost={()=>make_browser_topmost(idx)}/>;
+                               makeTopmost={()=>make_browser_window_topmost(idx)}
+                               close={()=>close_browser_window(idx)}/>;
     });
+
+    React.useEffect(()=>
+    {
+        props.setActiveBrowser((topBrowserIdx >= 0)? browserWindowsOpen[topBrowserIdx] : undefined);
+    }, [topBrowserIdx]);
 
     return <div className="BrowserView">
 
@@ -48,40 +55,79 @@ export function BrowserView(props = {})
 
     function open_browser_window(browser)
     {
-        browser.key = `${browser.browserClassName}-${Date.now()}`;
-        browser.zIndex = topBrowserZIndex;
+        const newWindowList = [...browserWindowsOpen, browser];
 
-        setTopBrowserZIndex(topBrowserZIndex + 1);
-        setBrowserWindowsOpen([...browserWindowsOpen, browser]);
-        props.setActiveBrowser(browser);
+        browser.key = `${browser.browserClassName}-${Date.now()}`;
+        browser.zIndex = (browserWindowsOpen.length? (top_window_z_idx() + 1) : 0);
+
+        setTopBrowserIdx(top_window_idx(newWindowList));
+        setBrowserWindowsOpen(newWindowList);
 
         return;
     }
 
-    function make_browser_topmost(browserWindowIdx = 0)
+    function close_browser_window(browserWindowIdx = 0)
     {
         const targetBrowser = browserWindowsOpen[browserWindowIdx];
-        let maxZIndex = targetBrowser.zIndex;
 
         for (const browser of browserWindowsOpen)
         {
-            if (browser.zIndex > maxZIndex)
+            if (browser.zIndex > targetBrowser.zIndex)
             {
-                maxZIndex = browser.zIndex;
+                browser.zIndex--;
             }
+        }
+        
+        const updatedList = [...browserWindowsOpen];
+        updatedList.splice(browserWindowIdx, 1);
 
+        setTopBrowserIdx(updatedList.length? top_window_idx(updatedList) : undefined);
+        setBrowserWindowsOpen(updatedList);
+
+        return;
+    }
+
+    function make_browser_window_topmost(browserWindowIdx = 0)
+    {
+        if (browserWindowIdx == topBrowserIdx)
+        {
+            return;
+        }
+
+        const targetBrowser = browserWindowsOpen[browserWindowIdx];
+        const topZ = top_window_z_idx();
+
+        for (const browser of browserWindowsOpen)
+        {
             if (browser.zIndex > targetBrowser.zIndex)
             {
                 browser.zIndex--;
             }
         }
 
-        targetBrowser.zIndex = maxZIndex;
+        targetBrowser.zIndex = topZ;
 
-        setBrowserWindowsOpen([...browserWindowsOpen]);
-        props.setActiveBrowser(targetBrowser);
+        setTopBrowserIdx(browserWindowIdx);
 
         return;
+    }
+
+    function top_window_z_idx(windowList = undefined)
+    {
+        windowList = (windowList || browserWindowsOpen);
+        
+        return windowList.length
+               ? windowList.reduce((maxZ, browser)=>Math.max(maxZ, (browser.zIndex || 0)), 0)
+               : undefined;
+    }
+
+    function top_window_idx(windowList = undefined)
+    {
+        windowList = (windowList || browserWindowsOpen);
+
+        const topZ = top_window_z_idx(windowList);
+
+        return Math.max(0, windowList.findIndex(e=>(e.zIndex == topZ)));
     }
 }
 
