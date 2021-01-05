@@ -5,7 +5,7 @@ import { WaybackBrowser } from "../../wayback-browser/WaybackBrowser.js";
 import { Icon } from "./Icon.js";
 export function BrowserView(props = {}) {
   BrowserView.validate_props(props);
-  const [activeBrowser, setActiveBrowser] = React.useState(props.availableBrowsers[3]);
+  const [activeBrowser, setActiveBrowser] = React.useState(props.defaultBrowser);
   const browserDesktopIcons = props.availableBrowsers.map((browser, idx) => {
     return React.createElement(Icon, {
       key: idx,
@@ -13,6 +13,7 @@ export function BrowserView(props = {}) {
       title: browser.desktopIcon.title,
       imageUrl: browser.desktopIcon.imageUrl,
       browsingYear: browser.browsingYear,
+      operatingSystem: browser.operatingSystem,
       onDoubleClick: () => open_browser_window(browser)
     });
   });
@@ -27,9 +28,9 @@ export function BrowserView(props = {}) {
         closeBrowser: close_active_browser_window,
         key: Date.now()
       });
+    } else {
+      return "";
     }
-
-    return "";
   })();
 
   React.useEffect(() => {

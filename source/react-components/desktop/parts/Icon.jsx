@@ -16,7 +16,7 @@ export function Icon(props = {})
     return <div className="Icon"
                 tabIndex={props.tabIndex}
                 onDoubleClick={props.onDoubleClick}
-                title={`Year: ${props.browsingYear}`}>
+                title={`Year: ${props.browsingYear}\n${props.operatingSystem}`}>
 
                <div className="graphic">
                    

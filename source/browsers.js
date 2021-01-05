@@ -20,6 +20,8 @@ export function internet_explorer_4(browsingYear, width, height)
         // viewed using this browser.
         browsingYear: browsingYear,
 
+        operatingSystem: "Windows 95",
+
         // Create a list of the interactible buttons in the browser window.
         // Note that the buttonName property must match a known button name - the
         // action performed when the user clicks on the button will be decided based
@@ -52,6 +54,8 @@ export function internet_explorer_5(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
+        operatingSystem: "Windows 2000",
+
         buttons: ["reload", "home", "back", "forward", "close"],
 
         desktopIcon: {
@@ -74,6 +78,8 @@ export function internet_explorer_6(browsingYear, width, height)
         browserClassName: `internet-explorer-6 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
+
+        operatingSystem: "Windows XP",
 
         buttons: ["reload", "home", "back", "forward", "close"],
 
@@ -98,6 +104,8 @@ export function mozilla_firefox_1(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
+        operatingSystem: "Windows XP",
+
         buttons: ["reload", "home", "back", "forward", "close"],
 
         desktopIcon: {
@@ -120,6 +128,8 @@ export function netscape_navigator_1(browsingYear, width, height)
         browserClassName: `netscape-navigator-1 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
+
+        operatingSystem: "Windows 3.1",
 
         buttons: ["reload", "home", "back", "forward", "close"],
 
@@ -146,6 +156,8 @@ export function netscape_navigator_3(browsingYear, width, height)
 
         browsingYear: browsingYear,
 
+        operatingSystem: "Windows 95",
+
         buttons: ["reload", "home", "back", "forward", "close"],
 
         desktopIcon: {
@@ -170,6 +182,8 @@ export function netscape_navigator_4(browsingYear, width, height)
         browserClassName: `netscape-navigator-4 resolution-${width}x${height}`,
 
         browsingYear: browsingYear,
+
+        operatingSystem: "Windows 95",
 
         buttons: ["reload", "home", "back", "forward", "close"],
 

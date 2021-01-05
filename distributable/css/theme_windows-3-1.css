@@ -1,0 +1,21 @@
+.Desktop.theme-windows-3-1 
+{
+    background-color: #008080;
+}
+
+.Desktop.theme-windows-3-1 .Taskbar 
+{
+    background-color: #c0c0c0;
+    border-top: 1px solid black;
+    box-shadow: none;
+}
+
+.Desktop.theme-windows-3-1 .Taskbar .right-side-container
+{
+    padding: 0 20px;
+}
+
+.Desktop.theme-windows-3-1 .Taskbar .right-side-container .icon-row
+{
+    display: none;
+}

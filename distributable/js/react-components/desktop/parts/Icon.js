@@ -7,7 +7,7 @@ export function Icon(props = {}) {
     className: "Icon",
     tabIndex: props.tabIndex,
     onDoubleClick: props.onDoubleClick,
-    title: `Year: ${props.browsingYear}`
+    title: `Year: ${props.browsingYear}\n${props.operatingSystem}`
   }, React.createElement("div", {
     className: "graphic"
   }, React.createElement("img", {

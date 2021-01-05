@@ -6,6 +6,7 @@ export function internet_explorer_4(browsingYear, width, height) {
   return {
     browserClassName: `internet-explorer-4 resolution-${width}x${height}`,
     browsingYear: browsingYear,
+    operatingSystem: "Windows 95",
     buttons: ["reload", "home", "back", "forward", "close"],
     desktopIcon: {
       title: "Internet Explorer 4",
@@ -24,6 +25,7 @@ export function internet_explorer_5(browsingYear, width, height) {
   return {
     browserClassName: `internet-explorer-5 resolution-${width}x${height}`,
     browsingYear: browsingYear,
+    operatingSystem: "Windows 2000",
     buttons: ["reload", "home", "back", "forward", "close"],
     desktopIcon: {
       title: "Internet Explorer 5",
@@ -41,6 +43,7 @@ export function internet_explorer_6(browsingYear, width, height) {
   return {
     browserClassName: `internet-explorer-6 resolution-${width}x${height}`,
     browsingYear: browsingYear,
+    operatingSystem: "Windows XP",
     buttons: ["reload", "home", "back", "forward", "close"],
     desktopIcon: {
       title: "Internet Explorer 6",
@@ -58,6 +61,7 @@ export function mozilla_firefox_1(browsingYear, width, height) {
   return {
     browserClassName: `mozilla-firefox-1 resolution-${width}x${height}`,
     browsingYear: browsingYear,
+    operatingSystem: "Windows XP",
     buttons: ["reload", "home", "back", "forward", "close"],
     desktopIcon: {
       title: "Mozilla Firefox 1",
@@ -75,6 +79,7 @@ export function netscape_navigator_1(browsingYear, width, height) {
   return {
     browserClassName: `netscape-navigator-1 resolution-${width}x${height}`,
     browsingYear: browsingYear,
+    operatingSystem: "Windows 3.1",
     buttons: ["reload", "home", "back", "forward", "close"],
     desktopIcon: {
       title: "Netscape Navigator 1",
@@ -92,6 +97,7 @@ export function netscape_navigator_3(browsingYear, width, height) {
   return {
     browserClassName: `netscape-navigator-3 resolution-${width}x${height}`,
     browsingYear: browsingYear,
+    operatingSystem: "Windows 95",
     buttons: ["reload", "home", "back", "forward", "close"],
     desktopIcon: {
       title: "Netscape Navigator 3",
@@ -109,6 +115,7 @@ export function netscape_navigator_4(browsingYear, width, height) {
   return {
     browserClassName: `netscape-navigator-4 resolution-${width}x${height}`,
     browsingYear: browsingYear,
+    operatingSystem: "Windows 95",
     buttons: ["reload", "home", "back", "forward", "close"],
     desktopIcon: {
       title: "Netscape Navigator 4",

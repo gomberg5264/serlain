@@ -15,11 +15,16 @@ export function Desktop(props = {})
 {
     Desktop.validate_props(props);
 
-    const [activeBrowser, setActiveBrowser] = React.useState(undefined);
+    const [activeBrowser, setActiveBrowser] = React.useState(props.availableBrowsers[4]);
 
-    return <div className="Desktop">
+    const themeClassName = activeBrowser
+                           ? activeBrowser.operatingSystem.toLowerCase().replace(/[ .]/g, "-")
+                           : "generic";
+
+    return <div className={`Desktop theme-${themeClassName}`}>
 
                <BrowserView availableBrowsers={props.availableBrowsers}
+                            defaultBrowser={activeBrowser}
                             callbackBrowserChanged={(browser)=>setActiveBrowser(browser)}/>
 
                <Taskbar browsingYear={activeBrowser? activeBrowser.browsingYear : (new Date().getFullYear())}/>
