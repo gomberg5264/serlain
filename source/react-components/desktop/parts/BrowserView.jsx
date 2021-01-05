@@ -15,33 +15,67 @@ export function BrowserView(props = {})
 {
     BrowserView.validate_props(props);
 
-    const [browsersOpen, setBrowsersOpen] = React.useState([]);
+    const [browserWindowsOpen, setBrowserWindowsOpen] = React.useState([]);
+
+    const [topBrowserZIndex, setTopBrowserZIndex] = React.useState(0);
 
     const iconElements = props.availableBrowsers.map((browser, idx)=>{
         return <Icon key={idx}
                      tabIndex={idx+1}
                      title={browser.desktopIcon.title}
                      imageUrl={browser.desktopIcon.imageUrl}
-                     onDoubleClick={()=>open_browser(browser)}/>;
+                     onDoubleClick={()=>open_browser({...browser})}/>;
+    });
+
+    const browserElements = browserWindowsOpen.map((browser, idx)=>{
+        return <WaybackBrowser browserClassName={browser.browserClassName}
+                               browsingYear={browser.browsingYear}
+                               buttons={browser.buttons}
+                               messageBarStrings={browser.messageBarStrings}
+                               key={browser.key}
+                               zIndex={browser.zIndex}
+                               makeTopmost={()=>make_browser_topmost(idx)}/>;
     });
 
     return <div className="BrowserView">
 
                {iconElements}
 
-               {browsersOpen}
+               {browserElements}
 
            </div>
 
     function open_browser(browser)
     {
-        const newBrowser = <WaybackBrowser browserClassName={browser.browserClassName}
-                                           browsingYear={browser.browsingYear}
-                                           buttons={browser.buttons}
-                                           messageBarStrings={browser.messageBarStrings}
-                                           key={`${browser.browserClassName}-${Date.now()}`}/>;
+        browser.key = `${browser.browserClassName}-${Date.now()}`;
+        browser.zIndex = topBrowserZIndex;
 
-        setBrowsersOpen([...browsersOpen, newBrowser]);
+        setTopBrowserZIndex(topBrowserZIndex + 1);
+        setBrowserWindowsOpen([...browserWindowsOpen, browser]);
+
+        return;
+    }
+
+    function make_browser_topmost(browserWindowIdx = 0)
+    {
+        let maxZIndex = browserWindowsOpen[browserWindowIdx].zIndex;
+
+        for (const browser of browserWindowsOpen)
+        {
+            if (browser.zIndex > maxZIndex)
+            {
+                maxZIndex = browser.zIndex;
+            }
+
+            if (browser.zIndex > browserWindowsOpen[browserWindowIdx].zIndex)
+            {
+                browser.zIndex--;
+            }
+        }
+
+        browserWindowsOpen[browserWindowIdx].zIndex = maxZIndex;
+
+        setBrowserWindowsOpen([...browserWindowsOpen]);
 
         return;
     }

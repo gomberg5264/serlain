@@ -68,7 +68,8 @@ export function BrowserWindow(props = {})
         erase_page: ()=>{},
     };
 
-    return <div className={`BrowserWindow ${props.browserClassName} ${waitingForServerResponse? "waiting-for-network-reply" : ""}`.trim()}>
+    return <div className={`BrowserWindow ${props.browserClassName} ${waitingForServerResponse? "waiting-for-network-reply" : ""}`.trim()}
+    >
 
                <TitleBar/>
 

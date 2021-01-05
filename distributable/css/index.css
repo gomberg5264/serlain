@@ -17,9 +17,8 @@
 :root
 {
     --taskbar-height: 32px;
-    --z-index--browser: 6;
-    --z-index--desktop-icons: 5;
-    --z-index--taskbar: 7;
+    --z-index--browser-view: 1;
+    --z-index--taskbar: 2;
 }
 
 body
@@ -46,13 +45,13 @@ body
     flex-direction: column;
     height: calc(100% - var(--taskbar-height));
     width: 0; /* Align flex-wrap to left.*/
+    position: relative;
+    z-index: var(--z-index--browser-view);
 }
 
 .BrowserView .Icon
 {
     user-select: none;
-    position: relative;
-    z-index: var(--z-index--desktop-icons);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -100,7 +99,7 @@ body
     height: var(--taskbar-height);
     border-top: 1px solid white;
     background-color: rgba(192, 192, 192);
-    box-shadow: 0 -1px 0 #dedede;
+    box-shadow: 0 -1px 0 #dfdfdf;
     box-sizing: border-box;
     font-size: 95%;
 }
@@ -148,8 +147,8 @@ body
 {
     position: absolute;
     z-index: var(--z-index--browser);
-    top: 50px;
-    left: 200px;
+    top: 0;
+    left: 0;
     background-size: 100% 100%;
 }
 
