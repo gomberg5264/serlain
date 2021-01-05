@@ -22,3 +22,9 @@ $ ./build-dev.sh
 ```
 
 This will place the built distributable files inside the [distributable/](./distributable/) directory
+
+# Screenshots
+
+![](./images/screenshots/serlain-new-3.png)
+
+![](./images/screenshots/serlain-new-2.png)
