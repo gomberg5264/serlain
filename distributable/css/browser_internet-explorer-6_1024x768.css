@@ -103,7 +103,7 @@
 
 .WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .TitleBar::after
 {
-    content: " - Microsoft Internet Explorer";
+    content: " - Microsoft Internet Explorer 6.0";
 }
 
 .WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .Viewport

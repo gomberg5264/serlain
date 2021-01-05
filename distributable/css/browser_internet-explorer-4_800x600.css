@@ -99,7 +99,7 @@
 
 .WaybackBrowser > .BrowserWindow.internet-explorer-4.resolution-800x600 > .TitleBar::after
 {
-    content: " - Microsoft Internet Explorer";
+    content: " - Microsoft Internet Explorer 4.0";
 }
 
 .WaybackBrowser > .BrowserWindow.internet-explorer-4.resolution-800x600 > .Viewport

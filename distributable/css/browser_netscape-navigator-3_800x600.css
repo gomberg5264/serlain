@@ -100,7 +100,7 @@
 
 .WaybackBrowser > .BrowserWindow.netscape-navigator-3.resolution-800x600 > .TitleBar::before
 {
-    content: "Netscape - ";
+    content: "Netscape 3.0 - ";
 }
 
 .WaybackBrowser > .BrowserWindow.netscape-navigator-3.resolution-800x600 > .Viewport

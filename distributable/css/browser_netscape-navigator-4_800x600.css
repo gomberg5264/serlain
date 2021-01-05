@@ -100,7 +100,7 @@
 
 .WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .TitleBar::after
 {
-    content: " - Netscape";
+    content: " - Netscape 4.0";
 }
 
 .WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .Viewport

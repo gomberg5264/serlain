@@ -103,7 +103,7 @@
 
 .WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .TitleBar::after
 {
-    content: " - Mozilla Firefox";
+    content: " - Mozilla Firefox 1.0";
 }
 
 .WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .Viewport
