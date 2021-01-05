@@ -15,7 +15,8 @@ export function Icon(props = {})
 
     return <div className="Icon"
                 tabIndex={props.tabIndex}
-                onDoubleClick={props.onDoubleClick}>
+                onDoubleClick={props.onDoubleClick}
+                title={`Year: ${props.browsingYear}`}>
 
                <div className="graphic">
                    
@@ -32,6 +33,7 @@ Icon.validate_props = function(props = {})
 {
     panic_if_not_type("object", props);
     panic_if_not_type("function", props.onDoubleClick);
+    panic_if_not_type("number", props.browsingYear);
     panic_if_not_type("string", props.title,
                                 props.imageUrl);
 

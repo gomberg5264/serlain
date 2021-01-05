@@ -24,6 +24,7 @@ export function BrowserView(props = {})
                      tabIndex={idx+1}
                      title={browser.desktopIcon.title}
                      imageUrl={browser.desktopIcon.imageUrl}
+                     browsingYear={browser.browsingYear}
                      onDoubleClick={()=>open_browser({...browser})}/>;
     });
 

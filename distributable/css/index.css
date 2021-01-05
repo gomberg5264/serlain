@@ -61,6 +61,12 @@ body
     height: 90px;
 }
 
+.BrowserView .Icon:hover
+{
+    outline: 1px dotted black;
+    box-shadow: 0 0 0px 1px whitesmoke;
+}
+
 .BrowserView .Icon:focus
 {
     background-color: #00007f;
