@@ -46,7 +46,10 @@ export function BrowserView(props = {})
 
     React.useEffect(()=>
     {
-        props.callbackBrowserChanged(activeBrowser);
+        if (activeBrowser)
+        {
+            props.callbackBrowserChanged(activeBrowser);
+        }
     }, [activeBrowser]);
 
     return <div className="BrowserView">

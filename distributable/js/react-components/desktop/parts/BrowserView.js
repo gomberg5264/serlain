@@ -34,7 +34,9 @@ export function BrowserView(props = {}) {
   })();
 
   React.useEffect(() => {
-    props.callbackBrowserChanged(activeBrowser);
+    if (activeBrowser) {
+      props.callbackBrowserChanged(activeBrowser);
+    }
   }, [activeBrowser]);
   return React.createElement("div", {
     className: "BrowserView"
