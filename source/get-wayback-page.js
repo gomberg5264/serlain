@@ -28,39 +28,9 @@ export async function get_wayback_page(websiteUrl, year)
 
     const waybackPage = {url:"", html:""};
 
-    // Simulate the lag of a slow network in making this request.
-    await async_delay_ms(500 + (1000 * Math.random()));
-
-    // Sanity-check and sanitize the input parameters.
-    {
-        if ((typeof year !== "number") ||
-            (year < 1990) ||
-            (year > (new Date().getFullYear())))
-        {
-            return null;
-        }
-
-        if ((typeof websiteUrl !== "string") ||
-            (websiteUrl.length > 300))
-        {
-            return null;
-        }
-
-        // Only allow a-z, A-Z, 0-9, and a couple of additional symbols in URLs.
-        if (websiteUrl.match(/[^\w-_~\.:\/]+/))
-        {
-            console.log("Invalid");
-            return null;
-        }
-    }
-
     // Get the Wayback Machine URL for the given website.
     {
-        // The Wayback Machine API response doesn't seem to set Access-Control-Allow-Origin,
-        // so we'll use a CORS proxy to allow querying the API via client-side code.
-        const corsProxyUrl = "//cors-anywhere.herokuapp.com";
-
-        const response = await fetch(`${corsProxyUrl}///archive.org/wayback/available?url=${websiteUrl}&timestamp=${year}0615`);
+        const response = await fetch(`./get-wayback-url.php?website=${websiteUrl}&year=${year}`);
 
         if (!response.ok)
         {
@@ -70,36 +40,45 @@ export async function get_wayback_page(websiteUrl, year)
         const jsonData = await response.json();
 
         if (!jsonData ||
-            (typeof jsonData["archived_snapshots"] !== "object") ||
-            (typeof jsonData["archived_snapshots"]["closest"] !== "object") ||
-            (typeof jsonData["archived_snapshots"]["closest"]["status"] !== "string") ||
-            (typeof jsonData["archived_snapshots"]["closest"]["available"] !== "boolean") ||
-            (typeof jsonData["archived_snapshots"]["closest"]["timestamp"] !== "string") ||
-            (typeof jsonData["archived_snapshots"]["closest"]["url"] !== "string"))
+            !jsonData.successful)
         {
             return null;
         }
 
-        if ((jsonData["archived_snapshots"]["closest"]["status"] != 200) ||
-            !jsonData["archived_snapshots"]["closest"]["timestamp"].startsWith(year) ||
-            !jsonData["archived_snapshots"]["closest"]["available"])
+        if (!jsonData.url || (typeof jsonData.url !== "string"))
         {
             return null;
         }
 
-        waybackPage.url = jsonData["archived_snapshots"]["closest"]["url"];
-
-        // Attempt to prevent mixed content loading.
-        waybackPage.url = waybackPage.url.replace(/^https?:\/\//, "//");
+        waybackPage.url = jsonData.url;
     }
 
-    return waybackPage;
-}
-
-function async_delay_ms(ms)
-{
-    return new Promise((resolve)=>
+    /* Disabled for now, while proper client-side support is implemented (if ever).
+    // Download the Wayback Machine page's HTML.
     {
-        setTimeout(resolve, ms);
-    });
+        const response = await fetch(`./dist/server/get-wayback-html.php?waybackUrl=${waybackPage.url}`);
+
+        if (!response.ok)
+        {
+            return null;
+        }
+
+        const htmlData = await response.json();
+
+        if (!htmlData ||
+            !htmlData.successful)
+        {
+            return null;
+        }
+
+        if (!htmlData.html || (typeof htmlData.html !== "string"))
+        {
+            return null;
+        }
+
+        waybackPage.html = htmlData.html;
+    }
+    */
+
+    return waybackPage;
 }
