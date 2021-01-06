@@ -51,6 +51,21 @@
                 google_chrome_1(2009, 1024, 768),
             ];
 
+            // Pre-load the browser images.
+            const browserImages = [
+                "./img/browsers/google-chrome-1_1024x768.png",
+                "./img/browsers/internet-explorer-4_800x600.png",
+                "./img/browsers/internet-explorer-5_800x600.png",
+                "./img/browsers/internet-explorer-6_1024x768.png",
+                "./img/browsers/mozilla-firefox-1_1024x768.png",
+                "./img/browsers/netscape-navigator-1_630x470.png",
+                "./img/browsers/netscape-navigator-3_800x600.png",
+                "./img/browsers/netscape-navigator-4_800x600.png",
+            ].map(browserImage=>{
+                const image = new Image();
+                image.src = browserImage;
+            });
+
             ReactDOM.render(Serlain({availableBrowsers}), document.getElementById("app-container"));
         </script>
     </body>
