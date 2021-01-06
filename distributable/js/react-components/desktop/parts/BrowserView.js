@@ -40,7 +40,9 @@ export function BrowserView(props = {}) {
   }, [activeBrowser]);
   return React.createElement("div", {
     className: "BrowserView"
-  }, browserDesktopIcons, activeBrowserElement);
+  }, React.createElement("div", {
+    className: "icons-container"
+  }, browserDesktopIcons), activeBrowserElement);
 
   function open_browser_window(browser) {
     setActiveBrowser(browser);

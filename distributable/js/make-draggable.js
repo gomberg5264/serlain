@@ -127,15 +127,13 @@ export function make_element_draggable(targetElement) {
       throw new Error("Unknown target element.");
     }
 
-    const style = window.getComputedStyle(targetElement);
-    const left = Number(style.left.replace(/[^\d-.,]+/g, ""));
-    const top = Number(style.top.replace(/[^\d-.,]+/g, ""));
-    dragStatus.dragPosition.x = left;
-    dragStatus.dragPosition.y = top;
+    dragStatus.dragPosition.x = targetElement.getBoundingClientRect().left;
+    dragStatus.dragPosition.y = targetElement.getBoundingClientRect().top;
     dragStatus.windowSize.x = window.innerWidth;
     dragStatus.windowSize.y = window.innerHeight;
     targetElement.style.right = "";
     targetElement.style.bottom = "";
+    targetElement.style.transform = "none";
     dragStatus.isInitialized = true;
     return;
   }

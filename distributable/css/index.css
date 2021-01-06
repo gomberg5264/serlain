@@ -45,7 +45,7 @@ body
     flex-wrap: wrap;
     flex-direction: column;
     height: calc(100% - var(--taskbar-height));
-    width: 0; /* Align flex-wrap to left.*/
+    width: 100%;
     position: relative;
     z-index: var(--z-index--browser-view);
 }
@@ -61,6 +61,16 @@ body
     margin: 4px 5px;
     width: 90px;
     height: 90px;
+}
+
+.BrowserView .icons-container
+{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+    height: 100%;
+    width: 100%;
 }
 
 .BrowserView .Icon:focus
@@ -142,7 +152,6 @@ body
     margin-left: 2px;
 }
 
-
 #app-container
 {
     position: absolute;
@@ -162,8 +171,9 @@ body
 {
     position: absolute;
     z-index: 1;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
     background-size: 100% 100%;
 }
 

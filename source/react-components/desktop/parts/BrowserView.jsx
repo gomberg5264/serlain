@@ -54,7 +54,11 @@ export function BrowserView(props = {})
 
     return <div className="BrowserView">
 
-               {browserDesktopIcons}
+               <div className="icons-container">
+
+                   {browserDesktopIcons}
+                   
+               </div>
 
                {activeBrowserElement}
 
