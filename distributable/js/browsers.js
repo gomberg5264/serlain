@@ -65,7 +65,7 @@ export function mozilla_firefox_1(browsingYear, width, height) {
     buttons: ["reload", "home", "back", "forward", "close"],
     desktopIcon: {
       title: "Mozilla Firefox 1",
-      imageUrl: "/img/icons/firefox-1.png"
+      imageUrl: "./img/icons/firefox-1.png"
     },
     messageBarStrings: {
       fetching_page_url: url => `Looking up ${url}...`,

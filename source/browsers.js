@@ -110,7 +110,7 @@ export function mozilla_firefox_1(browsingYear, width, height)
 
         desktopIcon: {
             title: "Mozilla Firefox 1",
-            imageUrl: "/img/icons/firefox-1.png",
+            imageUrl: "./img/icons/firefox-1.png",
         },
 
         messageBarStrings: {

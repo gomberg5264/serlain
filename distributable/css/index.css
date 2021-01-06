@@ -175,10 +175,6 @@ body
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     background-size: 100% 100%;
-}
-
-.WaybackBrowser
-{
     user-select: none;
 }
 
