@@ -8,11 +8,18 @@
     background-color: #c0c0c0;
     border-top: 1px solid black;
     box-shadow: none;
+    height: calc(var(--taskbar-height) + 2px);
 }
 
 .Desktop.theme-windows-3-1 .Taskbar .right-side-container
 {
     padding: 0 20px;
+    height: calc(var(--taskbar-height) - 4px);
+    line-height: 25px;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
 }
 
 .Desktop.theme-windows-3-1 .Taskbar .right-side-container .icon-row

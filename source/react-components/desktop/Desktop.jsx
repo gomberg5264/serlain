@@ -15,7 +15,7 @@ export function Desktop(props = {})
 {
     Desktop.validate_props(props);
 
-    const [activeBrowser, setActiveBrowser] = React.useState(props.availableBrowsers[4]);
+    const [activeBrowser, setActiveBrowser] = React.useState(props.availableBrowsers[5]);
 
     const themeClassName = activeBrowser
                            ? activeBrowser.operatingSystem.toLowerCase().replace(/[ .]/g, "-")

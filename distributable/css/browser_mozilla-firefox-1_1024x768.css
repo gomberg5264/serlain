@@ -48,7 +48,6 @@
 
 .WaybackBrowser > .BrowserWindow.mozilla-firefox-1.resolution-1024x768 > .AddressBar
 {
-    background-color: transparent;
     position: absolute;
     top: 61px;
     left: 225px;

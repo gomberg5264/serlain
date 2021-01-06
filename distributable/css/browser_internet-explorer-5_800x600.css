@@ -48,11 +48,10 @@
 
 .WaybackBrowser > .BrowserWindow.internet-explorer-5.resolution-800x600 > .AddressBar
 {
-    background-color: transparent;
     position: absolute;
     top: 76px;
     left: 82px;
-    width: 639px;
+    width: 585px;
     height: 16px;
     text-align: left;
     line-height: 16px;

@@ -6,4 +6,10 @@
 .Desktop.theme-windows-2000 .Taskbar 
 {
     background-color: #d4d0c8;
+    height: calc(var(--taskbar-height) + 1px);
+}
+
+.Desktop.theme-windows-2000 .Taskbar .right-side-container
+{
+    height: 27px;
 }

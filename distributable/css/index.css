@@ -28,6 +28,7 @@ body
     margin: 0;
     padding: 0;
     overflow: hidden;
+    font-family: "Ubuntu", "Ubuntu (server-side)", sans-serif;
 }
 
 .Desktop
@@ -51,6 +52,7 @@ body
 
 .BrowserView .Icon
 {
+    border-radius: 2px;
     user-select: none;
     display: flex;
     flex-direction: column;
@@ -59,12 +61,6 @@ body
     margin: 4px 5px;
     width: 90px;
     height: 90px;
-}
-
-.BrowserView .Icon:hover
-{
-    outline: 1px dotted black;
-    box-shadow: 0 0 0px 1px whitesmoke;
 }
 
 .BrowserView .Icon:focus
@@ -84,6 +80,7 @@ body
 {
     width: 100%;
     height: 100%;
+    border-radius: 2px;
 }
 
 .BrowserView .Icon .title
@@ -92,6 +89,7 @@ body
     text-align: center;
     font-size: 90%;
     margin-top: 4px;
+    overflow: hidden;
 }
 
 .Taskbar
@@ -136,8 +134,14 @@ body
 .Taskbar .right-side-container .icon-row
 {
     margin-right: 12px;
-    color: #0853c3;
+    color: #717171;
 }
+
+.Taskbar .right-side-container .icon-row .fas + .fas
+{
+    margin-left: 2px;
+}
+
 
 #app-container
 {
@@ -178,6 +182,11 @@ body
 .WaybackBrowser > .BrowserWindow.waiting-for-network-reply .Buttons > .Button
 {
     cursor: wait;
+}
+
+.WaybackBrowser > .BrowserWindow .AddressBar
+{
+    background-color: white;
 }
 
 .WaybackBrowser > .BrowserWindow .AddressBar input

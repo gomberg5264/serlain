@@ -6,4 +6,10 @@
 .Desktop.theme-windows-95 .Taskbar
 {
     background-color: #c0c0c0;
+    height: calc(var(--taskbar-height) + 1px);
+}
+
+.Desktop.theme-windows-95 .Taskbar .right-side-container
+{
+    height: 27px;
 }
