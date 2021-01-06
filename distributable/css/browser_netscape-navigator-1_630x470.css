@@ -107,6 +107,16 @@
     text-overflow: ellipsis;
 }
 
+.WaybackBrowser > .BrowserWindow.netscape-navigator-1.resolution-630x470 > .dragger
+{
+    position: absolute;
+    top: 3px;
+    left: 25px;
+    width: 560px;
+    height: 20px;
+    line-height: 20px;
+}
+
 .WaybackBrowser > .BrowserWindow.netscape-navigator-1.resolution-630x470 > .Viewport
 {
     position: absolute;

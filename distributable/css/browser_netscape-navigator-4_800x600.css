@@ -105,6 +105,15 @@
     text-overflow: ellipsis;
 }
 
+.WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .dragger
+{
+    position: absolute;
+    top: 4px;
+    left: 25px;
+    width: 715px;
+    height: 18px;
+}
+
 .WaybackBrowser > .BrowserWindow.netscape-navigator-4.resolution-800x600 > .TitleBar::after
 {
     content: " - Netscape 4.0";

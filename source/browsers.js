@@ -202,3 +202,31 @@ export function netscape_navigator_4(browsingYear, width, height)
         },
     };
 }
+
+export function google_chrome_1(browsingYear, width, height)
+{
+    return {
+        browserClassName: `google-chrome-1 resolution-${width}x${height}`,
+
+        browsingYear: browsingYear,
+
+        operatingSystem: "Windows XP",
+
+        buttons: ["reload", "back", "forward", "close"],
+
+        desktopIcon: {
+            title: "Google Chrome 1",
+            imageUrl: "./img/icons/google-chrome-2008.png",
+        },
+
+        // Strings that will be shown in the browser's message bar as a response to
+        // specific events.
+        /// TODO: Find out the real messages for these.
+        messageBarStrings: {
+            fetching_page_url: (url)=>`${url}...`,
+            loading_page: (url)=>`${url}`,
+            page_load_failed: (url)=>`Unable to connect to ${url}`,
+            page_load_finished: ()=>"",
+        },
+    };
+}

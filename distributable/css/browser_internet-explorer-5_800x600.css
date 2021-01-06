@@ -105,6 +105,15 @@
     text-overflow: ellipsis;
 }
 
+.WaybackBrowser > .BrowserWindow.internet-explorer-5.resolution-800x600 > .dragger
+{
+    position: absolute;
+    top: 4px;
+    left: 25px;
+    width: 715px;
+    height: 18px;
+}
+
 .WaybackBrowser > .BrowserWindow.internet-explorer-5.resolution-800x600 > .TitleBar::after
 {
     content: " - Microsoft Internet Explorer 5.0";

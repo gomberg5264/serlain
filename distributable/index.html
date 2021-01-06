@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="./css/browser_internet-explorer-5_800x600.css">
         <link rel="stylesheet" href="./css/browser_internet-explorer-6_1024x768.css">
         <link rel="stylesheet" href="./css/browser_mozilla-firefox-1_1024x768.css">
+        <link rel="stylesheet" href="./css/browser_google-chrome-1_1024x768.css">
         <link rel="stylesheet" href="./css/theme_generic.css">
         <link rel="stylesheet" href="./css/theme_windows-3-1.css">
         <link rel="stylesheet" href="./css/theme_windows-95.css">
@@ -36,7 +37,8 @@
                     netscape_navigator_1,
                     netscape_navigator_3,
                     netscape_navigator_4,
-                    mozilla_firefox_1} from "./js/browsers.js";
+                    mozilla_firefox_1,
+                    google_chrome_1} from "./js/browsers.js";
 
             const availableBrowsers = [
                 netscape_navigator_1(1996, 630, 470),
@@ -46,6 +48,7 @@
                 internet_explorer_5(2000, 800, 600),
                 internet_explorer_6(2001, 1024, 768),
                 mozilla_firefox_1(2005, 1024, 768),
+                google_chrome_1(2009, 1024, 768),
             ];
 
             ReactDOM.render(Serlain({availableBrowsers}), document.getElementById("app-container"));

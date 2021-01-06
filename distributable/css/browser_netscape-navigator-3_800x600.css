@@ -105,6 +105,15 @@
     text-overflow: ellipsis;
 }
 
+.WaybackBrowser > .BrowserWindow.netscape-navigator-3.resolution-800x600 > .dragger
+{
+    position: absolute;
+    top: 4px;
+    left: 25px;
+    width: 715px;
+    height: 18px;
+}
+
 .WaybackBrowser > .BrowserWindow.netscape-navigator-3.resolution-800x600 > .TitleBar::before
 {
     content: "Netscape 3.0 - ";

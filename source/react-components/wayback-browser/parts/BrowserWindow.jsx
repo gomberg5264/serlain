@@ -70,7 +70,7 @@ export function BrowserWindow(props = {})
 
     return <div className={`BrowserWindow ${props.browserClassName} ${waitingForServerResponse? "waiting-for-network-reply" : ""}`.trim()}>
 
-               <TitleBar/>
+               <TitleBar browserClassName={props.browserClassName}/>
 
                <Buttons buttons={props.buttons}
                         callbackButtonReload={()=>{

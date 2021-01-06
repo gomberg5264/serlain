@@ -20,7 +20,9 @@ export function BrowserWindow(props = {}) {
   };
   return React.createElement("div", {
     className: `BrowserWindow ${props.browserClassName} ${waitingForServerResponse ? "waiting-for-network-reply" : ""}`.trim()
-  }, React.createElement(TitleBar, null), React.createElement(Buttons, {
+  }, React.createElement(TitleBar, {
+    browserClassName: props.browserClassName
+  }), React.createElement(Buttons, {
     buttons: props.buttons,
     callbackButtonReload: () => {
       if (!waitingForServerResponse) {

@@ -108,6 +108,15 @@
     filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.7));
 }
 
+.WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .dragger
+{
+    position: absolute;
+    top: 1px;
+    left: 23px;
+    width: 924px;
+    height: 29px;
+}
+
 .WaybackBrowser > .BrowserWindow.internet-explorer-6.resolution-1024x768 > .TitleBar::after
 {
     content: " - Microsoft Internet Explorer 6.0";
