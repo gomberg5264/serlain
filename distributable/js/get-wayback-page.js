@@ -25,6 +25,7 @@ export async function get_wayback_page(websiteUrl, year) {
       return null;
     }
 
+    jsonData.url = jsonData.url.replace(`${jsonData.timestamp}`, `${jsonData.timestamp}if_`);
     waybackPage.url = jsonData.url;
   }
   return waybackPage;

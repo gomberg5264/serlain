@@ -50,6 +50,10 @@ export async function get_wayback_page(websiteUrl, year)
             return null;
         }
 
+        // Append "if_" to the URL's timestamp to request that the Wayback Machine toolbar
+        // not be part of the page.
+        jsonData.url = jsonData.url.replace(`${jsonData.timestamp}`, `${jsonData.timestamp}if_`);
+
         waybackPage.url = jsonData.url;
     }
 
