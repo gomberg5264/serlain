@@ -39,14 +39,18 @@ export async function get_wayback_page(websiteUrl, year)
 
         const jsonData = await response.json();
 
-        if (!jsonData ||
+        if (jsonData &&
             !jsonData.successful)
         {
+            console.error(`A request to the Wayback API failed. Reason: ${jsonData.error}`);
             return null;
         }
 
-        if (!jsonData.url || (typeof jsonData.url !== "string"))
+        if (!jsonData ||
+            !jsonData.url ||
+            (typeof jsonData.url !== "string"))
         {
+            console.error("A request to Serlain's back-end returned with a malformed response.");
             return null;
         }
 
