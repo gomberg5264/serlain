@@ -13,8 +13,7 @@ export function Viewport(props = {}) {
   }, React.createElement("iframe", {
     src: props.url,
     ref: iframeRef,
-    onLoad: () => declare_new_page_loaded(),
-    sandbox: "allow-scripts allow-forms allow-modals allow-same-origin allow-downloads"
+    onLoad: () => declare_new_page_loaded()
   }));
 
   function declare_new_page_loaded() {
