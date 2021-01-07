@@ -46,11 +46,13 @@ export function make_element_draggable(targetElement) {
       return;
     }
 
-    const deltaX = window.innerWidth - dragStatus.windowSize.x;
+    const mulX = window.innerWidth / dragStatus.windowSize.x;
+    const mulY = window.innerHeight / dragStatus.windowSize.y;
     dragStatus.windowSize.x = window.innerWidth;
     dragStatus.windowSize.y = window.innerHeight;
-    dragStatus.dragPosition.x += deltaX;
-    update_element_position();
+    dragStatus.dragPosition.x *= mulX;
+    dragStatus.dragPosition.y *= mulY;
+    update_element_position(clip_element_to_edges());
     return;
   });
   window.addEventListener("mouseup", function (event) {
