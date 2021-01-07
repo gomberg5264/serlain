@@ -91,33 +91,32 @@ $year = $_GET["year"];
 
     if (!$responseJson)
     {
-        exit(return_fail());
+        exit(return_fail("The Wayback API didn't respond."));
     }
 }
 
 // Test for required parameters in the response.
 {
     if (!isset($responseJson["archived_snapshots"]["closest"]["available"]) ||
-        !isset($responseJson["archived_snapshots"]["closest"]["available"]) ||
         !isset($responseJson["archived_snapshots"]["closest"]["timestamp"]) ||
         !isset($responseJson["archived_snapshots"]["closest"]["url"]))
     {
-        exit(return_fail());
+        exit(return_fail("There is no Wayback capture of the site available for the given date."));
     }
 
     if ($responseJson["archived_snapshots"]["closest"]["status"] != 200)
     {
-        exit(return_fail());
-    }
-
-    if (!preg_match("/^{$year}/", $responseJson["archived_snapshots"]["closest"]["timestamp"]))
-    {
-        exit(return_fail());
+        exit(return_fail("The Wayback Machine had attempted but failed to archive the site on the given date."));
     }
 
     if (!$responseJson["archived_snapshots"]["closest"]["available"])
     {
-        exit(return_fail());
+        exit(return_fail("The requested archived copy of the site exists but is not currently available."));
+    }
+
+    if (!preg_match("/^{$year}/", $responseJson["archived_snapshots"]["closest"]["timestamp"]))
+    {
+        exit(return_fail("There is no archived copy of the site in the given year."));
     }
 }
 
@@ -132,9 +131,9 @@ else
 
 exit(return_success($responseJson["archived_snapshots"]["closest"]));
 
-function return_fail()
+function return_fail($reason = "Unknown reason")
 {
-    echo json_encode(["successful"=>false]);
+    echo json_encode(["successful"=>false, "error"=>$reason]);
 }
 
 function return_success(array $responseData)
