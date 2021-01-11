@@ -32,9 +32,22 @@ export function Viewport(props = {})
         erase_page,
     });
 
+    React.useEffect(()=>
+    {
+        const listenerId = __serlainIframeEvents.register_listener("clickedLink", (href)=>
+        {
+            console.log("href:", href)
+        });
+
+        return ()=>{
+            __serlainIframeEvents.unregister_listener(listenerId);
+        }
+    });
+
     return <div className="Viewport">
 
                <iframe src={props.url}
+                       {...(props.html? {srcDoc: props.html} : {})}
                        ref={iframeRef}
                        onLoad={()=>declare_new_page_loaded()}/>
 

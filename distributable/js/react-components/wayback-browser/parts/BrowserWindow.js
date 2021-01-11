@@ -11,6 +11,7 @@ export function BrowserWindow(props = {}) {
   BrowserWindow.validate_props(props);
   const [websiteUrl, setWebsiteUrl] = React.useState("about:serlain");
   const [waybackUrl, setWaybackUrl] = React.useState("./about-serlain.html");
+  const [waybackHtml, setWaybackHtml] = React.useState("");
   const [waitingForServerResponse, setWaitingForServerResponse] = React.useState(false);
   const [currentMessageBarMessage, setCurrentMessageBarMessage] = React.useState("Done");
   const [addressBarKey, setAddressBarKey] = React.useState(0);
@@ -60,6 +61,7 @@ export function BrowserWindow(props = {}) {
     callbackUrlSubmit: navigate_to_url
   }), React.createElement(Viewport, {
     url: waybackUrl,
+    html: waybackHtml,
     callbackNewPageLoaded: finish_navigating_to_url,
     giveCallbacks: callbacks => {
       viewportCallbacks = callbacks;
@@ -100,6 +102,7 @@ export function BrowserWindow(props = {}) {
           } else {
             setWebsiteUrl(websiteUrl);
             setWaybackUrl(waybackPage.url);
+            setWaybackHtml(waybackPage.html);
             setCurrentMessageBarMessage(props.messageBarStrings.loading_page(websiteUrl));
           }
 

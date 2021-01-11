@@ -21,7 +21,8 @@
  *   {
  *       successful: true|false,
  *       timestamp: "xxx",
- *       url: "xxx",
+ *       url: "http...",
+ *       html: "<html>...",
  *   }
  * 
  * If the request cannot be carried out successfully, only the "successful" property
@@ -36,11 +37,10 @@
  * 
  */
 
-// Test that we've been given the required input parameters.
 if (!isset($_GET["website"]) ||
     !isset($_GET["year"]))
 {
-    exit(return_fail());
+    exit(return_fail("Missing required parameters 'website' and/or 'year'."));
 }
 
 $websiteUrl = $_GET["website"];
@@ -63,10 +63,29 @@ $year = $_GET["year"];
     {
         exit(return_fail());
     }
-} 
+}
 
-// Poll the Wayback Machine API for the most recent matching capture of the
-// given website.
+$waybackCapture = get_closest_wayback_capture($websiteUrl, $year);
+inject_serlain_into_wayback_capture($waybackCapture);
+
+exit(return_success($waybackCapture));
+
+function return_fail($reason = "Unknown reason") : void
+{
+    echo json_encode(["successful"=>false, "error"=>$reason]);
+}
+
+function return_success(array $waybackCapture) : void
+{
+    echo json_encode([
+        "successful"=>true,
+        "timestamp"=>$waybackCapture["captureTimestamp"],
+        "url"=>$waybackCapture["url"],
+        "html"=>$waybackCapture["html"],
+    ], JSON_UNESCAPED_SLASHES);
+}
+
+function get_closest_wayback_capture(string $websiteUrl, int $year) : array
 {
     // Rudimentary global API request rate limiter. But not a great implementation:
     // a bad actor sending constant requests could choke the script and prevent
@@ -93,56 +112,84 @@ $year = $_GET["year"];
     {
         exit(return_fail("The Wayback API didn't respond."));
     }
-}
 
-// Test for required parameters in the response.
-{
-    if (!isset($responseJson["archived_snapshots"]["closest"]["available"]) ||
-        !isset($responseJson["archived_snapshots"]["closest"]["timestamp"]) ||
-        !isset($responseJson["archived_snapshots"]["closest"]["url"]))
+    // Test for required parameters in the response.
     {
-        exit(return_fail("There is no Wayback capture of the site available for the given date."));
+        if (!isset($responseJson["archived_snapshots"]["closest"]["available"]) ||
+            !isset($responseJson["archived_snapshots"]["closest"]["timestamp"]) ||
+            !isset($responseJson["archived_snapshots"]["closest"]["url"]))
+        {
+            exit(return_fail("There is no Wayback capture of the site available for the given date."));
+        }
+
+        if ($responseJson["archived_snapshots"]["closest"]["status"] != 200)
+        {
+            exit(return_fail("The Wayback Machine had attempted but failed to archive the site on the given date."));
+        }
+
+        if (!$responseJson["archived_snapshots"]["closest"]["available"])
+        {
+            exit(return_fail("The requested archived copy of the site exists but is not currently available."));
+        }
+
+        if (!preg_match("/^{$year}/", $responseJson["archived_snapshots"]["closest"]["timestamp"]))
+        {
+            exit(return_fail("There is no archived copy of the site in the given year."));
+        }
     }
 
-    if ($responseJson["archived_snapshots"]["closest"]["status"] != 200)
+    $timestamp = $responseJson["archived_snapshots"]["closest"]["timestamp"];
+
+    if (isset($_SERVER["HTTPS"]))
     {
-        exit(return_fail("The Wayback Machine had attempted but failed to archive the site on the given date."));
+        $waybackUrl = preg_replace("/^http:\/\//", "https://", $responseJson["archived_snapshots"]["closest"]["url"]);
+    }
+    else
+    {
+        $waybackUrl = preg_replace("/^https:\/\//", "http://", $responseJson["archived_snapshots"]["closest"]["url"]);
     }
 
-    if (!$responseJson["archived_snapshots"]["closest"]["available"])
+    // Append "if_" to the URL's timestamp to request that the Wayback Machine toolbar
+    // not be part of the page.
+    $waybackUrl = str_replace($timestamp, "{$timestamp}if_", $waybackUrl);
+
+    return [
+        "captureTimestamp"=>$timestamp,
+        "url"=>$waybackUrl,
+        "html"=>file_get_contents($waybackUrl)
+    ];
+}
+
+// Attaches certain Serlain scripts etc. into the captured site's HTML, to allow the
+// page to interact with Serlain.
+function inject_serlain_into_wayback_capture(array &$waybackCapture) : void
+{
+    $baseHref = "<base href='{$waybackCapture["url"]}'/>";
+
+    $clickHandler = '
+        window.addEventListener("click", (e)=>{
+            const linkElement = e.target.closest("a");
+            if (linkElement)
+            {
+                parent.__serlainIframeEvents.fire("clickedLink", [linkElement.href || undefined]);
+            }
+        }, false);';
+
+    $headIdx = strpos($waybackCapture["html"], "<head>");
+    $bodyIdx = strpos($waybackCapture["html"], "<body>");
+
+    if ($headIdx !== false)
     {
-        exit(return_fail("The requested archived copy of the site exists but is not currently available."));
+        $insertIdx = ($headIdx + 6);
+    }
+    else if ($bodyIdx !== false)
+    {
+        $insertIdx = ($bodyIdx + 6);
+    }
+    else
+    {
+        return_fail("Unable to inject Serlain into the source document.");
     }
 
-    if (!preg_match("/^{$year}/", $responseJson["archived_snapshots"]["closest"]["timestamp"]))
-    {
-        exit(return_fail("There is no archived copy of the site in the given year."));
-    }
+    $waybackCapture["html"] = substr_replace($waybackCapture["html"], "{$baseHref}<script>{$clickHandler}</script>", $insertIdx, 0);
 }
-
-if (isset($_SERVER["HTTPS"]))
-{
-    $responseJson["archived_snapshots"]["closest"]["url"] = preg_replace("/^http:\/\//", "https://", $responseJson["archived_snapshots"]["closest"]["url"]);
-}
-else
-{
-    $responseJson["archived_snapshots"]["closest"]["url"] = preg_replace("/^https:\/\//", "http://", $responseJson["archived_snapshots"]["closest"]["url"]);
-}
-
-exit(return_success($responseJson["archived_snapshots"]["closest"]));
-
-function return_fail($reason = "Unknown reason")
-{
-    echo json_encode(["successful"=>false, "error"=>$reason]);
-}
-
-function return_success(array $responseData)
-{
-    echo json_encode([
-        "successful"=>true,
-        "timestamp"=>$responseData["timestamp"],
-        "url"=>$responseData["url"],
-    ], JSON_UNESCAPED_SLASHES);
-}
-
-?>

@@ -52,6 +52,7 @@ export function BrowserWindow(props = {})
     // capture of the target website, e.g. "web.archive.org/web/x/www.microsoft.com".
     const [websiteUrl, setWebsiteUrl] = React.useState("about:serlain");
     const [waybackUrl, setWaybackUrl] = React.useState("./about-serlain.html");
+    const [waybackHtml, setWaybackHtml] = React.useState("");
 
     // Set to true while we're waiting for a response from the Serlain backend.
     const [waitingForServerResponse, setWaitingForServerResponse] = React.useState(false);
@@ -114,6 +115,7 @@ export function BrowserWindow(props = {})
                            callbackUrlSubmit={navigate_to_url}/>
 
                <Viewport url={waybackUrl}
+                         html={waybackHtml}
                          callbackNewPageLoaded={finish_navigating_to_url}
                          giveCallbacks={(callbacks)=>{viewportCallbacks = callbacks;}}/>
 
@@ -167,6 +169,7 @@ export function BrowserWindow(props = {})
                 {
                     setWebsiteUrl(websiteUrl);
                     setWaybackUrl(waybackPage.url);
+                    setWaybackHtml(waybackPage.html);
                     setCurrentMessageBarMessage(props.messageBarStrings.loading_page(websiteUrl));
                 }
 

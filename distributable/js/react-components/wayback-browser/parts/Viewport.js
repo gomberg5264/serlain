@@ -1,5 +1,7 @@
 "use strict";
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 import { panic_if_not_type } from "../../../assert.js";
 export function Viewport(props = {}) {
   Viewport.validate_props(props);
@@ -8,13 +10,25 @@ export function Viewport(props = {}) {
     reload_page,
     erase_page
   });
+  React.useEffect(() => {
+    const listenerId = __serlainIframeEvents.register_listener("clickedLink", href => {
+      console.log("href:", href);
+    });
+
+    return () => {
+      __serlainIframeEvents.unregister_listener(listenerId);
+    };
+  });
   return React.createElement("div", {
     className: "Viewport"
-  }, React.createElement("iframe", {
-    src: props.url,
+  }, React.createElement("iframe", _extends({
+    src: props.url
+  }, props.html ? {
+    srcDoc: props.html
+  } : {}, {
     ref: iframeRef,
     onLoad: () => declare_new_page_loaded()
-  }));
+  })));
 
   function declare_new_page_loaded() {
     props.callbackNewPageLoaded();
