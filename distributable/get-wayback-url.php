@@ -66,7 +66,6 @@ $year = $_GET["year"];
 }
 
 $waybackCapture = get_closest_wayback_capture($websiteUrl, $year);
-inject_serlain_into_wayback_capture($waybackCapture);
 
 exit(return_success($waybackCapture));
 
@@ -80,8 +79,7 @@ function return_success(array $waybackCapture) : void
     echo json_encode([
         "successful"=>true,
         "timestamp"=>$waybackCapture["captureTimestamp"],
-        "url"=>$waybackCapture["url"],
-        "html"=>$waybackCapture["html"],
+        "url"=>$waybackCapture["url"]
     ], JSON_UNESCAPED_SLASHES);
 }
 
@@ -155,41 +153,6 @@ function get_closest_wayback_capture(string $websiteUrl, int $year) : array
 
     return [
         "captureTimestamp"=>$timestamp,
-        "url"=>$waybackUrl,
-        "html"=>file_get_contents($waybackUrl)
+        "url"=>$waybackUrl
     ];
-}
-
-// Attaches certain Serlain scripts etc. into the captured site's HTML, to allow the
-// page to interact with Serlain.
-function inject_serlain_into_wayback_capture(array &$waybackCapture) : void
-{
-    $baseHref = "<base href='{$waybackCapture["url"]}'/>";
-
-    $clickHandler = '
-        window.addEventListener("click", (e)=>{
-            const linkElement = e.target.closest("a");
-            if (linkElement)
-            {
-                parent.__serlainIframeEvents.fire("clickedLink", [linkElement.href || undefined]);
-            }
-        }, false);';
-
-    $headIdx = strpos($waybackCapture["html"], "<head>");
-    $bodyIdx = strpos($waybackCapture["html"], "<body>");
-
-    if ($headIdx !== false)
-    {
-        $insertIdx = ($headIdx + 6);
-    }
-    else if ($bodyIdx !== false)
-    {
-        $insertIdx = ($bodyIdx + 6);
-    }
-    else
-    {
-        return_fail("Unable to inject Serlain into the source document.");
-    }
-
-    $waybackCapture["html"] = substr_replace($waybackCapture["html"], "{$baseHref}<script>{$clickHandler}</script>", $insertIdx, 0);
 }

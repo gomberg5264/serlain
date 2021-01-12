@@ -10,15 +10,6 @@ export function Viewport(props = {}) {
     reload_page,
     erase_page
   });
-  React.useEffect(() => {
-    const listenerId = __serlainIframeEvents.register_listener("clickedLink", href => {
-      console.log("href:", href);
-    });
-
-    return () => {
-      __serlainIframeEvents.unregister_listener(listenerId);
-    };
-  });
   return React.createElement("div", {
     className: "Viewport"
   }, React.createElement("iframe", _extends({
