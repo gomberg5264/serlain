@@ -10,8 +10,8 @@
 import {panic_if_not_type} from "./assert.js";
 
 // Queries Wayback Machine's Availability API for a URL to a capture of the given website
-// (e.g. "microsoft.com") in the given year (e.g. 2004), and downloads its HTML. In case
-// of error, null is returned.
+// (e.g. "microsoft.com") in the given year (e.g. 2004), and returns it. In case of error,
+// null is returned.
 export async function get_wayback_page(websiteUrl, year)
 {
     panic_if_not_type("string", websiteUrl);
@@ -24,7 +24,17 @@ export async function get_wayback_page(websiteUrl, year)
         return null;
     }
 
-    const jsonData = await response.json();
+    let jsonData = undefined;
+
+    try
+    {
+        jsonData = await response.json();
+    }
+    catch (error)
+    {
+        console.error(`A request to the Wayback API failed. Reason: ${error}`);
+        return null;
+    }
 
     if (jsonData &&
         !jsonData.successful)
@@ -42,7 +52,6 @@ export async function get_wayback_page(websiteUrl, year)
     }
 
     return {
-        url: jsonData.url,
-        html: jsonData.html,
+        url: jsonData.url
     };
 }

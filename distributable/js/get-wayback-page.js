@@ -10,7 +10,14 @@ export async function get_wayback_page(websiteUrl, year) {
     return null;
   }
 
-  const jsonData = await response.json();
+  let jsonData = undefined;
+
+  try {
+    jsonData = await response.json();
+  } catch (error) {
+    console.error(`A request to the Wayback API failed. Reason: ${error}`);
+    return null;
+  }
 
   if (jsonData && !jsonData.successful) {
     console.error(`A request to the Wayback API failed. Reason: ${jsonData.error}`);
@@ -23,7 +30,6 @@ export async function get_wayback_page(websiteUrl, year) {
   }
 
   return {
-    url: jsonData.url,
-    html: jsonData.html
+    url: jsonData.url
   };
 }
