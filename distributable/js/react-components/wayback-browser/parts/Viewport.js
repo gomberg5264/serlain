@@ -18,13 +18,10 @@ export function Viewport(props = {}) {
     srcDoc: props.html
   } : {}, {
     ref: iframeRef,
-    onLoad: () => declare_new_page_loaded()
+    onLoad: props.callbackNewPageLoaded,
+    onMouseEnter: () => SerlainGlobalState.isMouseInsideBrowserViewport = true,
+    onMouseLeave: () => SerlainGlobalState.isMouseInsideBrowserViewport = false
   })));
-
-  function declare_new_page_loaded() {
-    props.callbackNewPageLoaded();
-    return;
-  }
 
   function reload_page() {
     if (iframeRef && iframeRef.current) {

@@ -37,16 +37,11 @@ export function Viewport(props = {})
                <iframe src={props.url}
                        {...(props.html? {srcDoc: props.html} : {})}
                        ref={iframeRef}
-                       onLoad={()=>declare_new_page_loaded()}/>
+                       onLoad={props.callbackNewPageLoaded}
+                       onMouseEnter={()=>(SerlainGlobalState.isMouseInsideBrowserViewport = true)}
+                       onMouseLeave={()=>(SerlainGlobalState.isMouseInsideBrowserViewport = false)}/>
 
            </div>
-
-    function declare_new_page_loaded()
-    {
-        props.callbackNewPageLoaded();
-
-        return;
-    }
 
     // Note: This will reload using the most recent src address WE gave. If
     // the user has navigated the frame using e.g. links inside it, reloading

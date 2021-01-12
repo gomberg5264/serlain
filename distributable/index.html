@@ -29,6 +29,25 @@
         
         <div id="app-container"></div>
 
+        <!-- Global stuff. Dumped into here for now.-->
+        <script>
+            var SerlainGlobalState = {
+                isMouseInsideBrowserViewport: false,
+            };
+
+            // Some captured websites like to direct their links to the top window, i.e. the
+            // window in which Serlain is running. We don't want Serlain to suddenly exit when
+            // the user clicks on links like that, so we prevent it with this kludge.
+            window.addEventListener("beforeunload", (event)=>
+            {
+                if (SerlainGlobalState.isMouseInsideBrowserViewport)
+                {
+                    event.preventDefault();
+                    event.returnValue = "";
+                }
+            });
+        </script>
+
         <!-- Run the desktop.-->
         <script type="module">
             import {Serlain} from "./js/react-components/Serlain.js";
