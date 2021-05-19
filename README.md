@@ -23,6 +23,28 @@ $ ./build-dev.sh
 
 This will place the built distributable files inside the [distributable/](./distributable/) directory
 
+## Deploying
+
+The app's content is static except for some PHP 7.0-level code.
+
+Regardless of your method of deployment, make sure to complete the [build steps](#building) before deploying.
+
+### PHP 7-capable server
+
+Copy all files from the [distributable/](./distributable/) directory to where you want the app to live on the server, and you should be done.
+
+### Heroku
+
+The repo also comes pre-configured for pushing to Heroku as a PHP node. Follow Heroku's instructions at [https://devcenter.heroku.com/articles/getting-started-with-php](https://devcenter.heroku.com/articles/getting-started-with-php).
+
+### Server without PHP
+
+The reason PHP is used in Serlain is to get around the fact that the Wayback Machine API doesn't appear to allow CORS. So as a workaround, the client-side Serlain makes a request to the server-side PHP script, which makes a corresponding request to the Wayback Machine API (bypassing CORS restrictions), then returns the response to the Serlain client.
+
+Another possible workaround would be to use a CORS proxy, thus removing the need for PHP and allowing Serlain to be hosted fully statically. Commit [a2e39ee](https://github.com/leikareipa/serlain/commit/a2e39eec3df6b8647ecaf81b67f02c46ce233d85) made the required changes to use a CORS proxy instead of PHP; while the later commit [04f8ad4](https://github.com/leikareipa/serlain/commit/04f8ad48f7cec035e7e161ea6ebf9678c51888d0) undid those changes (because the particular proxy had some availability issues from time to time).
+
+In short, if you want to host Serlain on a non-PHP server, you'll need to make some changes to the app's code, perhaps reproducing the commit mentioned above.
+
 # Screenshots
 
 ![](./images/screenshots/serlain-new-4.png)

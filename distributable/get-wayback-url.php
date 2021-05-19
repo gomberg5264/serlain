@@ -59,7 +59,7 @@ $year = $_GET["year"];
     }
 
     // Only allow a-z, A-Z, 0-9, and a couple of other symbols in URLs.
-    if (preg_match("/[^\w-.:\/]+/", $websiteUrl))
+    if (preg_match("/[^\w\-.:\/]+/", $websiteUrl))
     {
         exit(return_fail());
     }
@@ -138,13 +138,27 @@ function get_closest_wayback_capture(string $websiteUrl, int $year) : array
 
     $timestamp = $responseJson["archived_snapshots"]["closest"]["timestamp"];
 
-    if (isset($_SERVER["HTTPS"]))
+    // Prevent serving mixed content.
     {
-        $waybackUrl = preg_replace("/^http:\/\//", "https://", $responseJson["archived_snapshots"]["closest"]["url"]);
-    }
-    else
-    {
-        $waybackUrl = preg_replace("/^https:\/\//", "http://", $responseJson["archived_snapshots"]["closest"]["url"]);
+        $requestProtocol = "http";
+
+        if (isset($_SERVER["HTTPS"]))
+        {
+            $requestProtocol = "https";
+        }
+        else if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]))
+        {
+            $requestProtocol = $_SERVER["HTTP_X_FORWARDED_PROTO"];
+        }
+
+        if ($requestProtocol == "http")
+        {
+            $waybackUrl = preg_replace("/^https:\/\//", "http://", $responseJson["archived_snapshots"]["closest"]["url"]);
+        }
+        else
+        {
+            $waybackUrl = preg_replace("/^http:\/\//", "https://", $responseJson["archived_snapshots"]["closest"]["url"]);
+        }
     }
 
     // Append "if_" to the URL's timestamp to request that the Wayback Machine toolbar
